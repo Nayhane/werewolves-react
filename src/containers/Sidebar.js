@@ -24,7 +24,7 @@ class Sidebar extends PureComponent {
   }
 
   componentWillMount() {
-
+this.fetchPlayers();
   }
 
   componentWillReceiveProps(nextProps) {

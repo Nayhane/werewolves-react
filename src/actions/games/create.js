@@ -13,7 +13,7 @@ export default () => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    api.post('/games', {})
+    api.post('/players', {})
       .then(() => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
