@@ -17,7 +17,7 @@ export default (playerId, player) => {
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
-
+        console.log(result.body)
         dispatch({
           type: PLAYER_UPDATED,
           payload: result.body
