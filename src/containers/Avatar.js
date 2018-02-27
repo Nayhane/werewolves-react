@@ -1,15 +1,18 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import PlayerDialog from '../components/games/PlayerDialog'
 import { fetchPlayers} from '../actions/games/fetch'
-import Avatar from './Avatar'
+//material ui
+import Avatar from 'material-ui/Avatar';
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
+import './Avatar.css'
 
-class Village extends PureComponent {
+
+
+class Avatars extends PureComponent {
   static propTypes = {
-    //fetchOneGame: PropTypes.func.isRequired,
     fetchPlayers: PropTypes.func.isRequired,
-    //subscribeToWebsocket: PropTypes.func.isRequired,
     player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -18,9 +21,6 @@ class Village extends PureComponent {
       dead: PropTypes.bool,
       message: PropTypes.bool,
     }),
-    // currentPlayer: playerShape,
-    // isPlayer: PropTypes.bool,
-    // isJoinable: PropTypes.bool,
   }
 
   componentWillMount() {
@@ -31,23 +31,30 @@ class Village extends PureComponent {
 
   }
 
-  renderVillage(player, index) {
-    return(
-      <div key={index}>
-        <div>{ player.name }</div>
-        <div>{ player.mayor ? 'Mayor' : '' }</div>
-        <div>{ player.dead ? 'Dead' : '' }</div>
-        <PlayerDialog />
+  renderAvatar(player, index){
+   return(
+     <div  key={index} className='avatar'>
+     <List>
+      <ListItem
+       disabled={true}
+       leftAvatar={
+        <Avatar src={player.photo}
+        size={80}
+        />
+       }
+      >
+      </ListItem>
+      <br /><br /><br />
+       <div className='name'>{ player.name }</div>
+      </List>
       </div>
-    )
+   )
   }
 
   render() {
     return (
       <div>
-        <div>{ this.props.players.map(this.renderVillage) }</div>
-        <Avatar/>
-
+        <div>{ this.props.players.map(this.renderAvatar) }</div>
       </div>
     )
   }
@@ -60,4 +67,4 @@ const mapStateToProps = ({ currentUser, players }, { match }) => {
 }
 
 
-export default connect(mapStateToProps, { fetchPlayers })(Village)
+export default connect(mapStateToProps, { fetchPlayers })(Avatars)
