@@ -24,8 +24,7 @@ class Sidebar extends PureComponent {
   }
 
   componentWillMount() {
-
-this.fetchPlayers();
+    this.fetchPlayers();
 
   }
 
@@ -34,17 +33,19 @@ this.fetchPlayers();
   }
 
   render() {
-    const village1 = this.props.players.filter((player) {
+    const village1 = this.props.players.filter((player) => {
       return player.village.name === 'wakkerdam'
     })
-    
-    const village2 = this.props.players.filter((player) {
+
+    const village2 = this.props.players.filter((player) => {
       return player.village.name === 'sluimervoort'
     })
-    
+
     return (
-      <Village players={village1}/>
-      <Village players={village2}/>
+      <div>
+        <Village players={village1}/>
+        <Village players={village2}/>
+      </div>
     )
   }
 }
@@ -52,6 +53,6 @@ this.fetchPlayers();
 const mapStateToProps = ({ currentUser, players }, { match }) => {
   players
   }
-}
+
 
 export default connect(mapStateToProps)(Sidebar)

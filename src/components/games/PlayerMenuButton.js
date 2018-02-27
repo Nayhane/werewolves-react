@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import PlayerDialog from './PlayerDialog'
 
 // const buttonStyle = {
 //   padding: 12,
@@ -21,13 +22,13 @@ class PlayerMenuButton extends PureComponent {
     switch(this.props.icon) {
       case 'message' :
         return 'Send message'
-  
+
       case 'mayor' :
         return 'Mayor'
-  
+
       case 'dead' :
         return 'Die!'
-  
+
       default :
         return 'exclamation-circle'
     }
@@ -35,7 +36,7 @@ class PlayerMenuButton extends PureComponent {
 
   render() {
     const { onClick } = this.props
-      
+
     return (
       <button>{ this.displayIcon() }</button>
     )
