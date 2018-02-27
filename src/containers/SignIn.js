@@ -9,8 +9,6 @@ import FlatButton from 'material-ui/FlatButton'
 import signIn from '../actions/user/sign-in'
 import Title from '../components/UI/Title'
 
-import Webcam from 'react-webcam';
-
 const dialogStyle = {
   width: '400px',
   margin: '50px auto',
@@ -27,15 +25,6 @@ export class SignIn extends PureComponent {
     push: PropTypes.func.isRequired,
     signIn: PropTypes.func.isRequired,
     signedIn: PropTypes.bool,
-  }
-
-  setRef = (webcam) => {
-    this.webcam = webcam;
-  }
-
-  capture = () => {
-    const imageSrc = this.webcam.getScreenshot();
-    console.log(imageSrc)
   }
 
   componentWillMount() {
@@ -59,16 +48,6 @@ export class SignIn extends PureComponent {
   render() {
     return (
     <div>
-      <Webcam
-        className="newPhoto"
-        audio={false}
-        height={350}
-        ref={this.setRef}
-        screenshotFormat="image/jpeg"
-        width={350}
-        />
-      <button onClick={this.capture}>Capture photo</button>
-
       <Paper style={ dialogStyle }>
         <Title content="Sign In" level={2} />
 
