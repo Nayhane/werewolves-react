@@ -43,4 +43,4 @@ class PlayerMenuButton extends PureComponent {
   }
 }
 
-export default PlayerDialog
+export default PlayerMenuButton
