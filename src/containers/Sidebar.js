@@ -8,8 +8,7 @@ import Village from './Village'
 
 class Sidebar extends PureComponent {
   static propTypes = {
-    //fetchOneGame: PropTypes.func.isRequired,
-    fetchPlayers: PropTypes.func.isRequired,
+    fetchPlayers: PropTypes.func,
     //subscribeToWebsocket: PropTypes.func.isRequired,
     player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -19,9 +18,6 @@ class Sidebar extends PureComponent {
       dead: PropTypes.bool,
       message: PropTypes.bool,
     }),
-    // currentPlayer: playerShape,
-    // isPlayer: PropTypes.bool,
-    // isJoinable: PropTypes.bool,
   }
 
   componentWillMount() {
@@ -29,18 +25,16 @@ class Sidebar extends PureComponent {
 
   }
 
-  componentWillReceiveProps(nextProps) {
-
-  }
 
   render() {
     let title1 = ""
     let title2 = ""
 
     const village1 = this.props.players.filter((player) => {
-
-    return player.village[0].name === "Wakkerdam"
+      if (player.village[0].name === "Wakkerdam") {
+              return player }
     })
+
 
     const village2 = this.props.players.filter((player) => {
       return player.village[0].name === "Sluimervoort"

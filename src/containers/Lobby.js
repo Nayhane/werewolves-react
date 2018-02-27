@@ -23,13 +23,9 @@ class Lobby extends PureComponent {
     return (
       <div className="Lobby">
         <RegisterPlayer />
-        <h1>Lobby!</h1>
         <Paper className="paper">
         <Timer />
         <Sidebar/>
-
-          <Menu>
-          </Menu>
         </Paper>
       </div>
     )
