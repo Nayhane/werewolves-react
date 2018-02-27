@@ -11,6 +11,7 @@ import {
 export const FETCHED_PLAYERS = 'FETCHED_PLAYERS'
 export const FETCHED_ONE_PLAYER = 'FETCHED_ONE_PLAYER'
 
+
 const api = new API()
 
 export const fetchPlayers = () => {
