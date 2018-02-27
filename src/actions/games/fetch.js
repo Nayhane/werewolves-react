@@ -7,7 +7,6 @@ import {
   LOAD_ERROR,
   LOAD_SUCCESS
 } from '../loading'
-import { PLAYER_UPDATED, PLAYERS_UPDATED } from './subscribe'
 
 export const FETCHED_PLAYERS = 'FETCHED_PLAYERS'
 export const FETCHED_ONE_PLAYER = 'FETCHED_ONE_PLAYER'

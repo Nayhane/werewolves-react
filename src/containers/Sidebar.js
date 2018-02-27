@@ -34,27 +34,29 @@ class Sidebar extends PureComponent {
   }
 
   render() {
+    let title1 = ""
+    let title2 = ""
 
     const village1 = this.props.players.filter((player) => {
-      console.log(player)
-      if (player.village[0].name === "Wakkerdam") {
-              console.log(player.village[0].name)
-              return player }
+      return player.village[0].name === "Wakkerdam"
     })
-
-    console.log(village1)
 
     const village2 = this.props.players.filter((player) => {
-      if (player.village[0].name === "Sluimervoort") {
-        return player }
+      return player.village[0].name === "Sluimervoort"
     })
-    console.log(village2)
 
+    if (village1.length > 0) {
+      title1 = village1[0].village[0].name
+    }
+
+    if (village2.length > 0) {
+      title2 = village2[0].village[0].name
+    }
 
     return (
       <div>
-        <Village players={village1}/>
-        <Village players={village2}/>
+        <Village title={title1} players={village1}/>
+        <Village title={title2} players={village2}/>
       </div>
     )
   }
