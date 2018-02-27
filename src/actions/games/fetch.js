@@ -18,7 +18,7 @@ export const fetchPlayers = () => {
     dispatch({ type: APP_LOADING })
 
     api.get('/players')
-      .then((result) => {
+      .then((result) => { 
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
 
