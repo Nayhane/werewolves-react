@@ -18,15 +18,14 @@ class Lobby extends PureComponent {
     this.props.subscribeToWebsocket()
   }
 
-
   render() {
     return (
       <div className="Lobby">
         <RegisterPlayer />
         <h1>Lobby!</h1>
         <Paper className="paper">
-        <Timer />
-        <Sidebar/>
+          <Timer />
+          <Sidebar/>
 
           <Menu>
           </Menu>
