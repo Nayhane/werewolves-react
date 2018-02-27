@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchPlayers} from '../actions/games/fetch'
+import { fetchPlayers } from '../actions/games/fetch'
 //components
 import Village from './Village'
 
 
 class Sidebar extends PureComponent {
   static propTypes = {
-    fetchOneGame: PropTypes.func.isRequired,
+    //fetchOneGame: PropTypes.func.isRequired,
     fetchPlayers: PropTypes.func.isRequired,
-    subscribeToWebsocket: PropTypes.func.isRequired,
+    //subscribeToWebsocket: PropTypes.func.isRequired,
     player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -34,7 +34,6 @@ class Sidebar extends PureComponent {
   }
 
   render() {
-    console.log(this.props)
     const village1 = this.props.players.filter((player) => {
       return player.village.name === 'wakkerdam'
     })
@@ -53,8 +52,10 @@ class Sidebar extends PureComponent {
 }
 
 const mapStateToProps = ({ currentUser, players }, { match }) => {
-  return {players}
-    }
+  return {
+    players
+  }
+}
 
 
-export default connect(mapStateToProps, {fetchPlayers})(Sidebar)
+export default connect(mapStateToProps, { fetchPlayers })(Sidebar)

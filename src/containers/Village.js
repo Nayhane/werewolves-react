@@ -6,9 +6,9 @@ import { fetchPlayers} from '../actions/games/fetch'
 
 class Village extends PureComponent {
   static propTypes = {
-    fetchOneGame: PropTypes.func.isRequired,
+    //fetchOneGame: PropTypes.func.isRequired,
     fetchPlayers: PropTypes.func.isRequired,
-    subscribeToWebsocket: PropTypes.func.isRequired,
+    //subscribeToWebsocket: PropTypes.func.isRequired,
     player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -23,16 +23,16 @@ class Village extends PureComponent {
   }
 
   componentWillMount() {
-  this.props.fetchPlayers();
+    this.props.fetchPlayers();
   }
 
   componentWillReceiveProps(nextProps) {
 
   }
 
-  renderVillage(player) {
+  renderVillage(player, index) {
     return(
-      <div>
+      <div key={index}>
         <div>{ player.name }</div>
         <div>{ player.mayor ? 'Mayor' : '' }</div>
         <div>{ player.dead ? 'Dead' : '' }</div>
@@ -42,18 +42,19 @@ class Village extends PureComponent {
   }
 
   render() {
-
     return (
       <div>
-        <div>{ this.props.players.map(this.renderPlayer) }</div>
+        <div>{ this.props.players.map(this.renderVillage) }</div>
       </div>
     )
   }
 }
 
 const mapStateToProps = ({ currentUser, players }, { match }) => {
-  return { players}
+  return {
+    players
   }
+}
 
 
-export default connect(mapStateToProps, {fetchPlayers})(Village)
+export default connect(mapStateToProps, { fetchPlayers })(Village)
