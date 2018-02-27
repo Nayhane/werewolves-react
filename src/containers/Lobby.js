@@ -5,8 +5,8 @@ import { push } from 'react-router-redux'
 //import { fetchPlayers } from '../actions/games/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import Sidebar from './Sidebar'
+import Timer from '../components/games/Timer'
 import Paper from 'material-ui/Paper'
-import Menu from 'material-ui/Menu'
 import './Lobby.css'
 
 import RegisterPlayer from '../components/RegisterPlayer'
@@ -22,11 +22,9 @@ class Lobby extends PureComponent {
     return (
       <div className="Lobby">
         <RegisterPlayer />
-        <h1>Lobby!</h1>
         <Paper className="paper">
+        <Timer />
         <Sidebar/>
-          <Menu>
-          </Menu>
         </Paper>
       </div>
     )

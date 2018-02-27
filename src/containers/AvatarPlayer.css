@@ -1,0 +1,11 @@
+.avatar{
+  display: block! important;
+  float: left! important;
+  margin-left: 10px;
+  padding-left: 10px;
+  margin-top: 40px;
+}
+.name{
+  margin-left: 30px;
+  color: black;
+}

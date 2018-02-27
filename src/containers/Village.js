@@ -1,13 +1,17 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+//import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
 import MoveAllPlayersButton from '../components/games/MoveAllPlayersButton'
 
+// import { fetchPlayers} from '../actions/games/fetch'
+import AvatarPlayer from './AvatarPlayer'
+
+
+
 class Village extends PureComponent {
   static propTypes = {
-    //fetchOneGame: PropTypes.func.isRequired,
-    fetchPlayers: PropTypes.func.isRequired,
+    fetchPlayers: PropTypes.func,
     //subscribeToWebsocket: PropTypes.func.isRequired,
     player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -17,12 +21,7 @@ class Village extends PureComponent {
       dead: PropTypes.bool,
       message: PropTypes.bool,
     }),
-    // currentPlayer: playerShape,
-    // isPlayer: PropTypes.bool,
-    // isJoinable: PropTypes.bool,
   }
-
-
 
   renderPlayer(player, index) {
     return(
@@ -30,8 +29,7 @@ class Village extends PureComponent {
         <div>{ player.name }</div>
         <div>{ player.mayor ? 'Mayor' : '' }</div>
         <div>{ player.dead ? 'Dead' : '' }</div>
-        <div><img src={ player.photo } /></div>
-        <PlayerDialog />
+        <PlayerDialog player={player}/>
       </div>
     )
   }
@@ -42,6 +40,8 @@ class Village extends PureComponent {
       <div>
             <MoveAllPlayersButton players={this.props.players}/>
         <div>{ this.props.players.map(this.renderPlayer) }</div>
+        <AvatarPlayer players={this.props.players}/>
+
       </div>
     )
   }

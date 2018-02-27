@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchPlayers, fetchVillages } from '../actions/games/fetch'
+import { fetchPlayers} from '../actions/games/fetch'
 import { movePlayers } from '../actions/games/move'
 //components
 import Village from './Village'
@@ -9,8 +9,7 @@ import Village from './Village'
 
 class Sidebar extends PureComponent {
   static propTypes = {
-    //fetchOneGame: PropTypes.func.isRequired,
-    fetchPlayers: PropTypes.func.isRequired,
+    fetchPlayers: PropTypes.func,
     //subscribeToWebsocket: PropTypes.func.isRequired,
     player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -20,34 +19,24 @@ class Sidebar extends PureComponent {
       dead: PropTypes.bool,
       message: PropTypes.bool,
     }),
-    // currentPlayer: playerShape,
-    // isPlayer: PropTypes.bool,
-    // isJoinable: PropTypes.bool,
   }
 
   componentWillMount() {
     this.props.fetchPlayers();
-    this.props.fetchVillages();
   }
 
-  componentWillReceiveProps(nextProps) {
-
-  }
 
   render() {
 
+
     const village1 = this.props.players.filter((player) => {
-      if (player.village[0].name === "Wakkerdam") {
-        return player }
-      })
+          return player.village[0].name === "Wakkerdam"
+    })
 
-      console.log(this.props.village)
-
-      const village2 = this.props.players.filter((player) => {
-        if (player.village[0].name === "Sluimervoort") {
-          return player }
-        })
-        console.log(this.props.village)
+    const village2 = this.props.players.filter((player) => {
+      return player.village[0].name === "Sluimervoort"
+    })
+   
 
 
         return (
@@ -59,11 +48,12 @@ class Sidebar extends PureComponent {
       }
     }
 
-    const mapStateToProps = ({ currentUser, players, villages }, { match }) => {
+
+    const mapStateToProps = ({ currentUser, players }, { match }) => {
       return {
-        players, villages
+        players
       }
     }
 
 
-    export default connect(mapStateToProps, { fetchPlayers,fetchVillages })(Sidebar)
+    export default connect(mapStateToProps, { fetchPlayers })(Sidebar)
