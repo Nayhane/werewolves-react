@@ -1,7 +1,26 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-import Webcam from 'react-webcam';
+import RaisedButton from 'material-ui/RaisedButton'
+import FaceIcon from 'material-ui/svg-icons/action/face'
+
+import Webcam from 'react-webcam'
+
+const styles = {
+  button: {
+    margin: 0,
+  },
+  exampleImageInput: {
+    cursor: 'pointer',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    width: '100%',
+    opacity: 0,
+  },
+};
 
 export class MakePhoto extends PureComponent {
   constructor(props) {
@@ -16,10 +35,11 @@ export class MakePhoto extends PureComponent {
     this.webcam = webcam
   }
 
-  handleClick = () => {
+  handlePhotoClick = () => {
     const screenshot = this.webcam.getScreenshot();
     this.setState({ screenshot })
   }
+
 
   render() {
     return (
@@ -36,7 +56,14 @@ export class MakePhoto extends PureComponent {
         <h2>Screenshots</h2>
         <div className='screenshots'>
           <div className='controls'>
-            <button onClick={this.handleClick}>capture</button>
+            <RaisedButton
+              label="Capture photo!"
+              labelPosition="before"
+              primary={true}
+              icon={<FaceIcon />}
+              style={styles.button}
+              onClick={this.handlePhotoClick}
+            />
           </div>
           {this.state.screenshot ? <img src={this.state.screenshot} alt='Player' /> : null}
         </div>
