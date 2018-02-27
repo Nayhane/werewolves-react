@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
+//components
+import Village from './Village'
 
 
 class Sidebar extends PureComponent {
@@ -9,43 +10,46 @@ class Sidebar extends PureComponent {
     fetchOneGame: PropTypes.func.isRequired,
     fetchPlayers: PropTypes.func.isRequired,
     subscribeToWebsocket: PropTypes.func.isRequired,
-    game: PropTypes.shape({
+    player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
-      userId: PropTypes.string.isRequired,
-      winnerId: PropTypes.string,
-      players: PropTypes.arrayOf(playerShape).isRequired,
-      draw: PropTypes.bool,
-      updatedAt: PropTypes.string.isRequired,
-      createdAt: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      photo: PropTypes.object.isRequired,
+      mayor: PropTypes.bool,
+      dead: PropTypes.bool,
+      message: PropTypes.bool,
     }),
-    currentPlayer: playerShape,
-    isPlayer: PropTypes.bool,
-    isJoinable: PropTypes.bool,
+    // currentPlayer: playerShape,
+    // isPlayer: PropTypes.bool,
+    // isJoinable: PropTypes.bool,
   }
 
   componentWillMount() {
-
+    this.fetchPlayers()
   }
 
   componentWillReceiveProps(nextProps) {
 
   }
 
-
-
   render() {
-
+    const village1 = this.props.players.filter((player) {
+      return player.village.name === 'wakkerdam'
+    })
+    
+    const village2 = this.props.players.filter((player) {
+      return player.village.name === 'sluimervoort'
+    })
+    
     return (
-
+      <Village players={village1}/>
+      <Village players={village2}/>
     )
   }
 }
 
-const mapStateToProps = ({ currentUser, games }, { match }) => {
-
+const mapStateToProps = ({ currentUser, players }, { match }) => {
+  players
   }
 }
 
-export default connect(mapStateToProps, {
-
-})(Sidebar)
+export default connect(mapStateToProps)(Sidebar)
