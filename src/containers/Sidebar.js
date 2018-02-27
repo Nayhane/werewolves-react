@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchPlayers } from '../actions/games/fetch'
+import { fetchPlayers, fetchVillages } from '../actions/games/fetch'
+import { movePlayers } from '../actions/games/move'
 //components
 import Village from './Village'
 
@@ -26,7 +27,7 @@ class Sidebar extends PureComponent {
 
   componentWillMount() {
     this.props.fetchPlayers();
-
+    this.props.fetchVillages();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,35 +37,33 @@ class Sidebar extends PureComponent {
   render() {
 
     const village1 = this.props.players.filter((player) => {
-      console.log(player)
       if (player.village[0].name === "Wakkerdam") {
-              console.log(player.village[0].name)
-              return player }
-    })
-
-    console.log(village1)
-
-    const village2 = this.props.players.filter((player) => {
-      if (player.village[0].name === "Sluimervoort") {
         return player }
-    })
-    console.log(village2)
+      })
+
+      console.log(this.props.village)
+
+      const village2 = this.props.players.filter((player) => {
+        if (player.village[0].name === "Sluimervoort") {
+          return player }
+        })
+        console.log(this.props.village)
 
 
-    return (
-      <div>
-        <Village players={village1}/>
-        <Village players={village2}/>
-      </div>
-    )
-  }
-}
+        return (
+          <div>
+          <Village players={village1}/>
+          <Village players={village2}/>
+          </div>
+        )
+      }
+    }
 
-const mapStateToProps = ({ currentUser, players }, { match }) => {
-  return {
-    players
-  }
-}
+    const mapStateToProps = ({ currentUser, players, villages }, { match }) => {
+      return {
+        players, villages
+      }
+    }
 
 
-export default connect(mapStateToProps, { fetchPlayers })(Sidebar)
+    export default connect(mapStateToProps, { fetchPlayers,fetchVillages })(Sidebar)

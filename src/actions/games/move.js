@@ -10,11 +10,11 @@ export const MOVE_PLAYERS = 'MOVE_PLAYERS'
 
 const api = new API()
 
-export default () => {
+export default (id, village) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
-
-    api.patch('/players/:id/moveplayers')
+console.log(id, village)
+    api.patch(`/players/${id}/moveplayers`, village)
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
