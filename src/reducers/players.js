@@ -1,12 +1,13 @@
 // src/reducers/players.js
-import { FETCHED_PLAYERS, FETCHED_ONE_PLAYER } from '../actions/players/fetch'
+import { FETCHED_ONE_PLAYER } from '../actions/games/fetch'
+import  MOVE_PLAYERS  from '../actions/games/move'
+import  {FETCHED_PLAYERS}  from '../actions/games/fetch'
 import {
   PLAYER_CREATED,
-  PLAYER_UPDATED,
   PLAYER_REMOVED,
   PLAYER_UPDATED,
   PLAYERS_UPDATED,
-} from '../actions/players/subscribe'
+} from '../actions/games/subscribe'
 
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
@@ -37,14 +38,6 @@ export default (state = [], { type, payload } = {}) => {
       return player
     })
 
-
-    case PLAYER_UPDATED :
-    return state.map((player) => {
-      if (player._id === payload.player._id) {
-        return { ...payload.player, players: payload.players }
-      }
-      return player
-    })
 
     case PLAYERS_UPDATED :
     return state.map((player) => {

@@ -6,8 +6,6 @@ import {
   LOAD_SUCCESS
 } from '../loading'
 
-const api = new API()
-
 export const MOVE_PLAYERS = 'MOVE_PLAYERS'
 
 const api = new API()

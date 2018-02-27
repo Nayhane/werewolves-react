@@ -14,7 +14,7 @@ export const FETCHED_ONE_PLAYER = 'FETCHED_ONE_PLAYER'
 
 const api = new API()
 
-export default () => {
+export const fetchPlayers = () => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 

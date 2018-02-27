@@ -41,7 +41,7 @@ class Village extends PureComponent {
   }
 
   render() {
-    
+
     return (
       <div>
         <div>{ this.props.players.map(this.renderPlayer) }</div>
@@ -53,6 +53,6 @@ class Village extends PureComponent {
 const mapStateToProps = ({ currentUser, players }, { match }) => {
     players
   }
-}
+
 
 export default connect(mapStateToProps)(Village)
