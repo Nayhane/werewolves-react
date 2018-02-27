@@ -25,6 +25,7 @@ class Lobby extends PureComponent {
         <h1>Lobby!</h1>
         <Paper className="paper">
         <Sidebar/>
+
           <Menu>
           </Menu>
         </Paper>
