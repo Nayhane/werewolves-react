@@ -17,12 +17,12 @@ const api = new API()
 export const fetchPlayers = () => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
-
+ console.log( "Players 2.0")
     api.get('/players')
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
-
+        console.log(result.body)
         dispatch({
           type: FETCHED_PLAYERS,
           payload: result.body
