@@ -1,4 +1,3 @@
-// src/components/games/CreateGameButton.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -6,9 +5,19 @@ import RaisedButton from 'material-ui/RaisedButton'
 import StarIcon from 'material-ui/svg-icons/action/favorite'
 import createGame from '../../actions/games/create'
 
-class CreateGameButton extends PureComponent {
+class MoveAllPlayersButton extends PureComponent {
   static propTypes = {
     signedIn: PropTypes.bool,
+  }
+
+
+  movePlayers = (players) =>
+  players.map(player){
+    if (player.village === "Wakkerdam"){
+      return {village: "Sluimervoort"}
+    } else (player.village === "Sluimervoort"){
+      return {village: "Sluimervoort"}
+    }
   }
 
   render() {
@@ -16,11 +25,9 @@ class CreateGameButton extends PureComponent {
 
     return (
       <div className="CreateGameButton">
-        <RaisedButton
-          label="Create Game"
-          primary={true}
-          onClick={this.props.createGame}
-          icon={<StarIcon />} />
+      <RaisedButton
+      onClick={this.movePlayers}
+      icon={<StarIcon />} />
       </div>
     )
   }
@@ -30,4 +37,4 @@ const mapStateToProps = ({ currentUser }) => ({
   signedIn: !!currentUser && !!currentUser._id,
 })
 
-export default connect(mapStateToProps, { createGame })(CreateGameButton)
+export default connect(mapStateToProps, { createGame })(MoveAllPlayersButton)
