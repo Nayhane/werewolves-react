@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
-import { fetchPlayers} from '../actions/games/fetch'
 
 class Village extends PureComponent {
   static propTypes = {
@@ -22,13 +21,7 @@ class Village extends PureComponent {
     // isJoinable: PropTypes.bool,
   }
 
-  componentWillMount() {
-    this.props.fetchPlayers();
-  }
 
-  componentWillReceiveProps(nextProps) {
-
-  }
 
   renderVillage(player, index) {
     return(
@@ -50,11 +43,4 @@ class Village extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser, players }, { match }) => {
-  return {
-    players
-  }
-}
-
-
-export default connect(mapStateToProps, { fetchPlayers })(Village)
+export default Village
