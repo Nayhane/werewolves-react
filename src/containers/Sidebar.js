@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { fetchPlayers} from '../actions/games/fetch'
 //components
 import Village from './Village'
 
@@ -24,7 +25,7 @@ class Sidebar extends PureComponent {
   }
 
   componentWillMount() {
-    this.fetchPlayers();
+    this.props.fetchPlayers();
 
   }
 
@@ -33,6 +34,7 @@ class Sidebar extends PureComponent {
   }
 
   render() {
+    console.log(this.props)
     const village1 = this.props.players.filter((player) => {
       return player.village.name === 'wakkerdam'
     })
@@ -51,8 +53,8 @@ class Sidebar extends PureComponent {
 }
 
 const mapStateToProps = ({ currentUser, players }, { match }) => {
-  players
-  }
+  return {players}
+    }
 
 
-export default connect(mapStateToProps)(Sidebar)
+export default connect(mapStateToProps, {fetchPlayers})(Sidebar)

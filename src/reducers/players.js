@@ -14,6 +14,7 @@ export default (state = [], { type, payload } = {}) => {
     case FETCHED_PLAYERS :
     return [ ...payload ]
 
+
     case FETCHED_ONE_PLAYER :
     const playerIds = state.map(g => g._id)
     if (playerIds.indexOf(payload._id) < 0) {
