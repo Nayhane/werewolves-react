@@ -36,6 +36,7 @@ class Village extends PureComponent {
         <div>{ player.name }</div>
         <div>{ player.mayor ? 'Mayor' : '' }</div>
         <div>{ player.dead ? 'Dead' : '' }</div>
+        <div><img src={ player.photo } /></div>
         <PlayerDialog />
       </div>
     )
