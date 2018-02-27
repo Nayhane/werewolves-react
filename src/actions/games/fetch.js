@@ -1,4 +1,4 @@
-// src/actions/games/fetch.js
+// src/actions/players/fetch.js
 
 import API from '../../api/client'
 import {
@@ -7,10 +7,10 @@ import {
   LOAD_ERROR,
   LOAD_SUCCESS
 } from '../loading'
-import { GAME_PLAYERS_UPDATED } from './subscribe'
+import { PLAYER_UPDATED, PLAYERS_UPDATED } from './subscribe'
 
-export const FETCHED_GAMES = 'FETCHED_GAMES'
-export const FETCHED_ONE_GAME = 'FETCHED_ONE_GAME'
+export const FETCHED_PLAYERS = 'FETCHED_PLAYERS'
+export const FETCHED_ONE_PLAYER = 'FETCHED_ONE_PLAYER'
 
 const api = new API()
 
@@ -18,13 +18,13 @@ export default () => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    api.get('/games')
+    api.get('/players')
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
 
         dispatch({
-          type: FETCHED_GAMES,
+          type: FETCHED_PLAYERS,
           payload: result.body
         })
       })
@@ -38,44 +38,17 @@ export default () => {
   }
 }
 
-export const fetchPlayers = (game) => {
+export const fetchOnePlayer = (playerId) => {
   return dispatch => {
     dispatch({ type: APP_LOADING })
 
-    api.get(`/games/${game._id}/players`)
+    api.get(`/players/${playerId}`)
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
 
         dispatch({
-          type: GAME_PLAYERS_UPDATED,
-          payload: {
-            game,
-            players: result.body
-          }
-        })
-      })
-      .catch((error) => {
-        dispatch({ type: APP_DONE_LOADING })
-        dispatch({
-          type: LOAD_ERROR,
-          payload: error.message
-        })
-      })
-  }
-}
-
-export const fetchOneGame = (gameId) => {
-  return dispatch => {
-    dispatch({ type: APP_LOADING })
-
-    api.get(`/games/${gameId}`)
-      .then((result) => {
-        dispatch({ type: APP_DONE_LOADING })
-        dispatch({ type: LOAD_SUCCESS })
-
-        dispatch({
-          type: FETCHED_ONE_GAME,
+          type: FETCHED_ONE_PLAYER,
           payload: result.body
         })
       })
