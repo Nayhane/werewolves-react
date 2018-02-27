@@ -37,7 +37,7 @@ class Village extends PureComponent {
     return (
       <div>
         <div>{ this.props.players.map(this.renderPlayer) }</div>
-        <AvatarPlayer />
+        <AvatarPlayer players={this.props.players}/>
       </div>
     )
   }

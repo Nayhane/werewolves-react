@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
 // import { fetchPlayers} from '../actions/games/fetch'
 //material ui
 import Avatar from 'material-ui/Avatar';
@@ -10,14 +9,6 @@ import './AvatarPlayer.css'
 
 
 class AvatarPlayer extends PureComponent {
-  constructor(props){
-    super()
-
-  }
-  // componentWillMount() {
-  //   this.props.fetchPlayers();
-  // }
-
 
   renderAvatars(player, index){
    return(
@@ -32,7 +23,7 @@ class AvatarPlayer extends PureComponent {
       >
       </ListItem>
       <br /><br /><br />
-       <div className='name'>{ player.name }</div>
+       <div className='name'>{player.name}</div>
       </List>
       </div>
    )
@@ -41,13 +32,13 @@ class AvatarPlayer extends PureComponent {
   render() {
     return (
       <div>
-        <div>{ this.props.players.map(this.renderAvatars) }</div>
+        <div>{this.props.players.map(this.renderAvatars) }</div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ currentUser, players }) => ({players})
 
 
-export default connect(mapStateToProps)(AvatarPlayer)
+
+export default AvatarPlayer
