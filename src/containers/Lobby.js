@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper'
 import Menu from 'material-ui/Menu'
 import './Lobby.css'
 
-import MakePhoto from '../components/MakePhoto'
+import RegisterPlayer from '../components/RegisterPlayer'
 
 class Lobby extends PureComponent {
   componentWillMount() {
@@ -21,7 +21,7 @@ class Lobby extends PureComponent {
   render() {
     return (
       <div className="Lobby">
-        <MakePhoto />
+        <RegisterPlayer />
         <h1>Lobby!</h1>
         <Paper className="paper">
         <Sidebar/>
