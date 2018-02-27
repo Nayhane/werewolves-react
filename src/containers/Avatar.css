@@ -1,0 +1,9 @@
+.avatar{
+  display: block! important;
+  float: left! important;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.name{
+  margin-left: 30px;
+}

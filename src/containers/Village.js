@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
 
+import { fetchPlayers} from '../actions/games/fetch'
+import Avatar from './Avatar'
+
+
+
 class Village extends PureComponent {
   static propTypes = {
     //fetchOneGame: PropTypes.func.isRequired,
@@ -39,6 +44,8 @@ class Village extends PureComponent {
     return (
       <div>
         <div>{ this.props.players.map(this.renderVillage) }</div>
+        <Avatar/>
+
       </div>
     )
   }
