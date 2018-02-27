@@ -6,12 +6,13 @@ import PlayerMenuButton from './PlayerMenuButton'
 class PlayerDialog extends PureComponent {
 
   render() {
-      
+    console.log('im here')
+
     return (
       <div>
-        <PlayerMenuButton icon='message' />
-        <PlayerMenuButton icon='mayor' />
-        <PlayerMenuButton icon='dead' />
+      // <PlayerMenuButton icon='message' />
+      // <PlayerMenuButton icon='mayor' />
+      // <PlayerMenuButton icon='dead' />
       </div>
     )
   }

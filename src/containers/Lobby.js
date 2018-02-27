@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { fetchPlayers } from '../actions/games/fetch'
+//import { fetchPlayers } from '../actions/games/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import Sidebar from './Sidebar'
 import Paper from 'material-ui/Paper'
@@ -11,7 +11,7 @@ import './Lobby.css'
 
 class Lobby extends PureComponent {
   componentWillMount() {
-    this.props.fetchPlayers();
+    //this.props.fetchPlayers();
     this.props.subscribeToWebsocket()
   }
 
@@ -32,4 +32,4 @@ class Lobby extends PureComponent {
 
 const mapStateToProps = ({  currentUser }) => ({  currentUser })
 
-export default connect(mapStateToProps, {  subscribeToWebsocket,fetchPlayers, push })(Lobby)
+export default connect(mapStateToProps, {  subscribeToWebsocket, /*fetchPlayers,*/ push })(Lobby)
