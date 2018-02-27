@@ -1,7 +1,7 @@
 // src/reducers/players.js
 import { FETCHED_ONE_PLAYER } from '../actions/games/fetch'
 import  MOVE_PLAYERS  from '../actions/games/move'
-import  FETCHED_PLAYERS  from '../actions/games/fetch'
+import  {FETCHED_PLAYERS}  from '../actions/games/fetch'
 import {
   PLAYER_CREATED,
   PLAYER_REMOVED,
