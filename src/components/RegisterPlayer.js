@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-// import saveRegistration from '../actions/saveRegistration'
+import saveRegistration from '../actions/games/create'
 
 import RaisedButton from 'material-ui/RaisedButton'
 import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
@@ -37,7 +37,7 @@ export class MakePhoto extends PureComponent {
 
   handleSaveRegistration = (event) => {
     event.preventDefault();
-    this.props.saveRegistration(this.state.name, this.state.photo)
+    this.props.saveRegistration(this.state)
 
     this.setState({
       player: {
@@ -92,4 +92,4 @@ export class MakePhoto extends PureComponent {
   }
 }
 
-export default connect(null, {  })(MakePhoto)
+export default connect(null, { saveRegistration })(MakePhoto)
