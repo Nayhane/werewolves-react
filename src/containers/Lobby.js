@@ -14,6 +14,8 @@ import PlayGameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import WaitingIcon from 'material-ui/svg-icons/image/timelapse'
 import './Lobby.css'
 
+import MakePhoto from '../components/MakePhoto'
+
 class Lobby extends PureComponent {
   componentWillMount() {
     this.props.fetchGames()
@@ -59,6 +61,7 @@ class Lobby extends PureComponent {
   render() {
     return (
       <div className="Lobby">
+        <MakePhoto />
         <h1>Lobby!</h1>
         <CreateGameButton />
         <Paper className="paper">
