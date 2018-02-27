@@ -14,10 +14,8 @@ export class MakePhoto extends PureComponent {
     super(props)
 
     this.state = {
-      player: {
-        name: '',
-        photo: null,
-      }
+      name: '',
+      photo: null,
     }
   }
 
@@ -28,6 +26,7 @@ export class MakePhoto extends PureComponent {
   handlePhotoClick = () => {
     const photo = this.webcam.getScreenshot();
     this.setState({ photo: photo })
+    console.log(photo)
   }
 
   handleFormSubmit = (playerName) => {
@@ -40,10 +39,8 @@ export class MakePhoto extends PureComponent {
     this.props.saveRegistration(this.state)
 
     this.setState({
-      player: {
-        name: '',
-        photo: null
-      }
+      name: '',
+      photo: null
     })
   }
 

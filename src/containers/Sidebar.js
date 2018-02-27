@@ -36,19 +36,15 @@ class Sidebar extends PureComponent {
   render() {
 
     const village1 = this.props.players.filter((player) => {
-      console.log(player)
       if (player.village[0].name === "Wakkerdam") {
-              console.log(player.village[0].name)
               return player }
     })
 
-    console.log(village1)
 
     const village2 = this.props.players.filter((player) => {
       if (player.village[0].name === "Sluimervoort") {
         return player }
     })
-    console.log(village2)
 
 
     return (
