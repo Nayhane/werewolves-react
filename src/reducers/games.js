@@ -10,45 +10,53 @@ import {
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case FETCHED_GAMES :
-      return [ ...payload ]
+    return [ ...payload ]
 
     case FETCHED_ONE_GAME :
-      const gameIds = state.map(g => g._id)
-      if (gameIds.indexOf(payload._id) < 0) {
-        return [{ ...payload }].concat(state)
+    const gameIds = state.map(g => g._id)
+    if (gameIds.indexOf(payload._id) < 0) {
+      return [{ ...payload }].concat(state)
+    }
+    return state.map((game) => {
+      if (game._id === payload._id) {
+        return { ...payload }
       }
-      return state.map((game) => {
-        if (game._id === payload._id) {
-          return { ...payload }
-        }
-        return game
-      })
+      return game
+    })
 
     case GAME_CREATED :
-      const newGame = { ...payload }
-      return [newGame].concat(state)
+    const newGame = { ...payload }
+    return [newGame].concat(state)
 
     case GAME_UPDATED :
-      return state.map((game) => {
-        if (game._id === payload._id) {
-          return { ...payload }
-        }
-        return game
-      })
+    return state.map((game) => {
+      if (game._id === payload._id) {
+        return { ...payload }
+      }
+      return game
+    })
 
     case GAME_PLAYERS_UPDATED :
-      return state.map((game) => {
-        if (game._id === payload.game._id) {
-          return { ...payload.game, players: payload.players }
-        }
-        return game
-      })
+    return state.map((game) => {
+      if (game._id === payload.game._id) {
+        return { ...payload.game, players: payload.players }
+      }
+      return game
+    })
+
+    case MOVE_PLAYERS :
+    return state.map((player) => {
+      if (player._id === payload.player._id) {
+        return {...payload, village: payload.village }
+      }
+      return player
+    })
 
     case GAME_REMOVED :
-        return state.filter((game) => (game._id !== payload._id))
+    return state.filter((game) => (game._id !== payload._id))
 
     default :
-      return state
+    return state
 
   }
 }

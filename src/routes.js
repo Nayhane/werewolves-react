@@ -14,7 +14,7 @@ export default class Routes extends Component {
     return (
       <div>
         <Route exact path="/" component={Lobby} />
-        <Route path="/play/:gameId" component={Game} />
+        <Route path="/players/:id/moveplayers" component={Game} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
       </div>
