@@ -24,6 +24,7 @@ class Lobby extends PureComponent {
         <RegisterPlayer />
         <Paper className="paper">
         <Timer />
+        //only one sidebar
         <Sidebar/>
         </Paper>
       </div>
