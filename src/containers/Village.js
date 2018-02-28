@@ -32,7 +32,7 @@ class Village extends PureComponent {
           <CardActions>
             { player.mayor ? 'Mayor' : '' }
             { player.dead ? 'Dead' : '' }
-            { player.message ? 'Message sent' : '' }
+            { player.messageSent === 'sent' ? 'Message sent' : '' }
             <PlayerDialog player={player}/>
           </CardActions>
       </Card>
