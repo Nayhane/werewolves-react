@@ -13,11 +13,11 @@ export default (playerId, player) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    api.patch(`/players/${playerId}`, player)
+    api.patch(`/players/${playerId}/mayor`, player)
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
-        console.log(result.body)
+
         dispatch({
           type: PLAYER_UPDATED,
           payload: result.body

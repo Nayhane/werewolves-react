@@ -3,24 +3,27 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 //components
 import PlayerMenuButton from './PlayerMenuButton'
-import updatePlayer from '../../actions/games/update'
+import updateDeath from '../../actions/games/updateDeath'
+import updateMayor from '../../actions/games/updateMayor'
+import updateMessage from '../../actions/games/updateMessage'
+import updateVillage from '../../actions/games/updateVillage'
 
 class PlayerDialog extends PureComponent {
 
-  updateDeath = (player) => {
+  killPlayer = (player) => {
     const updatedPlayer = {
-      dead: true
+      dead: !player.dead
     }
 
-    this.props.updatePlayer(player._id, updatedPlayer)
+    this.props.updateDeath(player._id, updatedPlayer)
   }
 
-  updateMayor = (player) => {
+  makeMayor = (player) => {
     const updatedPlayer = {
-      mayor: true
+      mayor: !player.mayor
     }
 
-    this.props.updatePlayer(player._id, updatedPlayer)
+    this.props.updateMayor(player._id, updatedPlayer)
   }
 
   sendMessage = (player) => {
@@ -28,22 +31,50 @@ class PlayerDialog extends PureComponent {
       message: true
     }
 
-    this.props.updatePlayer(player._id, updatedPlayer)
+    this.props.updateMessage(player._id, updatedPlayer)
+  }
+
+  moveVillage = (player) => {
+    const village = player.village[0].name
+    let newVillage = ""
+
+    console.log(village)
+
+    if (village === 'Wakkerdam') {
+      newVillage = 'Sluimervoort'
+    } else {
+      newVillage = 'Wakkerdam'
+    }
+
+    const updatedVillage = {
+      name: newVillage
+    }
+
+    console.log(updatedVillage)
+
+    this.props.updateVillage(player._id, updatedVillage)
   }
 
   render() {
     const message = 'message'
     const mayor = 'mayor'
     const dead = 'dead'
+    const village = this.props.player.village[0].name
 
     return (
       <div>
         <PlayerMenuButton icon={message} onClick={() => this.sendMessage(this.props.player)}/>
-        <PlayerMenuButton icon={mayor} onClick={() => this.updateMayor(this.props.player)}/>
-        <PlayerMenuButton icon={dead} onClick={() => this.updateDeath(this.props.player)}/>
+        <PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>
+        <PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>
+        <PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>
       </div>
     )
   }
 }
 
-export default connect(null, { updatePlayer })(PlayerDialog)
+export default connect(null, {
+  updateDeath,
+  updateMayor,
+  updateMessage,
+  updateVillage,
+})(PlayerDialog)
