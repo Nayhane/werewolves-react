@@ -18,6 +18,12 @@ class PlayerMenuButton extends PureComponent {
       case 'dead' :
         return 'Die!'
 
+      case 'Wakkerdam' :
+        return 'Move to Sluimervoort'
+
+      case 'Sluimervoort' :
+        return 'Move to Wakkerdam'
+
       default :
         return 'exclamation-circle'
     }

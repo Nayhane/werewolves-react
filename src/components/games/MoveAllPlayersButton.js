@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
-import StarIcon from 'material-ui/svg-icons/action/favorite'
 import movePlayers from '../../actions/games/move'
 
 class MoveAllPlayersButton extends PureComponent {

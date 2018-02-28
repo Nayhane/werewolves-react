@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchPlayers} from '../actions/games/fetch'
-import { movePlayers } from '../actions/games/move'
 //components
 import Village from './Village'
 
@@ -36,7 +35,7 @@ class Sidebar extends PureComponent {
     const village2 = this.props.players.filter((player) => {
       return player.village[0].name === "Sluimervoort"
     })
-   
+
 
 
         return (
