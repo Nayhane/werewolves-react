@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 //import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
 import MoveAllPlayersButton from '../components/games/MoveAllPlayersButton'
-
 // import { fetchPlayers} from '../actions/games/fetch'
-import AvatarPlayer from './AvatarPlayer'
 
 
 
@@ -37,11 +35,9 @@ class Village extends PureComponent {
 
   render() {
     return (
-
       <div>
         <MoveAllPlayersButton players={this.props.players}/>
         <div>{ this.props.players.map(this.renderPlayer) }</div>
-        <AvatarPlayer players={this.props.players}/>
       </div>
     )
   }
