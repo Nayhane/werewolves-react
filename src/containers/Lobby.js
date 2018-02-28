@@ -9,7 +9,6 @@ import Timer from '../components/games/Timer'
 import AnotherTimerAgain from '../components/games/AnotherTimerAgain'
 import AvatarPlayer from './AvatarPlayer'
 import MessageBox from '../components/games/MessageBox'
-import updateMessage from '../actions/games/updateMessage'
 
 import Paper from 'material-ui/Paper'
 import './Lobby.css'
@@ -21,18 +20,10 @@ class Lobby extends PureComponent {
     this.props.subscribeToWebsocket()
   }
 
-  sendMessage = (player) => {
-    const updatedPlayer = {
-      messageSent: 'sent'
-    }
-
-    this.props.updateMessage(player._id, updatedPlayer)
-  }
-
-  renderMessageBox = (player) => {
+  renderMessageBox = (player, index) => {
     if (player.messageSent === 'sending') {
       return(
-        <MessageBox onClick={() => this.sendMessage(player)}/>
+        <MessageBox key={index} players={ this.props.players } player = {player}/>
       )
     }
   }
@@ -63,5 +54,4 @@ const mapStateToProps = ({  currentUser, players }) => {
 export default connect(mapStateToProps, {
   subscribeToWebsocket,
   push,
-  updateMessage
 })(Lobby)
