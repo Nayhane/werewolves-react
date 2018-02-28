@@ -10,6 +10,7 @@ import {
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case FETCHED_PLAYERS :
+  
       return [...payload]
 
     case FETCHED_ONE_PLAYER :

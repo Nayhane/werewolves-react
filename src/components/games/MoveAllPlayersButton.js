@@ -1,40 +1,47 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import StarIcon from 'material-ui/svg-icons/action/favorite'
-import createGame from '../../actions/games/create'
+import movePlayers from '../../actions/games/move'
 
 class MoveAllPlayersButton extends PureComponent {
-  static propTypes = {
-    signedIn: PropTypes.bool,
+
+
+
+  moveAllPlayers = (players) => {
+    let updateVillage = {}
+    const movedPlayers = players.forEach(function(player) {
+      if (player.village[0].name === "Wakkerdam"){
+        updateVillage = {
+            name: "Sluimervoort"
+          }
+          this.props.movePlayers(player._id, updateVillage);
+
+
+      } else if (player.village[0].name === "Sluimervoort"){
+        updateVillage = {
+            name: "Wakkerdam"
+          }
+          this.props.movePlayers(player._id, updateVillage)
+      }
+    })
   }
+    render() {
 
 
-  movePlayers = (players) =>
-  players.map(player){
-    if (player.village === "Wakkerdam"){
-      return {village: "Sluimervoort"}
-    } else (player.village === "Sluimervoort"){
-      return {village: "Sluimervoort"}
+      return (
+        <div>
+        <RaisedButton
+        label="Move All PLayers"
+        onClick={()=>this.moveAllPlayers(this.props.players)}
+        />
+        </div>
+      )
     }
   }
 
-  render() {
-    if (!this.props.signedIn) return null
+  const mapStateToProps = () => ({
 
-    return (
-      <div className="CreateGameButton">
-      <RaisedButton
-      onClick={this.movePlayers}
-      icon={<StarIcon />} />
-      </div>
-    )
-  }
-}
+  })
 
-const mapStateToProps = ({ currentUser }) => ({
-  signedIn: !!currentUser && !!currentUser._id,
-})
-
-export default connect(mapStateToProps, { createGame })(MoveAllPlayersButton)
+  export default connect(mapStateToProps, { movePlayers })(MoveAllPlayersButton)
