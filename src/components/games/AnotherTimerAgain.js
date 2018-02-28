@@ -45,6 +45,8 @@ export default class AnotherTimerAgain extends PureComponent {
     }
   }
 
+  componentWillUnmount(){ clearInterval(this.timer) }
+  
   countDown() {
     // Remove one second, set state so a re-render happens.
     let seconds = this.state.seconds - 1;
