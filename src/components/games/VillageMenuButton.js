@@ -7,8 +7,6 @@ class VillageMenuButton extends PureComponent {
 
   }
 
-
-
 render() {
     const { onClick } = this.props
 

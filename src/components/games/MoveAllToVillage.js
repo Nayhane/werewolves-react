@@ -31,5 +31,4 @@ class MoveAllToVillage extends PureComponent {
     }
   }
 
-
   export default connect(null, { movePlayers })(MoveAllToVillage)

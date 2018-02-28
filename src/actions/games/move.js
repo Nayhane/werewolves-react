@@ -7,12 +7,10 @@ import {
 } from '../loading'
 import { PLAYERS_UPDATED } from './subscribe'
 
-// export const MOVE_PLAYERS = 'MOVE_PLAYERS'
 
 const api = new API()
 
 export default (id, village) => {
-console.log(id)
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
