@@ -5,6 +5,10 @@ import { fetchPlayers} from '../actions/games/fetch'
 //components
 import Village from './Village'
 
+// MUI
+import {List} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
 
 class Sidebar extends PureComponent {
   static propTypes = {
@@ -26,29 +30,44 @@ class Sidebar extends PureComponent {
 
 
   render() {
+    const style = {
+    width: 400,
+    margin: 20,
+    display: 'inline-block',
+    }
+
     const village1 = this.props.players.filter((player) => {
-          return player.village[0].name === "Wakkerdam"
+      return player.village[0].name === "Wakkerdam"
     })
 
     const village2 = this.props.players.filter((player) => {
       return player.village[0].name === "Sluimervoort"
     })
 
-        return (
-          <div>
-          <Village players={village1}/>
-          <Village players={village2}/>
-          </div>
-        )
-      }
-    }
+    return (
+      <div style={style}>
+        <List>
+          <Subheader>WAKKERDAM</Subheader>
+          <Village players={village1} />
+        </List>
+
+        <Divider />
+
+        <List>
+          <Subheader>SLUIMERVOORT</Subheader>
+          <Village players={village2} />
+        </List>
+      </div>
+    )
+  }
+}
 
 
-    const mapStateToProps = ({ currentUser, players }, { match }) => {
-      return {
-        players
-      }
-    }
+const mapStateToProps = ({ currentUser, players }, { match }) => {
+  return {
+    players
+  }
+}
 
 
-    export default connect(mapStateToProps, { fetchPlayers })(Sidebar)
+export default connect(mapStateToProps, { fetchPlayers })(Sidebar)
