@@ -6,23 +6,21 @@ import movePlayers from '../../actions/games/move'
 
 class MoveAllPlayersButton extends PureComponent {
 
-
-
   moveAllPlayers = (players) => {
     let updateVillage = {}
     const movedPlayers = players.forEach(function(player) {
       if (player.village[0].name === "Wakkerdam"){
+        console.log(player)
         updateVillage = {
             name: "Sluimervoort"
           }
-          this.props.movePlayers(player._id, updateVillage);
-
+        this.props.movePlayers(player._id, updateVillage.name);
 
       } else if (player.village[0].name === "Sluimervoort"){
         updateVillage = {
             name: "Wakkerdam"
           }
-          this.props.movePlayers(player._id, updateVillage)
+          this.props.movePlayers(player._id, updateVillage.name)
       }
     })
   }
