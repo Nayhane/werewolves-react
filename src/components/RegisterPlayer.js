@@ -67,29 +67,29 @@ export class MakePhoto extends PureComponent {
 
     return (
       <div className='register'>
-      <RaisedButton label="Register a new player!" onClick={this.handleOpen} />
-      <Dialog
-        title="Dialog With Date Picker"
-        actions={actions}
-        modal={false}
-        open={this.state.open}
-        onRequestClose={this.handleClose}
-        autoScrollBodyContent={true}
-      >
-        <TextField
-          hintText='Please provide your name...'
-          floatingLabelText='Your name...'
-          onChange={(event) => this.handleFormSubmit(event.target.value)}
-        />
-
-        <Webcam
-          className='newPhoto'
-          audio={false}
-            height={350}
-            ref={this.setRef}
-            screenshotFormat='image/jpeg'
-            width={350}
+        <RaisedButton label="Register a new player!" onClick={this.handleOpen} />
+        <Dialog
+          title="Dialog With Date Picker"
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+          autoScrollBodyContent={true}
+        >
+          <TextField
+            hintText='Please provide your name...'
+            floatingLabelText='Your name...'
+            onChange={(event) => this.handleFormSubmit(event.target.value)}
           />
+
+          <Webcam
+            className='newPhoto'
+            audio={false}
+              height={350}
+              ref={this.setRef}
+              screenshotFormat='image/jpeg'
+              width={350}
+            />
 
           <h2>Screenshots</h2>
           <div className='screenshots'>
