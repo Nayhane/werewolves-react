@@ -5556,9 +5556,9 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-countdown-clock@^2.1.0:
+"react-countdown-clock@git://github.com/casparboetes/react-countdown-clock":
   version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-countdown-clock/-/react-countdown-clock-2.1.0.tgz#68407c6337b518326d9a923bc39500bf1c39a4bb"
+  resolved "git://github.com/casparboetes/react-countdown-clock#71c5995286ca273b936bd8704bf377d4c9dbf644"
   dependencies:
     coffeescript "^2.1.0"
     create-react-class "^15.6.2"
