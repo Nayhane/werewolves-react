@@ -10,7 +10,7 @@ import {
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case FETCHED_PLAYERS :
-  
+
       return [...payload]
 
     case FETCHED_ONE_PLAYER :
@@ -40,21 +40,13 @@ export default (state = [], { type, payload } = {}) => {
 
     case PLAYERS_UPDATED :
     return state.map((player) => {
-      if (player._id === payload.player._id) {
-        return { ...payload.player, players: payload.players }
+      if (player._id === payload._id) {
+        console.log(payload)
+        return { ...payload}
       }
       return player
     })
-
-
-    case MOVE_PLAYERS :
-    return state.map((player) => {
-      if (player._id === payload.player._id) {
-        return {...payload, village: payload.village }
-      }
-      return player
-    })
-
+    
     case PLAYER_REMOVED :
       return state.filter((player) => (player._id !== payload._id))
 

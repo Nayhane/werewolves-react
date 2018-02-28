@@ -26,8 +26,6 @@ class Sidebar extends PureComponent {
 
 
   render() {
-
-
     const village1 = this.props.players.filter((player) => {
           return player.village[0].name === "Wakkerdam"
     })
@@ -35,8 +33,6 @@ class Sidebar extends PureComponent {
     const village2 = this.props.players.filter((player) => {
       return player.village[0].name === "Sluimervoort"
     })
-
-
 
         return (
           <div>
