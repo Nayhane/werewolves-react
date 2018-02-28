@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react'
-import CountDown from './CountDown'
-import Loading from './AnotherTimer'
-import Paper from 'material-ui/Paper'
 import ReactCountdownClock from 'react-countdown-clock'
-
+import CountDown from './CountDown'
+import Paper from 'material-ui/Paper'
 
 const  timerStyle  = {
   flexDirection: 'row',
@@ -25,14 +23,9 @@ myCallback() {
 render() {
   return (
       <div>
-      <br />
-
-      <Paper style={timerStyle} >
-        <CountDown options={OPTIONS} />
-      </Paper>
-
-      <Loading options={OPTIONS} />
-
+        <Paper style={timerStyle} >
+          <CountDown options={OPTIONS} />
+        </Paper>
       <ReactCountdownClock seconds={900}
          color="#000"
          alpha={0.9}
@@ -40,8 +33,6 @@ render() {
          onClick={this.pause}
          onComplete={this.myCallback} />
       </div>
-
-
     )
   }
 }
