@@ -6,6 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
 import DoneIcon from 'material-ui/svg-icons/action/done'
 import TextField from 'material-ui/TextField'
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
 import Webcam from 'react-webcam'
 
@@ -16,8 +18,17 @@ export class MakePhoto extends PureComponent {
     this.state = {
       name: '',
       photo: null,
+      open: false
     }
   }
+
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
 
   setRef = (webcam) => {
     this.webcam = webcam
@@ -45,9 +56,26 @@ export class MakePhoto extends PureComponent {
   }
 
   render() {
+    const actions = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleClose}
+      />
+    ]
+
     return (
       <div className='register'>
-
+      <RaisedButton label="Register a new player!" onClick={this.handleOpen} />
+      <Dialog
+        title="Dialog With Date Picker"
+        actions={actions}
+        modal={false}
+        open={this.state.open}
+        onRequestClose={this.handleClose}
+        autoScrollBodyContent={true}
+      >
         <TextField
           hintText='Please provide your name...'
           floatingLabelText='Your name...'
@@ -57,33 +85,34 @@ export class MakePhoto extends PureComponent {
         <Webcam
           className='newPhoto'
           audio={false}
-          height={350}
-          ref={this.setRef}
-          screenshotFormat='image/jpeg'
-          width={350}
-        />
+            height={350}
+            ref={this.setRef}
+            screenshotFormat='image/jpeg'
+            width={350}
+          />
 
-        <h2>Screenshots</h2>
-        <div className='screenshots'>
-          <div className='controls'>
-            <RaisedButton
-              label='Capture photo!'
-              labelPosition='before'
-              primary={true}
-              icon={<AddPhotoIcon />}
-              onClick={this.handlePhotoClick}
-            />
+          <h2>Screenshots</h2>
+          <div className='screenshots'>
+            <div className='controls'>
+              <RaisedButton
+                label='Capture photo!'
+                labelPosition='before'
+                primary={true}
+                icon={<AddPhotoIcon />}
+                onClick={this.handlePhotoClick}
+              />
+            </div>
+            {this.state.photo ? <img src={this.state.photo} alt='Player' /> : null}
           </div>
-          {this.state.photo ? <img src={this.state.photo} alt='Player' /> : null}
-        </div>
 
-        <RaisedButton
-          label='Register user!'
-          labelPosition='before'
-          primary={true}
-          icon={<DoneIcon />}
-          onClick={this.handleSaveRegistration}
-        />
+          <RaisedButton
+            label='Register user!'
+            labelPosition='before'
+            primary={true}
+            icon={<DoneIcon />}
+            onClick={this.handleSaveRegistration}
+          />
+        </Dialog >
       </div>
     )
   }
