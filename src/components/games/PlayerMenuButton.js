@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import RaisedButton from 'material-ui/RaisedButton'
 
 class PlayerMenuButton extends PureComponent {
   static propTypes = {
@@ -33,7 +34,10 @@ class PlayerMenuButton extends PureComponent {
     const { onClick } = this.props
 
     return (
-      <button onClick={ onClick }>{ this.displayIcon() }</button>
+      <RaisedButton onClick={ onClick }
+        label={this.displayIcon()}
+      />
+
     )
   }
 }
