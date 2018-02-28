@@ -33,7 +33,7 @@ export default class AnotherTimerAgain extends PureComponent {
   }
 
   startTimer() {
-    if (this.timer == 0) {
+    if (this.timer === 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
   }
@@ -49,7 +49,7 @@ export default class AnotherTimerAgain extends PureComponent {
     });
 
     // Check if we're at zero.
-    if (seconds == 0) {
+    if (seconds === 0) {
       clearInterval(this.timer);
     }
   }
