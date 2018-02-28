@@ -2,6 +2,12 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton'
 
+import IconLocationOn from 'material-ui/svg-icons/communication/location-on'
+import CakeIcon from 'material-ui/svg-icons/social/cake'
+import SwapIcon from 'material-ui/svg-icons/communication/swap-calls'
+import EnvelopeIcon from 'material-ui/svg-icons/content/mail'
+import SadIcon from 'material-ui/svg-icons/social/sentiment-very-dissatisfied'
+
 class PlayerMenuButton extends PureComponent {
   static propTypes = {
     onClick: PropTypes.func.isRequired,
@@ -11,22 +17,22 @@ class PlayerMenuButton extends PureComponent {
   displayIcon = () => {
     switch(this.props.icon) {
       case 'message' :
-        return 'Send message'
+        return ['Send message', <EnvelopeIcon />]
 
       case 'mayor' :
-        return 'Mayor'
+        return ['Mayor', <CakeIcon />]
 
       case 'dead' :
-        return 'Die!'
+        return ['Die!', <SadIcon />]
 
       case 'Wakkerdam' :
-        return 'Move to Sluimervoort'
+        return ['Move to Sluimervoort', <SwapIcon />]
 
       case 'Sluimervoort' :
-        return 'Move to Wakkerdam'
+        return ['Move to Wakkerdam', <SwapIcon />]
 
       default :
-        return 'exclamation-circle'
+        return ['exclamation-circle', <IconLocationOn />]
     }
   }
 
@@ -34,10 +40,13 @@ class PlayerMenuButton extends PureComponent {
     const { onClick } = this.props
 
     return (
-      <RaisedButton onClick={ onClick }
-        label={this.displayIcon()}
+      <RaisedButton
+        onClick={ onClick }
+        label={this.displayIcon()[0]}
+        labelPosition="before"
+        primary={true}
+        icon={this.displayIcon()[1]}
       />
-
     )
   }
 }
