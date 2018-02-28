@@ -16,7 +16,7 @@ class Sidebar extends PureComponent {
       photo: PropTypes.object.isRequired,
       mayor: PropTypes.bool,
       dead: PropTypes.bool,
-      message: PropTypes.bool,
+      messageSent: PropTypes.bool,
     }),
   }
 

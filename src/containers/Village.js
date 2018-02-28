@@ -27,7 +27,7 @@ class Village extends PureComponent {
         <div>{ player.name }</div>
         <div>{ player.mayor ? 'Mayor' : '' }</div>
         <div>{ player.dead ? 'Dead' : '' }</div>
-        <div>{ player.message ? 'Message sent' : '' }</div>
+        <div>{ player.messageSent === 'sent' ? 'Message sent' : '' }</div>
         <PlayerDialog player={player}/>
       </div>
     )

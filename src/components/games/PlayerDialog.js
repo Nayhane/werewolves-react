@@ -12,7 +12,8 @@ class PlayerDialog extends PureComponent {
 
   killPlayer = (player) => {
     const updatedPlayer = {
-      dead: !player.dead
+      dead: !player.dead,
+      mayor: false
     }
 
     this.props.updateDeath(player._id, updatedPlayer)
@@ -28,7 +29,7 @@ class PlayerDialog extends PureComponent {
 
   sendMessage = (player) => {
     const updatedPlayer = {
-      message: true
+      messageSent: 'sending'
     }
 
     this.props.updateMessage(player._id, updatedPlayer)
