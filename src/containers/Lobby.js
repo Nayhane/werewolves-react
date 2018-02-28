@@ -29,13 +29,7 @@ class Lobby extends PureComponent {
         <Paper className="paper">
         <Sidebar/>
 
-        <Paper className="paper">
-
           <Sidebar/>
-
-          <Menu>
-          </Menu>
-
 
         </Paper>
       </div>
