@@ -25,7 +25,7 @@ class AvatarPlayer extends PureComponent {
    return(
      <div key={index} className="avatar">
       <List>
-       <Badge badgeContent={ player.mayor ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''} primary={false} >
+       <Badge badgeContent={ player.mayor ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''} primary={true} >
         <div className={setClassName(player.dead, player.mayor)}>
           <ListItem
            leftAvatar={
