@@ -38,8 +38,6 @@ class PlayerDialog extends PureComponent {
     const village = player.village[0].name
     let newVillage = ""
 
-    console.log(village)
-
     if (village === 'Wakkerdam') {
       newVillage = 'Sluimervoort'
     } else {
@@ -49,8 +47,6 @@ class PlayerDialog extends PureComponent {
     const updatedVillage = {
       name: newVillage
     }
-
-    console.log(updatedVillage)
 
     this.props.updateVillage(player._id, updatedVillage)
   }
