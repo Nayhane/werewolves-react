@@ -7,6 +7,7 @@ import { connect as subscribeToWebsocket } from '../actions/websocket'
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
 import AnotherTimerAgain from '../components/games/AnotherTimerAgain'
+import AvatarPlayer from './AvatarPlayer'
 
 import Paper from 'material-ui/Paper'
 import './Lobby.css'
@@ -24,6 +25,7 @@ class Lobby extends PureComponent {
         <RegisterPlayer />
         <AnotherTimerAgain />
         <Timer />
+        <AvatarPlayer players={this.props.players}/>
         <Paper className="paper">
           <Sidebar/>
         </Paper>
@@ -32,6 +34,11 @@ class Lobby extends PureComponent {
   }
 }
 
-const mapStateToProps = ({  currentUser }) => ({  currentUser })
+const mapStateToProps = ({  currentUser, players }) => {
+  return {
+    currentUser,
+    players
+  }
+}
 
 export default connect(mapStateToProps, {  subscribeToWebsocket, push })(Lobby)

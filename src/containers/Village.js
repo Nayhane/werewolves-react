@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import PlayerDialog from '../components/games/PlayerDialog'
 import MoveAllToVillage from '../components/games/MoveAllToVillage'
 
+
 // import { fetchPlayers} from '../actions/games/fetch'
-import AvatarPlayer from './AvatarPlayer'
 
 class Village extends PureComponent {
   static propTypes = {
@@ -35,11 +35,9 @@ class Village extends PureComponent {
 
   render() {
     return (
-
       <div>
         <MoveAllToVillage players={this.props.players}/>
         <div>{ this.props.players.map(this.renderPlayer) }</div>
-        <AvatarPlayer players={this.props.players}/>
       </div>
     )
   }
