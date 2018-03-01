@@ -3197,6 +3197,10 @@ hosted-git-info@^2.1.4:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
 
+howler@2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.0.8.tgz#7eb9128039590fd5f62462ed40882110940a8756"
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/hpack.js/-/hpack.js-2.1.6.tgz#87774c0949e513f42e84575b3c45681fade2a0b2"
@@ -5613,6 +5617,13 @@ react-fontawesome@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.6.1.tgz#eddce17e7dc731aa09fd4a186688a61793a16c5c"
   dependencies:
+    prop-types "^15.5.6"
+
+react-howler@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/react-howler/-/react-howler-3.7.1.tgz#972a77c2e33d9168c185780399aefb874dc18ee9"
+  dependencies:
+    howler "2.0.8"
     prop-types "^15.5.6"
 
 react-reconciler@^0.7.0:
