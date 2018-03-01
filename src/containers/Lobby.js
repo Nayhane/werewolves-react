@@ -14,6 +14,7 @@ class Lobby extends PureComponent {
   componentWillMount() {
   }
 
+
   renderMessageBox = (player, index) => {
     if (player.messageSent === 'sending') {
       return(
