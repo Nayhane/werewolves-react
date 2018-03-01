@@ -32,7 +32,7 @@ class Timer extends PureComponent {
     this.state = {
       paused: true,
       color: '#1F243D',
-      seconds: 10,
+      seconds: 900,
       open: false,
       playing: false,
     }
@@ -45,7 +45,7 @@ class Timer extends PureComponent {
   }
 
   onTick(seconds) {
-    if(seconds < 3) {
+    if(seconds < 300) {
       this.setState ({
         color: "#D32F2F",
       })
@@ -154,8 +154,3 @@ class Timer extends PureComponent {
   }
 
 export default Timer
-
-// <ReactHowler
-//   src={['sound.ogg', 'sound.mp3']}
-//   playing={this.state.playing}
-//   />
