@@ -31,7 +31,6 @@ class Lobby extends PureComponent {
     return (
       <div className="Lobby">
         <Timer />
-        <RegisterPlayer />
         { this.props.players.map(this.renderMessageBox) }
         <AvatarPlayer players={this.props.players}/>
         <Paper className="paper">
