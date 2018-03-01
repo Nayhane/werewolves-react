@@ -1,5 +1,10 @@
 import React, { PureComponent } from 'react'
 import ReactCountdownClock from 'react-countdown-clock'
+// import ReactHowler from 'react-howler'
+
+
+import SoundsPLayer from './SoundsPlayer'
+
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -26,9 +31,10 @@ class Timer extends PureComponent {
 
     this.state = {
       paused: true,
-      color: '#9AACB6',
-      seconds: 900,
+      color: '#1F243D',
+      seconds: 10,
       open: false,
+      playing: false,
     }
   }
 
@@ -39,9 +45,9 @@ class Timer extends PureComponent {
   }
 
   onTick(seconds) {
-    if(seconds < 300) {
+    if(seconds < 3) {
       this.setState ({
-        color: "#ff0000"
+        color: "#D32F2F",
       })
     }
   }
@@ -50,16 +56,23 @@ class Timer extends PureComponent {
     this.setState ({
       paused: true,
       seconds: 900 + Math.random(),
-      color: '#9AACB6',
+      color: '#1F243D',
     })
   }
 
   handleOpen() {
-    this.setState({open: true})
+    this.setState({
+      open: true,
+      playing: true,
+    })
+
   }
 
   handleClose = () => {
-    this.setState({open: false})
+    this.setState({
+      open: false,
+      playing: false,
+    })
     this.resetTimer()
   }
 
@@ -74,63 +87,75 @@ class Timer extends PureComponent {
     ]
 
     return (
-        <div style={timerStyle}>
-          <ReactCountdownClock
-             ref={(c) => this._timer = c}
-             onTick={this.onTick.bind(this)}
-             seconds={this.state.seconds}
-             color={this.state.color}
-             alpha={0.9}
-             size={100}
-             paused={this.state.paused}
-             onComplete={this.handleOpen.bind(this)}
-             onClick={this.setPause.bind(this) }
-          />
+      <div style={timerStyle}>
+        <ReactCountdownClock
+           ref={(c) => this._timer = c}
+           onTick={this.onTick.bind(this)}
+           seconds={this.state.seconds}
+           color={this.state.color}
+           alpha={0.9}
+           size={100}
+           paused={this.state.paused}
+           onComplete={this.handleOpen.bind(this)}
+           onClick={this.setPause.bind(this) }
+        />
 
-           <RaisedButton
-             primary={true}
-             label="Reset"
-             onClick={this.resetTimer.bind(this)}
-          />
+         <RaisedButton
+           primary={true}
+           label="Reset"
+           onClick={this.resetTimer.bind(this)}
+        />
 
-          <Dialog
-            contentStyle={customContentStyle}
-            autoScrollBodyContent={true}
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-            <h1 style={{ textAlign : 'center' }}>
-              Night has fallen
-            </h1><br />
-              <h3 style={{ textAlign : 'center' }}>
+        <Dialog
+          contentStyle={customContentStyle}
+          autoScrollBodyContent={true}
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+        >
 
-                Do not go gentle into that good night,<br />
-                Old age should burn and rave at close of day; <br />
-                Rage, rage against the dying of the light.<br /> <br />
-                Though wise men at their end know dark is right,<br />
-                Because their words had forked no lightning they<br />
-                Do not go gentle into that good night.<br /><br />
-                Good men, the last wave by, crying how bright<br />
-                Their frail deeds might have danced in a green bay,<br />
-                Rage, rage against the dying of the light.<br /><br />
-                Wild men who caught and sang the sun in flight,<br />
-                And learn, too late, they grieved it on its way,<br />
-                Do not go gentle into that good night.<br /><br />
-                Grave men, near death, who see with blinding sight<br />
-                Blind eyes could blaze like meteors and be gay,<br />
-                Rage, rage against the dying of the light.<br /><br />
-                And you, my father, there on that sad height,<br />
-                Curse, bless, me now with your fierce tears, I pray.<br />
-                Do not go gentle into that good night.<br />
-                Rage, rage against the dying of the light.<br />
+        <SoundsPLayer />
 
-            </h3>
-          </Dialog>
-        </div>
+          <h1 style={{ textAlign : 'center' }}>
+
+            Night has fallen
+
+          </h1><br />
+            <h3 style={{ textAlign : 'center' }}>
+
+              Do not go gentle into that good night,<br />
+              Old age should burn and rave at close of day; <br />
+              Rage, rage against the dying of the light.<br /> <br />
+              Though wise men at their end know dark is right,<br />
+              Because their words had forked no lightning they<br />
+              Do not go gentle into that good night.<br /><br />
+              Good men, the last wave by, crying how bright<br />
+              Their frail deeds might have danced in a green bay,<br />
+              Rage, rage against the dying of the light.<br /><br />
+              Wild men who caught and sang the sun in flight,<br />
+              And learn, too late, they grieved it on its way,<br />
+              Do not go gentle into that good night.<br /><br />
+              Grave men, near death, who see with blinding sight<br />
+              Blind eyes could blaze like meteors and be gay,<br />
+              Rage, rage against the dying of the light.<br /><br />
+              And you, my father, there on that sad height,<br />
+              Curse, bless, me now with your fierce tears, I pray.<br />
+              Do not go gentle into that good night.<br />
+              Rage, rage against the dying of the light.<br />
+
+          </h3>
+        </Dialog>
+
+
+      </div>
       )
     }
   }
 
 export default Timer
+
+// <ReactHowler
+//   src={['sound.ogg', 'sound.mp3']}
+//   playing={this.state.playing}
+//   />
