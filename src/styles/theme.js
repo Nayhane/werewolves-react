@@ -9,16 +9,29 @@ export const lightGrey      = '#EFEFEF'
 export const white          = '#ffffff'
 export const black          = '#000000'
 
+export const iNeedReadability = '#edf2ff'
+
+// new from palette
+export const primary1Color = '#1f243d'
+export const primary2Color = '#484c68'
+export const primary3Color = '#000018'
+
+export const secondaryColor = '#9aacb6'
+export const secondaryLightColor = '#cbdee8'
+export const secondaryDarkColor = '#6c7d86'
+
 // Palette
 export const palette = {
- primary1Color: greyBlue,
- primary2Color: greyBlue,
- primary3Color: greyBlue,
- accent1Color: greyBlue,
- textColor: white,
- alternateTextColor: red,
- canvasColor: darkBlue,
- borderColor: lightGrey,
+ primary1Color: primary1Color,
+ primary2Color: primary2Color,
+ primary3Color: primary3Color,
+
+ accent1Color: secondaryColor,
+ textColor: black,
+ alternateTextColor: white,
+
+ canvasColor: secondaryLightColor,
+ borderColor: secondaryDarkColor,
 }
 
 export default getMuiTheme({ palette })

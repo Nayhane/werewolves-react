@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import PlayerMenuButton from './PlayerMenuButton'
 import updateDeath from '../../actions/games/updateDeath'
 import updateMayor from '../../actions/games/updateMayor'
-import updateMessage from '../../actions/games/updateMessage'
+import updateSender from '../../actions/games/updateSender'
 import updateVillage from '../../actions/games/updateVillage'
 
 class PlayerDialog extends PureComponent {
@@ -28,11 +28,17 @@ class PlayerDialog extends PureComponent {
   }
 
   sendMessage = (player) => {
+    let message = player.messageSent
+    if (message !== 'sent') {
+      message = 'sending'
+    } else {
+      return
+    }
     const updatedPlayer = {
-      messageSent: 'sending'
+      messageSent: message
     }
 
-    this.props.updateMessage(player._id, updatedPlayer)
+    this.props.updateSender(player._id, updatedPlayer)
   }
 
   moveVillage = (player) => {
@@ -72,6 +78,6 @@ class PlayerDialog extends PureComponent {
 export default connect(null, {
   updateDeath,
   updateMayor,
-  updateMessage,
+  updateSender,
   updateVillage,
 })(PlayerDialog)

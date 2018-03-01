@@ -4,8 +4,18 @@ import PropTypes from 'prop-types'
 import PlayerDialog from '../components/games/PlayerDialog'
 import MoveAllToVillage from '../components/games/MoveAllToVillage'
 
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardActions, CardHeader, /*CardMedia, CardTitle, CardText*/} from 'material-ui/Card';
+//import FlatButton from 'material-ui/FlatButton';
+
+const setClassName = (dead, mayor) => {
+  if (dead) {
+    return 'dead'
+  }
+  if (mayor) {
+    return 'mayor'
+  }
+}
+
 
 class Village extends PureComponent {
   static propTypes = {
@@ -23,8 +33,8 @@ class Village extends PureComponent {
 
   renderPlayer(player, index) {
     return(
-      <div key={index}>
-        <Card>
+      <div key={index} >
+        <Card className={setClassName(player.dead, player.mayor)}>
           <CardHeader
             title={player.name}
             avatar={player.photo}

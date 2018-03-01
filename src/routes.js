@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 
 import {
   Lobby,
-  Game,
+  //Game,
   SignIn,
   SignUp
 } from './containers'

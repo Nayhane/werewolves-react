@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import RaisedButton from 'material-ui/RaisedButton'
 
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on'
-import CakeIcon from 'material-ui/svg-icons/social/cake'
+import KeyIcon from 'material-ui/svg-icons/communication/vpn-key'
 import SwapIcon from 'material-ui/svg-icons/communication/swap-calls'
 import EnvelopeIcon from 'material-ui/svg-icons/content/mail'
 import SadIcon from 'material-ui/svg-icons/social/sentiment-very-dissatisfied'
@@ -20,7 +20,7 @@ class PlayerMenuButton extends PureComponent {
         return ['Send message', <EnvelopeIcon />]
 
       case 'mayor' :
-        return ['Mayor', <CakeIcon />]
+        return ['Mayor', <KeyIcon />]
 
       case 'dead' :
         return ['Die!', <SadIcon />]
@@ -38,6 +38,10 @@ class PlayerMenuButton extends PureComponent {
 
   render() {
     const { onClick } = this.props
+    const buttonStyle = {
+      margin: 1,
+
+    }
 
     return (
       <RaisedButton
@@ -46,6 +50,7 @@ class PlayerMenuButton extends PureComponent {
         labelPosition="before"
         primary={true}
         icon={this.displayIcon()[1]}
+        style={buttonStyle}
       />
     )
   }

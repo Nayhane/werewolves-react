@@ -4,10 +4,12 @@ import saveRegistration from '../actions/games/create'
 
 import RaisedButton from 'material-ui/RaisedButton'
 import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
+import AddPlayerIcon from 'material-ui/svg-icons/social/person-add'
 import DoneIcon from 'material-ui/svg-icons/action/done'
 import TextField from 'material-ui/TextField'
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
 
 import Webcam from 'react-webcam'
 
@@ -56,6 +58,15 @@ export class MakePhoto extends PureComponent {
   }
 
   render() {
+    const style = {
+      margin: 4,
+    }
+
+    const customContentStyle = {
+      width: '90%',
+      maxWidth: 'none',
+    }
+
     const actions = [
       <FlatButton
         label="Ok"
@@ -67,13 +78,17 @@ export class MakePhoto extends PureComponent {
 
     return (
       <div className='register'>
-        <RaisedButton label="Register a new player!" onClick={this.handleOpen} />
+        <FloatingActionButton style={style} mini={true} onClick={this.handleOpen} secondary={true}>
+          <AddPlayerIcon />
+        </FloatingActionButton>
+
         <Dialog
-          title="Dialog With Date Picker"
+          title="Add a new player to the game!"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          contentStyle={customContentStyle}
           autoScrollBodyContent={true}
         >
           <TextField
@@ -85,10 +100,9 @@ export class MakePhoto extends PureComponent {
           <Webcam
             className='newPhoto'
             audio={false}
-              height={350}
               ref={this.setRef}
               screenshotFormat='image/jpeg'
-              width={350}
+              width={500}
             />
 
           <h2>Screenshots</h2>
