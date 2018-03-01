@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react'
 //import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import _ from 'underscore'
 //components
 import updateSender from '../../actions/games/updateSender'
 import updateRecipient from '../../actions/games/updateRecipient'
 
 let setSender = ''
+let recipientIndex = null
 
 class MessageBox extends PureComponent {
 
@@ -28,12 +30,10 @@ class MessageBox extends PureComponent {
   }
 
   sendMessage = (player) => {
-
-    const recipientId = this.refs.recipient.value
-    console.log(recipientId)
+    const recipientId = this.menu.value
 
     const updatedPlayer = {
-      //messageSent: 'sent'
+      messageSent: 'sent'
     }
 
     const updatedRecipient = {
@@ -60,10 +60,10 @@ class MessageBox extends PureComponent {
             cols="50">
           </textarea>
           <div>
-            <select>
+            <select ref={(input) => this.menu = input}>
               { players.map((player, index) => {
                   return(
-                    <option key={index} ref="recipient" value={player._id}>{ player.name }</option>
+                    <option key={index} value={player._id}>{ player.name }</option>
                   )
                 })
               }
