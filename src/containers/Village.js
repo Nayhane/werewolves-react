@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import PlayerDialog from '../components/games/PlayerDialog'
 import MoveAllToVillage from '../components/games/MoveAllToVillage'
 
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardActions, CardHeader, /*CardMedia, CardTitle, CardText*/} from 'material-ui/Card';
+//import FlatButton from 'material-ui/FlatButton';
 
 class Village extends PureComponent {
   static propTypes = {

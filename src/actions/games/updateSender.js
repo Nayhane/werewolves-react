@@ -9,11 +9,11 @@ import { /*PLAYERS_UPDATED,*/ PLAYER_UPDATED } from './subscribe'
 
 const api = new API()
 
-export default (playerId, player) => {
+export default (playerId, sender) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    api.patch(`/players/${playerId}/message`, player)
+    api.patch(`/players/${playerId}/sendmessage`, sender)
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })

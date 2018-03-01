@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react'
 import ReactCountdownClock from 'react-countdown-clock'
-import RaisedButton from 'material-ui/RaisedButton'
+//import RaisedButton from 'material-ui/RaisedButton'
 
-import Paper from 'material-ui/Paper'
+//import Paper from 'material-ui/Paper'
 
 const  timerStyle  = {
   cursor: 'pointer',
   width: '110px',
 }
 
-const OPTIONS = { endDate: Date.now() + 900000}
+//const OPTIONS = { endDate: Date.now() + 900000}
 
   class Timer extends PureComponent {
     constructor() {
@@ -18,7 +18,6 @@ const OPTIONS = { endDate: Date.now() + 900000}
     this.state = {
       paused: false
     }
-    console.log(this.state)
   }
 
   togglePaused() {
@@ -32,7 +31,7 @@ const OPTIONS = { endDate: Date.now() + 900000}
     }
 
     render() {
-      const { paused } = this.state
+      //const { paused } = this.state
 
       return (
           <div style= {timerStyle}>
