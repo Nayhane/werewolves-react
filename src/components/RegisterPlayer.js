@@ -78,7 +78,7 @@ export class MakePhoto extends PureComponent {
 
     return (
       <div className='register'>
-        <FloatingActionButton style={style} mini={true} onClick={this.handleOpen}>
+        <FloatingActionButton style={style} mini={true} onClick={this.handleOpen} secondary={true}>
           <AddPlayerIcon />
         </FloatingActionButton>
 
