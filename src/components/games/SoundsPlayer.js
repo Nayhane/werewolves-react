@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactHowler from 'react-howler'
-import mp3_file from '../../soundbites/wolf6.mp3'
-
+import mp3_file from '../../sounds/wolf6.mp3'
 
 class Sounds extends Component {
 
@@ -15,6 +14,5 @@ class Sounds extends Component {
     );
   }
 }
-
 
 export default Sounds

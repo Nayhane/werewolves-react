@@ -1,8 +1,5 @@
 import React, { PureComponent } from 'react'
 import ReactCountdownClock from 'react-countdown-clock'
-// import ReactHowler from 'react-howler'
-
-
 import SoundsPLayer from './SoundsPlayer'
 
 import Dialog from 'material-ui/Dialog'
@@ -146,8 +143,6 @@ class Timer extends PureComponent {
 
           </h3>
         </Dialog>
-
-
       </div>
       )
     }
