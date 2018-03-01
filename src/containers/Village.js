@@ -5,7 +5,6 @@ import PlayerDialog from '../components/games/PlayerDialog'
 import MoveAllToVillage from '../components/games/MoveAllToVillage'
 
 import {Card, CardActions, CardHeader, /*CardMedia, CardTitle, CardText*/} from 'material-ui/Card';
-//import FlatButton from 'material-ui/FlatButton';
 
 const setClassName = (dead, mayor) => {
   if (dead) {
@@ -38,12 +37,13 @@ class Village extends PureComponent {
           <CardHeader
             title={player.name}
             avatar={player.photo}
+            children={<PlayerDialog player={player}/>
+}
           />
           <CardActions>
             { player.mayor ? 'Mayor' : '' }
             { player.dead ? 'Dead' : '' }
             { player.messageSent === 'sent' ? 'Message sent' : '' }
-            <PlayerDialog player={player}/>
           </CardActions>
       </Card>
 

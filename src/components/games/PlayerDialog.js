@@ -8,6 +8,12 @@ import updateMayor from '../../actions/games/updateMayor'
 import updateSender from '../../actions/games/updateSender'
 import updateVillage from '../../actions/games/updateVillage'
 
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import IconButton from 'material-ui/IconButton'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+
+
 class PlayerDialog extends PureComponent {
 
   killPlayer = (player) => {
@@ -66,10 +72,16 @@ class PlayerDialog extends PureComponent {
 
     return (
       <div>
-        <PlayerMenuButton icon={message} onClick={() => this.sendMessage(this.props.player)}/>
-        <PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>
-        <PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>
-        <PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>
+        <IconMenu
+          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        >
+          <MenuItem primaryText={<PlayerMenuButton icon={message} onClick={() => this.sendMessage(this.props.player)}/>} />
+          <MenuItem primaryText={<PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>} />
+          <MenuItem primaryText={<PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>} />
+          <MenuItem primaryText={<PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>} />
+        </IconMenu>
       </div>
     )
   }

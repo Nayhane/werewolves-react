@@ -1,16 +1,14 @@
 .lobby {
   margin: 0 auto;
   width: 95%;
-  display: flex
 }
 
 .Lobby .paper {
   margin-top: 0px;
-  padding: 10px;
-  position: relative;
+  /* padding: 10px; */
+  height: 50%;
 }
 
 .sidebar {
   position: absolute;
-  float: right;
 }
