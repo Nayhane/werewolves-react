@@ -32,7 +32,6 @@ class Sidebar extends PureComponent {
   render() {
     const style = {
     width: 400,
-    margin: 20,
     float: 'right'
     }
 
