@@ -21,7 +21,6 @@ class Timer extends PureComponent {
       seconds: 5,
       open: false,
     }
-    console.log(this.state)
   }
 
   setPause() {
@@ -47,7 +46,6 @@ class Timer extends PureComponent {
 
   handleOpen() {
       this.setState({open: true})
-    console.log('handleOpen')
   }
 
   handleClose = () => {
