@@ -28,8 +28,14 @@ class PlayerDialog extends PureComponent {
   }
 
   sendMessage = (player) => {
+    let message = player.messageSent
+    if (message !== 'sent') {
+      message = 'sending'
+    } else {
+      return
+    }
     const updatedPlayer = {
-      messageSent: 'sending'
+      messageSent: message
     }
 
     this.props.updateMessage(player._id, updatedPlayer)
