@@ -4,15 +4,13 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 
-import PauseIcon from 'material-ui/svg-icons/av/pause'
-
 const  timerStyle  = {
   cursor: 'pointer',
   width: '110px',
 }
 
-class Timer extends PureComponent {
-  constructor() {
+ class Timer extends PureComponent {
+   constructor() {
     super()
 
     this.state = {

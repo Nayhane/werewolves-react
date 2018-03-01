@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react'
 //import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 //components
-import updateMessage from '../../actions/games/updateMessage'
+import updateSender from '../../actions/games/updateSender'
+import updateRecipient from '../../actions/games/updateRecipient'
 
 let setSender = ''
 
@@ -28,11 +29,20 @@ class MessageBox extends PureComponent {
 
   sendMessage = (player) => {
 
+    const recipientId = this.refs.recipient.value
+    console.log(recipientId)
+
     const updatedPlayer = {
-      messageSent: 'sent'
+      //messageSent: 'sent'
     }
 
-    this.props.updateMessage(player._id, updatedPlayer)
+    const updatedRecipient = {
+      message: this.refs.message.value,
+      senderName: setSender
+    }
+
+    this.props.updateSender(player._id, updatedPlayer)
+    this.props.updateRecipient(recipientId, updatedRecipient)
   }
 
   render() {
@@ -43,13 +53,17 @@ class MessageBox extends PureComponent {
         <form>
           <div>To: { this.displayRecipient() }</div>
           <br/>
-          <textarea placeholder="Be quick - you only have 10 seconds!" rows="4" cols="50">
+          <textarea
+            ref="message"
+            placeholder="Be quick - you only have 10 seconds!"
+            rows="4"
+            cols="50">
           </textarea>
           <div>
             <select>
               { players.map((player, index) => {
                   return(
-                    <option key={index} ref="recipient" value={player}>{ player.name }</option>
+                    <option key={index} ref="recipient" value={player._id}>{ player.name }</option>
                   )
                 })
               }
@@ -65,5 +79,6 @@ class MessageBox extends PureComponent {
 }
 
 export default connect(null, {
-  updateMessage
+  updateSender,
+  updateRecipient
 })(MessageBox)

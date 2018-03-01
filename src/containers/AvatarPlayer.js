@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
 // import { fetchPlayers} from '../actions/games/fetch'
+import { connect } from 'react-redux'
+import { connect as subscribeToWebsocket } from '../actions/websocket'
 import MayorMedal from '../images/mayor-medal.png'
 //material ui
 import Avatar from 'material-ui/Avatar';
@@ -20,6 +22,10 @@ const setClassName = (dead, mayor) => {
 
 
 class AvatarPlayer extends PureComponent {
+
+  componentWillMount() {
+    this.props.subscribeToWebsocket()
+  }
 
   renderAvatars(player, index){
    return(
@@ -51,7 +57,6 @@ class AvatarPlayer extends PureComponent {
   }
 }
 
-
-
-
-export default AvatarPlayer
+export default connect(null, {
+  subscribeToWebsocket,
+})(AvatarPlayer)

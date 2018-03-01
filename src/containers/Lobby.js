@@ -1,8 +1,6 @@
-// src/containers/Lobby.js
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { connect as subscribeToWebsocket } from '../actions/websocket'
 //components
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
@@ -16,7 +14,6 @@ import RegisterPlayer from '../components/RegisterPlayer'
 
 class Lobby extends PureComponent {
   componentWillMount() {
-    this.props.subscribeToWebsocket()
   }
 
   renderMessageBox = (player, index) => {
@@ -49,6 +46,5 @@ const mapStateToProps = ({  currentUser, players }) => {
 }
 
 export default connect(mapStateToProps, {
-  subscribeToWebsocket,
   push,
 })(Lobby)
