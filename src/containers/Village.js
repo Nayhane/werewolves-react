@@ -7,6 +7,16 @@ import MoveAllToVillage from '../components/games/MoveAllToVillage'
 import {Card, CardActions, CardHeader, /*CardMedia, CardTitle, CardText*/} from 'material-ui/Card';
 //import FlatButton from 'material-ui/FlatButton';
 
+const setClassName = (dead, mayor) => {
+  if (dead) {
+    return 'dead'
+  }
+  if (mayor) {
+    return 'mayor'
+  }
+}
+
+
 class Village extends PureComponent {
   static propTypes = {
     fetchPlayers: PropTypes.func,
@@ -23,8 +33,8 @@ class Village extends PureComponent {
 
   renderPlayer(player, index) {
     return(
-      <div key={index}>
-        <Card>
+      <div key={index} >
+        <Card className={setClassName(player.dead, player.mayor)}>
           <CardHeader
             title={player.name}
             avatar={player.photo}
