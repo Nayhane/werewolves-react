@@ -4,11 +4,20 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 
-import PauseIcon from 'material-ui/svg-icons/av/pause'
-
 const  timerStyle  = {
   cursor: 'pointer',
   width: '110px',
+}
+
+const customContentStyle = {
+  width: '100%',
+  maxWidth: 'none',
+}
+
+const flatButtonStyle = {
+  height : '5rem',
+  algin: 'center',
+  fontSize: '1rem',
 }
 
 class Timer extends PureComponent {
@@ -18,7 +27,7 @@ class Timer extends PureComponent {
     this.state = {
       paused: true,
       color: '#9AACB6',
-      seconds: 5,
+      seconds: 1800,
       open: false,
     }
   }
@@ -30,7 +39,7 @@ class Timer extends PureComponent {
   }
 
   onTick(seconds) {
-    if(seconds < 300) {
+    if(seconds < 5) {
       this.setState ({
         color: "#ff0000"
       })
@@ -39,36 +48,33 @@ class Timer extends PureComponent {
 
   resetTimer() {
     this.setState ({
-      seconds: 900 + Math.random(),
+      paused: true,
+      seconds: 15 + Math.random(),
       color: '#9AACB6',
     })
   }
 
   handleOpen() {
-      this.setState({open: true})
+    this.setState({open: true})
   }
 
   handleClose = () => {
-  this.setState({open: false})
+    this.setState({open: false})
+    this.resetTimer()
   }
 
   render() {
-    const { paused } = this.state
     const actions = [
       <FlatButton
-        label="Something"
+        style={ flatButtonStyle }
+        label="Wake Up"
         primary={true}
         onClick={this.handleClose}
-      />,
-      <FlatButton
-      label="Discard"
-      primary={true}
-      onClick={this.handleClose}
-      />,
+      />
     ]
 
     return (
-        <div style= {timerStyle}>
+        <div style={timerStyle}>
           <ReactCountdownClock
              ref={(c) => this._timer = c}
              onTick={this.onTick.bind(this)}
@@ -87,17 +93,41 @@ class Timer extends PureComponent {
              onClick={this.resetTimer.bind(this)}
           />
 
-        <Dialog
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
+          <Dialog
+            contentStyle={customContentStyle}
+            autoScrollBodyContent={true}
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+            <h1 style={{ textAlign : 'center' }}>
+              Night has fallen
+            </h1><br />
+              <h3 style={{ textAlign : 'center' }}>
 
-          <h2>Night Has Fallen</h2> <br /> <button>Sleep Tight...</button>
+                Do not go gentle into that good night,<br />
+                Old age should burn and rave at close of day; <br />
+                Rage, rage against the dying of the light.<br /> <br />
+                Though wise men at their end know dark is right,<br />
+                Because their words had forked no lightning they<br />
+                Do not go gentle into that good night.<br /><br />
+                Good men, the last wave by, crying how bright<br />
+                Their frail deeds might have danced in a green bay,<br />
+                Rage, rage against the dying of the light.<br /><br />
+                Wild men who caught and sang the sun in flight,<br />
+                And learn, too late, they grieved it on its way,<br />
+                Do not go gentle into that good night.<br /><br />
+                Grave men, near death, who see with blinding sight<br />
+                Blind eyes could blaze like meteors and be gay,<br />
+                Rage, rage against the dying of the light.<br /><br />
+                And you, my father, there on that sad height,<br />
+                Curse, bless, me now with your fierce tears, I pray.<br />
+                Do not go gentle into that good night.<br />
+                Rage, rage against the dying of the light.<br />
 
-        </Dialog>
-
+            </h3>
+          </Dialog>
         </div>
       )
     }
