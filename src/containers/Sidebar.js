@@ -33,7 +33,7 @@ class Sidebar extends PureComponent {
     const style = {
     width: 400,
     margin: 20,
-    display: 'inline-block',
+    float: 'right'
     }
 
     const village1 = this.props.players.filter((player) => {
@@ -47,14 +47,14 @@ class Sidebar extends PureComponent {
     return (
       <div style={style}>
         <List>
-          <Subheader>WAKKERDAM</Subheader>
+          <Subheader><h1>WAKKERDAM</h1></Subheader>
           <Village players={village1} />
         </List>
 
         <Divider />
 
         <List>
-          <Subheader>SLUIMERVOORT</Subheader>
+          <Subheader><h1>SLUIMERVOORT</h1></Subheader>
           <Village players={village2} />
         </List>
       </div>

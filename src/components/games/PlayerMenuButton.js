@@ -38,6 +38,10 @@ class PlayerMenuButton extends PureComponent {
 
   render() {
     const { onClick } = this.props
+    const buttonStyle = {
+      margin: 1,
+
+    }
 
     return (
       <RaisedButton
@@ -46,6 +50,7 @@ class PlayerMenuButton extends PureComponent {
         labelPosition="before"
         primary={true}
         icon={this.displayIcon()[1]}
+        style={buttonStyle}
       />
     )
   }

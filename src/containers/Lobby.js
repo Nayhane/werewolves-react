@@ -12,8 +12,6 @@ import MessageBox from '../components/games/MessageBox'
 import Paper from 'material-ui/Paper'
 import './Lobby.css'
 
-import RegisterPlayer from '../components/RegisterPlayer'
-
 class Lobby extends PureComponent {
   componentWillMount() {
     this.props.subscribeToWebsocket()
@@ -29,12 +27,12 @@ class Lobby extends PureComponent {
 
   render() {
     return (
-      <div className="Lobby">
-        <Timer />
-        { this.props.players.map(this.renderMessageBox) }
-        <AvatarPlayer players={this.props.players}/>
+      <div className="lobby">
         <Paper className="paper">
-          <Sidebar/>
+          <Sidebar className="sidebar"/>
+          <Timer />
+          { this.props.players.map(this.renderMessageBox) }
+          <AvatarPlayer players={this.props.players}/>
         </Paper>
       </div>
     )
