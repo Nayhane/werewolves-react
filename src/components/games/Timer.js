@@ -27,7 +27,7 @@ class Timer extends PureComponent {
     this.state = {
       paused: true,
       color: '#9AACB6',
-      seconds: 1800,
+      seconds: 900,
       open: false,
     }
   }
@@ -39,7 +39,7 @@ class Timer extends PureComponent {
   }
 
   onTick(seconds) {
-    if(seconds < 5) {
+    if(seconds < 300) {
       this.setState ({
         color: "#ff0000"
       })
@@ -49,7 +49,7 @@ class Timer extends PureComponent {
   resetTimer() {
     this.setState ({
       paused: true,
-      seconds: 15 + Math.random(),
+      seconds: 900 + Math.random(),
       color: '#9AACB6',
     })
   }
