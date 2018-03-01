@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import ReactCountdownClock from 'react-countdown-clock'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
-
-
 
 import PauseIcon from 'material-ui/svg-icons/av/pause'
 
@@ -18,12 +18,13 @@ class Timer extends PureComponent {
     this.state = {
       paused: true,
       color: '#9AACB6',
-      seconds: 302,
+      seconds: 5,
+      open: false,
     }
     console.log(this.state)
   }
 
-  onClick() {
+  setPause() {
     this.setState({
       paused: !this.state.paused
     })
@@ -39,17 +40,34 @@ class Timer extends PureComponent {
 
   resetTimer() {
     this.setState ({
-      seconds: 305 + Math.random(),
+      seconds: 900 + Math.random(),
       color: '#9AACB6',
     })
   }
 
-  myCallback() {
-    console.log('done')
+  handleOpen() {
+      this.setState({open: true})
+    console.log('handleOpen')
+  }
+
+  handleClose = () => {
+  this.setState({open: false})
   }
 
   render() {
     const { paused } = this.state
+    const actions = [
+      <FlatButton
+        label="Something"
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+      label="Discard"
+      primary={true}
+      onClick={this.handleClose}
+      />,
+    ]
 
     return (
         <div style= {timerStyle}>
@@ -61,8 +79,8 @@ class Timer extends PureComponent {
              alpha={0.9}
              size={100}
              paused={this.state.paused}
-             onComplete={this.myCallback}
-             onClick={this.onClick.bind(this) }
+             onComplete={this.handleOpen.bind(this)}
+             onClick={this.setPause.bind(this) }
           />
 
            <RaisedButton
@@ -70,6 +88,18 @@ class Timer extends PureComponent {
              label="Reset"
              onClick={this.resetTimer.bind(this)}
           />
+
+        <Dialog
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+        >
+
+          <h2>Night Has Fallen</h2> <br /> <button>Sleep Tight...</button>
+
+        </Dialog>
+
         </div>
       )
     }
