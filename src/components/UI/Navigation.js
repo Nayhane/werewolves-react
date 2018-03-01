@@ -9,6 +9,13 @@ import IconButton from 'material-ui/IconButton'
 import GameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import FlatButton from 'material-ui/FlatButton'
 
+import RegisterPlayer from '../RegisterPlayer'
+
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+
+
 const TITLE = 'Werewolves game'
 
 class Navigation extends PureComponent {
@@ -33,13 +40,26 @@ class Navigation extends PureComponent {
 
   render() {
     const { signedIn } = this.props
+    const divStyle = {
+      display: 'flex'
+    }
+
     return (
       <AppBar
         title={TITLE}
         iconElementLeft={
           <IconButton onClick={this.goHome}><GameIcon /></IconButton>}
         iconElementRight={signedIn ?
-          <FlatButton label="Sign out" onClick={this.signOut.bind(this)} /> :
+          <div style={divStyle}>
+            <RegisterPlayer />
+            <IconMenu
+              iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+              targetOrigin={{horizontal: 'right', vertical: 'top'}}
+              >
+              <MenuItem primaryText="Sign out" label="Sign out" onClick={this.signOut.bind(this)} />
+            </IconMenu>
+          </div> :
           <FlatButton label="Sign up" onClick={this.signUp} />
         }
       />
