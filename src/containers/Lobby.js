@@ -4,7 +4,6 @@ import { push } from 'react-router-redux'
 //components
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
-import AnotherTimerAgain from '../components/games/AnotherTimerAgain'
 import AvatarPlayer from './AvatarPlayer'
 import MessageBox from '../components/games/MessageBox'
 
@@ -28,8 +27,6 @@ class Lobby extends PureComponent {
   render() {
     return (
       <div className="Lobby">
-        <RegisterPlayer />
-        <AnotherTimerAgain />
         <Timer />
         { this.props.players.map(this.renderMessageBox) }
         <AvatarPlayer players={this.props.players}/>

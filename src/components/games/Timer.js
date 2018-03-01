@@ -1,50 +1,104 @@
 import React, { PureComponent } from 'react'
 import ReactCountdownClock from 'react-countdown-clock'
-//import RaisedButton from 'material-ui/RaisedButton'
-
-//import Paper from 'material-ui/Paper'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const  timerStyle  = {
   cursor: 'pointer',
   width: '110px',
 }
 
-//const OPTIONS = { endDate: Date.now() + 900000}
-
-  class Timer extends PureComponent {
-    constructor() {
+ class Timer extends PureComponent {
+   constructor() {
     super()
 
     this.state = {
-      paused: false
+      paused: true,
+      color: '#9AACB6',
+      seconds: 5,
+      open: false,
     }
   }
 
-  togglePaused() {
+  setPause() {
     this.setState({
       paused: !this.state.paused
     })
   }
 
-    myCallback() {
-      console.log('done')
+  onTick(seconds) {
+    if(seconds < 300) {
+      this.setState ({
+        color: "#ff0000"
+      })
     }
+  }
 
-    render() {
-      //const { paused } = this.state
+  resetTimer() {
+    this.setState ({
+      seconds: 900 + Math.random(),
+      color: '#9AACB6',
+    })
+  }
 
-      return (
-          <div style= {timerStyle}>
-          <ReactCountdownClock seconds={900}
-             color="#9AACB6"
+  handleOpen() {
+      this.setState({open: true})
+  }
+
+  handleClose = () => {
+  this.setState({open: false})
+  }
+
+  render() {
+    const { paused } = this.state
+    const actions = [
+      <FlatButton
+        label="Something"
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+      label="Discard"
+      primary={true}
+      onClick={this.handleClose}
+      />,
+    ]
+
+    return (
+        <div style= {timerStyle}>
+          <ReactCountdownClock
+             ref={(c) => this._timer = c}
+             onTick={this.onTick.bind(this)}
+             seconds={this.state.seconds}
+             color={this.state.color}
              alpha={0.9}
              size={100}
              paused={this.state.paused}
-             onComplete={this.myCallback}
-             onClick={this.togglePaused.bind(this) } />
-          </div>
-        )
-      }
+             onComplete={this.handleOpen.bind(this)}
+             onClick={this.setPause.bind(this) }
+          />
+
+           <RaisedButton
+             primary={true}
+             label="Reset"
+             onClick={this.resetTimer.bind(this)}
+          />
+
+        <Dialog
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+        >
+
+          <h2>Night Has Fallen</h2> <br /> <button>Sleep Tight...</button>
+
+        </Dialog>
+
+        </div>
+      )
     }
+  }
 
 export default Timer

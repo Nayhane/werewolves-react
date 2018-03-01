@@ -9,15 +9,17 @@ export const lightGrey      = '#EFEFEF'
 export const white          = '#ffffff'
 export const black          = '#000000'
 
+export const iNeedReadability = '#edf2ff'
+
 // Palette
 export const palette = {
  primary1Color: greyBlue,
  primary2Color: greyBlue,
  primary3Color: greyBlue,
  accent1Color: greyBlue,
- textColor: white,
+ textColor: black,
  alternateTextColor: red,
- canvasColor: darkBlue,
+ canvasColor: iNeedReadability,
  borderColor: lightGrey,
 }
 
