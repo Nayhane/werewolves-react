@@ -57,7 +57,9 @@ class MessageBox extends PureComponent {
             ref="message"
             placeholder="Be quick - you only have 10 seconds!"
             rows="4"
-            cols="50">
+            cols="50"
+            maxLength={160}
+            >
           </textarea>
           <div>
             <select ref={(input) => this.menu = input}>
