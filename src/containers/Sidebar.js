@@ -32,7 +32,8 @@ class Sidebar extends PureComponent {
   render() {
     const style = {
     width: 400,
-    float: 'right'
+    float: 'right',
+    marginTop: 120,
     }
 
     const village1 = this.props.players.filter((player) => {
