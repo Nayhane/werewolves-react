@@ -5,73 +5,124 @@ import { connect } from 'react-redux'
 import updateSender from '../../actions/games/updateSender'
 import updateRecipient from '../../actions/games/updateRecipient'
 
-let setSender = ''
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import Popover from 'material-ui/Popover'
+import Menu from 'material-ui/Menu'
+import MenuItem from 'material-ui/MenuItem'
 
 class MessageBox extends PureComponent {
 
-  displayRecipient() {
-
-    // if (this.refs.recipient.value) {
-    //   return this.refs.recipient.value
-    // }
-    return ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      message: '',
+      open: false,
+      recipientName: '...',
+    }
   }
 
-  sendAnonymous = () => {
-    setSender = 'anonymous'
-    return setSender
+  handleTextInput = (event) => {
+    this.setState({
+      message: event.target.value,
+    })
   }
 
-  signMessage = () => {
-    setSender = this.props.player.name
-    return setSender
+  handlePopoverClick = (event) => {
+    event.preventDefault()
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    })
   }
 
-  sendMessage = (player) => {
-    const recipientId = this.menu.value
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    })
+  }
+
+  chooseRecipient = (recipient) => {
+    this.setState({
+      recipientId: recipient._id,
+      recipientName: recipient.name
+    })
+  }
+
+  sendMessage = (player, choice) => {
+    const whoAreYou = choice
+    const recipientId = this.state.recipientId
 
     const updatedPlayer = {
       messageSent: 'sent'
     }
-
     const updatedRecipient = {
-      message: this.refs.message.value,
-      senderName: setSender
+      message: this.state.message,
+      senderName: whoAreYou
     }
-
     this.props.updateSender(player._id, updatedPlayer)
     this.props.updateRecipient(recipientId, updatedRecipient)
   }
 
   render() {
     const { players } = this.props
+    const textInputStyle = {
+      backgroundColor: 'rgba(96, 150, 255, 0.37)',
+      borderRadius: '2px'
+    }
 
     return (
-      <div style={{ padding: 20, backgroundColor: 'rgb(74, 70, 65)' }}>
-        <form>
-          <div>To: { this.displayRecipient() }</div>
-          <br/>
-          <textarea
+      <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
+        <h1>Send a message to { this.state.recipientName }</h1>
+        <RaisedButton
+          onClick={this.handlePopoverClick}
+          label="Choose recipient"
+        />
+
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+        >
+          <Menu ref={(input) => this.menu = input}>
+            { players.map((player, index) => {
+                return(
+                  <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
+                )
+              })
+            }
+          </Menu>
+        </Popover>
+
+        <div>
+          <TextField
+            id="text-field-controlled"
+            value={this.state.message}
+            onChange={this.handleTextInput}
+            maxLength={160}
             ref="message"
             placeholder="Be quick - you only have 10 seconds!"
-            rows="4"
-            cols="50">
-          </textarea>
-          <div>
-            <select ref={(input) => this.menu = input}>
-              { players.map((player, index) => {
-                  return(
-                    <option key={index} value={player._id}>{ player.name }</option>
-                  )
-                })
-              }
-            </select>
-            <input type="button" value="Send anonymous" onClick={this.sendAnonymous}/>
-            <input type="button" value="Sign message" onClick={this.signMessage}/>
-            <input type="button" value="Send" onClick={() => this.sendMessage(this.props.player)}/>
-          </div>
-        </form>
-      </div>
+            multiLine={true}
+            rows={5}
+            style={textInputStyle}
+          />
+
+          <RaisedButton
+            type="button"
+            value="Send anonymous"
+            label="Send anonymous"
+            onClick={() => this.sendMessage(this.props.player, 'anonymous')}
+          />
+
+          <RaisedButton
+            type="button"
+            value="Send"
+            label="Send signed"
+            onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
+          />
+        </div></div>
     )
   }
 }
