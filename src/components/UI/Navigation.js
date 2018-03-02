@@ -6,7 +6,6 @@ import { push } from 'react-router-redux'
 import signOut from '../../actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
-import GameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import FlatButton from 'material-ui/FlatButton'
 
 import RegisterPlayer from '../RegisterPlayer'
@@ -16,7 +15,7 @@ import MenuItem from 'material-ui/MenuItem'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 
-const TITLE = 'Werewolves game'
+const TITLE = 'HEEN EN WEER WOLVEN'
 
 class Navigation extends PureComponent {
   static propTypes = {
@@ -34,9 +33,6 @@ class Navigation extends PureComponent {
     this.props.push('/sign-up')
   }
 
-  goHome = () => {
-    this.props.push('/')
-  }
 
   render() {
     const { signedIn } = this.props
@@ -47,8 +43,6 @@ class Navigation extends PureComponent {
     return (
       <AppBar
         title={TITLE}
-        iconElementLeft={
-          <IconButton onClick={this.goHome}><GameIcon /></IconButton>}
         iconElementRight={signedIn ?
           <div style={divStyle}>
             <RegisterPlayer />
