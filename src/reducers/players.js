@@ -5,6 +5,7 @@ import {
   PLAYER_REMOVED,
   PLAYER_UPDATED,
   PLAYERS_UPDATED,
+  PLAYER_MESSAGE_UPDATED,
   PLAYER_MESSAGES_UPDATED
 } from '../actions/games/subscribe'
 
@@ -37,6 +38,14 @@ export default (state = [], { type, payload } = {}) => {
         }
         return player
       })
+
+      case PLAYER_MESSAGE_UPDATED :
+        return state.map((player) => {
+          if (player._id === payload._id) {
+            return { ...payload }
+          }
+          return player
+        })
 
     case PLAYERS_UPDATED :
       return state.map((player) => {

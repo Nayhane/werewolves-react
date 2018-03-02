@@ -3,9 +3,12 @@ import { connect } from 'react-redux'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import MessageItem from '../components/games/MessageItem.js'
 
+import { fetchPlayers} from '../actions/games/fetch'
+
 class MessagePage extends PureComponent {
 
   componentWillMount() {
+    this.props.fetchPlayers()
     this.props.subscribeToWebsocket()
   }
 
@@ -22,7 +25,7 @@ class MessagePage extends PureComponent {
 
     const messages = recipients.map((recipient) => {
       const allMessages = recipient.receivedMessages
-      return [recipient.name, allMessages]
+      return [recipient, allMessages]
     })
 
     const singleMessages = messages.map((message) => {
@@ -59,5 +62,6 @@ const mapStateToProps = ({ currentUser, players }, { match }) => {
 }
 
 export default connect(mapStateToProps, {
-  subscribeToWebsocket
+  subscribeToWebsocket,
+  fetchPlayers
 })(MessagePage)
