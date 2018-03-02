@@ -1,13 +1,17 @@
-.last-message {
+.message-closed {
+  color: white;
+}
+
+.message-open {
 	position: relative;
 	background: #9AACB6;
 	border-radius: .4em;
-  margin: 50px;
+  margin: 30px;
   padding: 15px;
   max-width: 300px;
 }
 
-.last-message:after {
+.message-open:after {
 	content: '';
 	position: absolute;
 	bottom: 0;
