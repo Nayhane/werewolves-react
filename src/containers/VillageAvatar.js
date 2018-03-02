@@ -1,29 +1,16 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchPlayers} from '../actions/games/fetch'
-//components
-import Village from './Village'
 
-// MUI
+import Divider from 'material-ui/Divider';
+import { fetchPlayers} from '../actions/games/fetch'
+import AvatarPlayer from './AvatarPlayer'
+
 import {List} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
 
-class Sidebar extends PureComponent {
-  static propTypes = {
-    fetchPlayers: PropTypes.func,
-    //subscribeToWebsocket: PropTypes.func.isRequired,
-    player: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      photo: PropTypes.object.isRequired,
-      mayor: PropTypes.bool,
-      dead: PropTypes.bool,
-      messageSent: PropTypes.bool,
-    }),
-  }
 
+
+class VillageAvatar extends PureComponent {
   componentWillMount() {
     this.props.fetchPlayers();
   }
@@ -31,10 +18,12 @@ class Sidebar extends PureComponent {
 
   render() {
     const style = {
-    width: 400,
-    float: 'right',
-    marginTop: 120,
+    width: 800,
+    height: 800,
+    float: 'left',
+    display: 'inline-block'
     }
+
 
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
@@ -44,19 +33,22 @@ class Sidebar extends PureComponent {
       return player.village[0].name === "Sluimervoort"
     })
 
+
     return (
+
       <div style={style}>
         <List>
           <Subheader><h1>WAKKERDAM</h1></Subheader>
-          <Village players={village1} />
+          <AvatarPlayer players={village1} />
         </List>
 
         <Divider />
 
         <List>
           <Subheader><h1>SLUIMERVOORT</h1></Subheader>
-          <Village players={village2} />
+          <AvatarPlayer players={village2} />
         </List>
+
       </div>
     )
   }
@@ -69,4 +61,5 @@ const mapStateToProps = ({ currentUser, players }, { match }) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchPlayers })(Sidebar)
+
+export default connect(mapStateToProps, { fetchPlayers })(VillageAvatar)

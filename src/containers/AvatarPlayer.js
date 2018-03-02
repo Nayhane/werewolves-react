@@ -13,19 +13,13 @@ import ListItem from 'material-ui/List/ListItem';
 import './AvatarPlayer.css'
 
 
-const setClassName = (dead, mayor, receivedMessages) => {
+const setClassName = (dead, mayor) => {
   if (dead) {
     return 'dead'
   }
   if (mayor) {
     return 'mayor'
   }
-  if ( receivedMessages.length < 0){
-    return ''
-  } else if (receivedMessages.length > 0){
-    return 'Email'
-  }
-
 }
 
 
@@ -39,7 +33,7 @@ class AvatarPlayer extends PureComponent {
      <div key={index} className="avatar">
      <div className={setClassName(player.dead, player.mayor, player.receivedMessages)}>
       <List>
-      <Badge badgeContent={ player.receivedMessages.length ? <img src={Email} className="Email" alt="Email" /> : ''} secondary={true} >
+
         <Badge
         badgeContent={ player.mayor ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''} secondary={true}
         >
@@ -51,7 +45,7 @@ class AvatarPlayer extends PureComponent {
         <br/><br/><br/>
         <div className='name'>{player.name}</div>
        </Badge>
-       </Badge>
+  
       </List>
      </div>
     </div>
@@ -59,7 +53,6 @@ class AvatarPlayer extends PureComponent {
   }
 
   render() {
-
     return (
       <div>
           {this.props.players.map(this.renderAvatars) }
