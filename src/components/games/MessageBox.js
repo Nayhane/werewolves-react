@@ -86,9 +86,30 @@ class MessageBox extends PureComponent {
 
     return (
       <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
-        <form>
-          <h1>Send a message to { this.state.recipientName }</h1>
+        <h1>Send a message to { this.state.recipientName }</h1>
+        <RaisedButton
+          onClick={this.handlePopoverClick}
+          label="Choose recipient"
+        />
 
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+        >
+          <Menu ref={(input) => this.menu = input}>
+            { players.map((player, index) => {
+                return(
+                  <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
+                )
+              })
+            }
+          </Menu>
+        </Popover>
+
+        <div>
           <TextField
             id="text-field-controlled"
             value={this.state.message}
@@ -99,43 +120,22 @@ class MessageBox extends PureComponent {
             multiLine={true}
             rows={5}
             style={textInputStyle}
-            disabled={true}
           />
 
-          <div>
-            <RaisedButton
-                onClick={this.handlePopoverClick}
-                label="Choose recipient"
-              />
-
-              <Popover
-                open={this.state.open}
-                anchorEl={this.state.anchorEl}
-                anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                targetOrigin={{horizontal: 'left', vertical: 'top'}}
-                onRequestClose={this.handleRequestClose}
-              >
-                <Menu ref={(input) => this.menu = input}>
-                  { players.map((player, index) => {
-                      return(
-                        <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
-                      )
-                    })
-                  }
-                </Menu>
-              </Popover>
-
-            <input type="button" value="Send anonymous" onClick={this.sendAnonymous}/>
-            <input type="button" value="Sign message" onClick={this.signMessage}/>
+          <RaisedButton
+            type="button"
+            value="Send anonymous"
+            label="Send anonymous"
+            onClick={this.sendAnonymous}
+          />
 
           <RaisedButton
             type="button"
             value="Send"
             label="Send signed"
-            onClick={() => this.sendMessage(this.props.player)} />
-          </div>
-        </form>
-      </div>
+            onClick={() => this.sendMessage(this.props.player)}
+          />
+        </div></div>
     )
   }
 }
