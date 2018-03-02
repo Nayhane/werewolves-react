@@ -7,6 +7,10 @@ import updateSender from '../../actions/games/updateSender'
 import updateRecipient from '../../actions/games/updateRecipient'
 
 import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import Popover from 'material-ui/Popover'
+import Menu from 'material-ui/Menu'
+import MenuItem from 'material-ui/MenuItem'
 
 let setSender = ''
 let recipientIndex = null
@@ -16,13 +20,28 @@ class MessageBox extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      value: '',
+      message: '',
+      open: false,
     }
   }
 
-  handleChange = (event) => {
+  handleTextInput = (event) => {
     this.setState({
-      value: event.target.value,
+      message: event.target.value,
+    })
+  }
+
+  handlePopoverClick = (event) => {
+    event.preventDefault();
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    })
+  }
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
     })
   }
 
@@ -52,7 +71,7 @@ class MessageBox extends PureComponent {
     }
 
     const updatedRecipient = {
-      message: this.refs.message.value,
+      message: this.state.message,
       senderName: setSender
     }
 
@@ -63,27 +82,50 @@ class MessageBox extends PureComponent {
   render() {
     const { players } = this.props
     const textInputStyle = {
-      backgroundColor: 'red'
+      backgroundColor: 'rgba(96, 150, 255, 0.37)',
+      borderRadius: '2px'
     }
 
     return (
-      <div style={{ padding: 20, backgroundColor: 'lightgreen' }}>
+      <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
         <form>
-          <div>To: { this.displayRecipient() }</div>
+          <h1>To: { this.displayRecipient() }</h1>
 
-        <TextField
-          id="text-field-controlled"
-          value={this.state.value}
-          onChange={this.handleChange}
-          maxLength={160}
-          ref="message"
-          placeholder="Be quick - you only have 10 seconds!"
-          rows="4"
-          cols="50"
-          style={textInputStyle}
-        />
+          <TextField
+            id="text-field-controlled"
+            value={this.state.message}
+            onChange={this.handleTextInput}
+            maxLength={160}
+            ref="message"
+            placeholder="Be quick - you only have 10 seconds!"
+            multiLine={true}
+            rows={5}
+            style={textInputStyle}
+          />
 
           <div>
+            <RaisedButton
+                onClick={this.handlePopoverClick}
+                label="Choose recipient"
+              />
+
+              <Popover
+                open={this.state.open}
+                anchorEl={this.state.anchorEl}
+                anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                onRequestClose={this.handleRequestClose}
+              >
+                <Menu ref={(input) => this.menu = input}>
+                  { players.map((player, index) => {
+                      return(
+                        <MenuItem key={index} primaryText={player.name} value={player._id} key={index} />
+                      )
+                    })
+                  }
+                </Menu>
+              </Popover>
+
             <select ref={(input) => this.menu = input}>
               { players.map((player, index) => {
                   return(
@@ -92,6 +134,7 @@ class MessageBox extends PureComponent {
                 })
               }
             </select>
+
             <input type="button" value="Send anonymous" onClick={this.sendAnonymous}/>
             <input type="button" value="Sign message" onClick={this.signMessage}/>
             <input type="button" value="Send" onClick={() => this.sendMessage(this.props.player)}/>
