@@ -11,8 +11,6 @@ import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
-let setSender = ''
-
 class MessageBox extends PureComponent {
 
   constructor(props) {
@@ -20,7 +18,7 @@ class MessageBox extends PureComponent {
     this.state = {
       message: '',
       open: false,
-      recipientName: '...'
+      recipientName: '...',
     }
   }
 
@@ -51,28 +49,17 @@ class MessageBox extends PureComponent {
     })
   }
 
-  sendAnonymous = () => {
-    setSender = 'anonymous'
-    return setSender
-  }
-
-  signMessage = () => {
-    setSender = this.props.player.name
-    return setSender
-  }
-
-  sendMessage = (player) => {
+  sendMessage = (player, choice) => {
+    const whoAreYou = choice
     const recipientId = this.state.recipientId
 
     const updatedPlayer = {
       messageSent: 'sent'
     }
-
     const updatedRecipient = {
       message: this.state.message,
-      senderName: setSender
+      senderName: whoAreYou
     }
-
     this.props.updateSender(player._id, updatedPlayer)
     this.props.updateRecipient(recipientId, updatedRecipient)
   }
@@ -126,14 +113,14 @@ class MessageBox extends PureComponent {
             type="button"
             value="Send anonymous"
             label="Send anonymous"
-            onClick={this.sendAnonymous}
+            onClick={() => this.sendMessage(this.props.player, 'anonymous')}
           />
 
           <RaisedButton
             type="button"
             value="Send"
             label="Send signed"
-            onClick={() => this.sendMessage(this.props.player)}
+            onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
           />
         </div></div>
     )
