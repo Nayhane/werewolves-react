@@ -4,8 +4,10 @@ import Sidebar from './Sidebar'
 import Village from './Village'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+import VillageAvatar from './VillageAvatar'
 import MessagePage from './MessagePage'
-import AvatarPlayer from './AvatarPlayer'
+
+
 
 export {
   Lobby,
@@ -14,6 +16,8 @@ export {
   Village,
   SignIn,
   SignUp,
+  VillageAvatar,
   MessagePage,
-  AvatarPlayer,
+ 
+
 }

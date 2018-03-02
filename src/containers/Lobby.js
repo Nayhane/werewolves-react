@@ -4,7 +4,7 @@ import { push } from 'react-router-redux'
 //components
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
-import AvatarPlayer from './AvatarPlayer'
+import VillageAvatar from './VillageAvatar'
 import MessageBox from '../components/games/MessageBox'
 
 import Paper from 'material-ui/Paper'
@@ -30,9 +30,10 @@ class Lobby extends PureComponent {
           <Sidebar className="sidebar"/>
           <Timer />
           { this.props.players.map(this.renderMessageBox) }
-          <AvatarPlayer players={this.props.players}/>
+          <VillageAvatar players={this.props.players}/>
         </Paper>
       </div>
+
     )
   }
 }

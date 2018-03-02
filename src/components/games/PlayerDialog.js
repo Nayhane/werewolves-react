@@ -26,7 +26,7 @@ class PlayerDialog extends PureComponent {
   }
 
   makeMayor = (player) => {
-    const updatedPlayer = {
+    const updatedPlayer = { 
       mayor: !player.mayor
     }
 
