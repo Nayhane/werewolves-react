@@ -6,10 +6,25 @@ import _ from 'underscore'
 import updateSender from '../../actions/games/updateSender'
 import updateRecipient from '../../actions/games/updateRecipient'
 
+import TextField from 'material-ui/TextField'
+
 let setSender = ''
 let recipientIndex = null
 
 class MessageBox extends PureComponent {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: '',
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      value: event.target.value,
+    })
+  }
 
   displayRecipient() {
 
@@ -47,20 +62,27 @@ class MessageBox extends PureComponent {
 
   render() {
     const { players } = this.props
+    const textInputStyle = {
+      backgroundColor: 'red'
+    }
 
     return (
-      <div style={{ padding: 20, backgroundColor: 'rgb(74, 70, 65)' }}>
+      <div style={{ padding: 20, backgroundColor: 'lightgreen' }}>
         <form>
           <div>To: { this.displayRecipient() }</div>
-          <br/>
-          <textarea
-            ref="message"
-            placeholder="Be quick - you only have 10 seconds!"
-            rows="4"
-            cols="50"
-            maxLength={160}
-            >
-          </textarea>
+
+        <TextField
+          id="text-field-controlled"
+          value={this.state.value}
+          onChange={this.handleChange}
+          maxLength={160}
+          ref="message"
+          placeholder="Be quick - you only have 10 seconds!"
+          rows="4"
+          cols="50"
+          style={textInputStyle}
+        />
+
           <div>
             <select ref={(input) => this.menu = input}>
               { players.map((player, index) => {
