@@ -6,9 +6,7 @@ import { push } from 'react-router-redux'
 import signOut from '../../actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
-import GameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
 
 import RegisterPlayer from '../RegisterPlayer'
 
@@ -17,13 +15,21 @@ import MenuItem from 'material-ui/MenuItem'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 
-const TITLE = 'Werewolves game'
+const TITLE = 'HEEN EN WEER WOLVEN'
 
 class Navigation extends PureComponent {
   static propTypes = {
     signedIn: PropTypes.bool.isRequired,
     push: PropTypes.func.isRequired,
     signOut: PropTypes.func.isRequired,
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      gamePage: true
+    }
   }
 
   signOut = (event) => {
@@ -36,11 +42,17 @@ class Navigation extends PureComponent {
   }
 
   goHome = () => {
+    this.setState({
+      gamePage: true
+    })
     this.props.push('/')
   }
 
   goToMessage = () => {
-    console.log('im here')
+    this.setState({
+      gamePage: false
+    })
+
     this.props.push('/readmessage')
   }
 
@@ -53,11 +65,10 @@ class Navigation extends PureComponent {
     return (
       <AppBar
         title={TITLE}
-        iconElementLeft={
-          <IconButton onClick={this.goHome}><GameIcon /></IconButton>}
         iconElementRight={signedIn ?
           <div style={divStyle}>
-            <RaisedButton primary={true} label="Read message" onClick={this.goToMessage} />
+            { this.state.gamePage ? <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Read message" onClick={this.goToMessage} /> :
+            <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Back to game" onClick={this.goHome} />}
             <RegisterPlayer />
             <IconMenu
               iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}

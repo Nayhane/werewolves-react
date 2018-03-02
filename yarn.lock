@@ -5560,6 +5560,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-bubble@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-bubble/-/react-bubble-1.0.5.tgz#49096ac0e64f0947a939a697a9dfd337f474cc86"
+
 "react-countdown-clock@git://github.com/casparboetes/react-countdown-clock":
   version "2.1.0"
   resolved "git://github.com/casparboetes/react-countdown-clock#71c5995286ca273b936bd8704bf377d4c9dbf644"
