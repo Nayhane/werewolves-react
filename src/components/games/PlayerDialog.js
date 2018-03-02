@@ -25,6 +25,8 @@ class PlayerDialog extends PureComponent {
     this.props.updateDeath(player._id, updatedPlayer)
   }
 
+
+
   makeMayor = (player) => {
     const updatedPlayer = { 
       mayor: !player.mayor

@@ -20,6 +20,7 @@ const setClassName = (dead, mayor, receivedMessages) => {
   if (mayor) {
     return 'mayor'
   }
+
   if ( receivedMessages.length < 0){
     return ''
     
@@ -61,7 +62,6 @@ class AvatarPlayer extends PureComponent {
   }
 
   render() {
-
     return (
       <div>
           {this.props.players.map(this.renderAvatars) }
