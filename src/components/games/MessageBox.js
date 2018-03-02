@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react'
 //import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import _ from 'underscore'
 //components
 import updateSender from '../../actions/games/updateSender'
 import updateRecipient from '../../actions/games/updateRecipient'
 
 let setSender = ''
-let recipientIndex = null
 
 class MessageBox extends PureComponent {
 

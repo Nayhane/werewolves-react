@@ -68,5 +68,4 @@ const mapStateToProps = ({ currentUser, players }, { match }) => {
   }
 }
 
-
 export default connect(mapStateToProps, { fetchPlayers })(Sidebar)
