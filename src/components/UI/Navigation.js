@@ -7,6 +7,7 @@ import signOut from '../../actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 
 import RegisterPlayer from '../RegisterPlayer'
 
@@ -34,6 +35,11 @@ class Navigation extends PureComponent {
   }
 
 
+  goToMessage = () => {
+    console.log('im here')
+    this.props.push('/readmessage')
+  }
+
   render() {
     const { signedIn } = this.props
     const divStyle = {
@@ -45,6 +51,7 @@ class Navigation extends PureComponent {
         title={TITLE}
         iconElementRight={signedIn ?
           <div style={divStyle}>
+            <RaisedButton primary={true} label="Read message" onClick={this.goToMessage} />
             <RegisterPlayer />
             <IconMenu
               iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}

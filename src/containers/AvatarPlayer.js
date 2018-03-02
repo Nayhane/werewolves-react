@@ -19,9 +19,11 @@ const setClassName = (dead, mayor, receivedMessages) => {
   }
   if (mayor) {
     return 'mayor'
-  } 
+  }
+
   if ( receivedMessages.length < 0){
     return ''
+    
   } else if (receivedMessages.length > 0){
     return 'Email'
   }
@@ -40,7 +42,7 @@ class AvatarPlayer extends PureComponent {
      <div key={index} className="avatar">
      <div className={setClassName(player.dead, player.mayor, player.receivedMessages)}>
       <List>
-      <Badge badgeContent={ player.receivedMessages.length ? <img src={Email} className="Email" alt="Email" /> : ''} secondary={true} >
+      <Badge badgeContent={ player.receivedMessages.length && player.dead === false ? <img src={Email} className="Email" alt="Email" /> : ''} secondary={true} >
         <Badge
         badgeContent={ player.mayor ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''} secondary={true}
         >
