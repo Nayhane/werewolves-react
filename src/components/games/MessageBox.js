@@ -44,10 +44,10 @@ class MessageBox extends PureComponent {
     })
   }
 
-  chooseRecipient = (player) => {
+  chooseRecipient = (recipient) => {
     this.setState({
-      recipientId: player._id,
-      recipientName: player.name
+      recipientId: recipient._id,
+      recipientName: recipient.name
     })
   }
 
@@ -99,6 +99,7 @@ class MessageBox extends PureComponent {
             multiLine={true}
             rows={5}
             style={textInputStyle}
+            disabled={true}
           />
 
           <div>
