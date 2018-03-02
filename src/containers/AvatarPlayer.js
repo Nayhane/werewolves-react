@@ -20,14 +20,6 @@ const setClassName = (dead, mayor) => {
   if (mayor) {
     return 'mayor'
   }
-
-  // if ( receivedMessages.length < 0){
-  //   return ''
-  //
-  // } else if (receivedMessages.length > 0){
-  //   return 'Email'
-  // }
-
 }
 
 
@@ -35,7 +27,6 @@ class AvatarPlayer extends PureComponent {
   componentWillMount() {
     this.props.subscribeToWebsocket()
   }
-
 
   renderAvatars(player, index){
    return(
