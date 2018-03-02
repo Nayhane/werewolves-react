@@ -8,6 +8,7 @@ import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import GameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 
 import RegisterPlayer from '../RegisterPlayer'
 
@@ -38,6 +39,11 @@ class Navigation extends PureComponent {
     this.props.push('/')
   }
 
+  goToMessage = () => {
+    console.log('im here')
+    this.props.push('/readmessage')
+  }
+
   render() {
     const { signedIn } = this.props
     const divStyle = {
@@ -51,6 +57,7 @@ class Navigation extends PureComponent {
           <IconButton onClick={this.goHome}><GameIcon /></IconButton>}
         iconElementRight={signedIn ?
           <div style={divStyle}>
+            <RaisedButton primary={true} label="Read message" onClick={this.goToMessage} />
             <RegisterPlayer />
             <IconMenu
               iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
