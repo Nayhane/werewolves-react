@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 //import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import _ from 'underscore'
 //components
 import updateSender from '../../actions/games/updateSender'
 import updateRecipient from '../../actions/games/updateRecipient'
@@ -13,7 +12,6 @@ import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
 let setSender = ''
-let recipientIndex = null
 
 class MessageBox extends PureComponent {
 
@@ -22,6 +20,7 @@ class MessageBox extends PureComponent {
     this.state = {
       message: '',
       open: false,
+      recipientName: '...'
     }
   }
 
@@ -32,7 +31,7 @@ class MessageBox extends PureComponent {
   }
 
   handlePopoverClick = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     this.setState({
       open: true,
       anchorEl: event.currentTarget,
@@ -45,12 +44,11 @@ class MessageBox extends PureComponent {
     })
   }
 
-  displayRecipient() {
-
-    // if (this.refs.recipient.value) {
-    //   return this.refs.recipient.value
-    // }
-    return ''
+  chooseRecipient = (player) => {
+    this.setState({
+      recipientId: player._id,
+      recipientName: player.name
+    })
   }
 
   sendAnonymous = () => {
@@ -64,7 +62,7 @@ class MessageBox extends PureComponent {
   }
 
   sendMessage = (player) => {
-    const recipientId = this.menu.value
+    const recipientId = this.state.recipientId
 
     const updatedPlayer = {
       messageSent: 'sent'
@@ -89,7 +87,7 @@ class MessageBox extends PureComponent {
     return (
       <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
         <form>
-          <h1>To: { this.displayRecipient() }</h1>
+          <h1>Send a message to { this.state.recipientName }</h1>
 
           <TextField
             id="text-field-controlled"
@@ -119,25 +117,21 @@ class MessageBox extends PureComponent {
                 <Menu ref={(input) => this.menu = input}>
                   { players.map((player, index) => {
                       return(
-                        <MenuItem key={index} primaryText={player.name} value={player._id} key={index} />
+                        <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
                       )
                     })
                   }
                 </Menu>
               </Popover>
 
-            <select ref={(input) => this.menu = input}>
-              { players.map((player, index) => {
-                  return(
-                    <option key={index} value={player._id}>{ player.name }</option>
-                  )
-                })
-              }
-            </select>
-
             <input type="button" value="Send anonymous" onClick={this.sendAnonymous}/>
             <input type="button" value="Sign message" onClick={this.signMessage}/>
-            <input type="button" value="Send" onClick={() => this.sendMessage(this.props.player)}/>
+
+          <RaisedButton
+            type="button"
+            value="Send"
+            label="Send signed"
+            onClick={() => this.sendMessage(this.props.player)} />
           </div>
         </form>
       </div>
