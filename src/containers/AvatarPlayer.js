@@ -19,8 +19,8 @@ const setClassName = (dead, mayor, receivedMessages) => {
   }
   if (mayor) {
     return 'mayor'
-  }
-
+  } 
+  
   if ( receivedMessages.length < 0){
     return ''
     

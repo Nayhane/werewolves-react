@@ -7,7 +7,6 @@ import signOut from '../../actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
 
 import RegisterPlayer from '../RegisterPlayer'
 
@@ -25,6 +24,14 @@ class Navigation extends PureComponent {
     signOut: PropTypes.func.isRequired,
   }
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      gamePage: true
+    }
+  }
+
   signOut = (event) => {
     event.preventDefault()
     this.props.signOut()
@@ -34,9 +41,18 @@ class Navigation extends PureComponent {
     this.props.push('/sign-up')
   }
 
+  goHome = () => {
+    this.setState({
+      gamePage: true
+    })
+    this.props.push('/')
+  }
 
   goToMessage = () => {
-    console.log('im here')
+    this.setState({
+      gamePage: false
+    })
+
     this.props.push('/readmessage')
   }
 
@@ -51,7 +67,8 @@ class Navigation extends PureComponent {
         title={TITLE}
         iconElementRight={signedIn ?
           <div style={divStyle}>
-            <RaisedButton primary={true} label="Read message" onClick={this.goToMessage} />
+            { this.state.gamePage ? <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Read message" onClick={this.goToMessage} /> :
+            <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Back to game" onClick={this.goHome} />}
             <RegisterPlayer />
             <IconMenu
               iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
