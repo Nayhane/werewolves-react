@@ -5,9 +5,7 @@ import { push } from 'react-router-redux'
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
 import VillageAvatar from './VillageAvatar'
-
 import MessageBox from '../components/games/MessageBox'
-import VillageAvatar from './VillageAvatar'
 import Paper from 'material-ui/Paper'
 import './Lobby.css'
 
