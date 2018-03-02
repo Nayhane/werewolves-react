@@ -3,15 +3,24 @@ import PropTypes from 'prop-types'
 //import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
 import MoveAllToVillage from '../components/games/MoveAllToVillage'
+import Email from '../images/email.png'
+import MayorMedal from '../images/mayor-medal.png'
+import Cross from '../images/cross.png'
+import {Card, CardActions, CardHeader,  CardTitle} from 'material-ui/Card';
+import './Village.css'
 
-import {Card, CardActions, CardHeader, /*CardMedia, CardTitle, CardText*/} from 'material-ui/Card';
 
-const setClassName = (dead, mayor) => {
-  if (dead) {
-    return 'dead'
-  }
+const setClassName = ( mayor, receivedMessages) => {
+
+
   if (mayor) {
     return 'mayor'
+  }
+  if ( receivedMessages.length < 0){
+    return ''
+
+  } else if (receivedMessages.length > 0){
+    return 'Email'
   }
 }
 
@@ -33,12 +42,16 @@ class Village extends PureComponent {
   renderPlayer(player, index) {
     return(
       <div key={index} >
-        <Card className={setClassName(player.dead, player.mayor)}>
+        <Card id="body" className={setClassName( player.mayor, player.receivedMessages)}>
           <CardHeader
             title={player.name}
-            avatar={player.photo}
-            children={<PlayerDialog player={player}/>
-}
+            subtitle={ player.dead ? <img src={Cross} className="cross" alt="cross" /> : ''}
+          />
+          <CardHeader
+            title={ player.receivedMessages.length && player.dead === false ? <img src={Email} className="Email" alt="Email" /> : ''}
+            subtitle= { player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
+            subti
+            children={<PlayerDialog player={player}/> }
           />
           <CardActions>
             { player.mayor ? 'Mayor' : '' }
@@ -46,19 +59,18 @@ class Village extends PureComponent {
             { player.messageSent === 'sent' ? 'Message sent' : '' }
           </CardActions>
       </Card>
+    </div>
+  )
+}
 
-      </div>
-    )
-  }
-
-  render() {
-    return (
-      <div>
-        <MoveAllToVillage players={this.props.players}/>
-        <div>{ this.props.players.map(this.renderPlayer) }</div>
-      </div>
-    )
-  }
+render() {
+  return (
+    <div>
+      <MoveAllToVillage players={this.props.players}/>
+      <div>{ this.props.players.map(this.renderPlayer) }</div>
+    </div>
+  )
+}
 }
 
 export default Village

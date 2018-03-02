@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 //import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
 //components
 import PlayerMenuButton from './PlayerMenuButton'
 import updateDeath from '../../actions/games/updateDeath'
@@ -26,14 +27,15 @@ class PlayerDialog extends PureComponent {
   }
 
 
-
   makeMayor = (player) => {
-    const updatedPlayer = { 
-      mayor: !player.mayor
-    }
+     const updatedPlayer = {
+       mayor: !player.mayor
+     }
 
-    this.props.updateMayor(player._id, updatedPlayer)
-  }
+     this.props.updateMayor(player._id, updatedPlayer)
+   }
+
+
 
   sendMessage = (player) => {
     let message = player.messageSent
@@ -74,20 +76,22 @@ class PlayerDialog extends PureComponent {
 
     return (
       <div>
-        <IconMenu
-          iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        >
-          <MenuItem primaryText={<PlayerMenuButton icon={message} onClick={() => this.sendMessage(this.props.player)}/>} />
-          <MenuItem primaryText={<PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>} />
-          <MenuItem primaryText={<PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>} />
-          <MenuItem primaryText={<PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>} />
-        </IconMenu>
+      <IconMenu
+      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+      anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      targetOrigin={{horizontal: 'right', vertical: 'top'}}
+      >
+      <MenuItem primaryText={<PlayerMenuButton icon={message} onClick={() => this.sendMessage(this.props.player)}/>} />
+      <MenuItem primaryText={<PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>} />
+      <MenuItem primaryText={<PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>} />
+      <MenuItem primaryText={<PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>} />
+      </IconMenu>
       </div>
     )
   }
 }
+
+
 
 export default connect(null, {
   updateDeath,
