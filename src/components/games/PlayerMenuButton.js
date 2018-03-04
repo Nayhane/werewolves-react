@@ -6,6 +6,7 @@ import IconLocationOn from 'material-ui/svg-icons/communication/location-on'
 import KeyIcon from 'material-ui/svg-icons/communication/vpn-key'
 import SwapIcon from 'material-ui/svg-icons/communication/swap-calls'
 import EnvelopeIcon from 'material-ui/svg-icons/content/mail'
+import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import SadIcon from 'material-ui/svg-icons/social/sentiment-very-dissatisfied'
 
 class PlayerMenuButton extends PureComponent {
@@ -30,6 +31,9 @@ class PlayerMenuButton extends PureComponent {
 
       case 'Sluimervoort' :
         return ['Move to Wakkerdam', <SwapIcon />]
+
+      case 'Delete':
+        return ['Delete', <DeleteIcon />]
 
       default :
         return ['exclamation-circle', <IconLocationOn />]

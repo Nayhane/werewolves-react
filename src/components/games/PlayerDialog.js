@@ -8,6 +8,7 @@ import updateDeath from '../../actions/games/updateDeath'
 import updateMayor from '../../actions/games/updateMayor'
 import updateSender from '../../actions/games/updateSender'
 import updateVillage from '../../actions/games/updateVillage'
+import deletePlayer from '../../actions/games/delete'
 
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
@@ -35,7 +36,10 @@ class PlayerDialog extends PureComponent {
      this.props.updateMayor(player._id, updatedPlayer)
    }
 
-
+   deleteThisPlayer = (player) =>  {
+     console.log(player)
+     this.props.deletePlayer(player._id)
+   }
 
   sendMessage = (player) => {
     let message = player.messageSent
@@ -68,11 +72,15 @@ class PlayerDialog extends PureComponent {
     this.props.updateVillage(player._id, updatedVillage)
   }
 
+
+
   render() {
     const message = 'message'
     const mayor = 'mayor'
     const dead = 'dead'
+    const deletePlayer = 'delete'
     const village = this.props.player.village[0].name
+
 
     return (
       <div>
@@ -85,17 +93,17 @@ class PlayerDialog extends PureComponent {
       <MenuItem primaryText={<PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>} />
       <MenuItem primaryText={<PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>} />
       <MenuItem primaryText={<PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>} />
+      <MenuItem primaryText={<PlayerMenuButton icon={deletePlayer} onClick={() => this.deleteThisPlayer(this.props.player)}/>} />
       </IconMenu>
       </div>
     )
   }
 }
 
-
-
 export default connect(null, {
   updateDeath,
   updateMayor,
   updateSender,
   updateVillage,
+  deletePlayer,
 })(PlayerDialog)

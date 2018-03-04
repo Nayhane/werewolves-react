@@ -50,7 +50,6 @@ class Village extends PureComponent {
           <CardHeader
             title={ player.receivedMessages.length && player.dead === false ? <img src={Email} className="Email" alt="Email" /> : ''}
             subtitle= { player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
-            subti
             children={<PlayerDialog player={player}/> }
           />
           <CardActions>
