@@ -12,13 +12,34 @@ import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
 class MessageBox extends PureComponent {
-
   constructor(props) {
     super(props)
     this.state = {
       message: '',
       open: false,
       recipientName: '...',
+      counter: 10
+    }
+  }
+
+  componentDidMount() {
+    this.timerId = setInterval(
+      () => this.tick(),
+      1000
+    )
+  }
+
+  componentWillUnmount() {
+      clearInterval(this.timerId)
+    }
+
+  tick() {
+    if (!this.state.counter <= 0) {
+      this.setState({
+        counter: this.state.counter - 1
+      })
+    } else {
+      return
     }
   }
 
@@ -49,6 +70,7 @@ class MessageBox extends PureComponent {
     })
   }
 
+
   sendMessage = (player, choice) => {
     const whoAreYou = choice
     const recipientId = this.state.recipientId
@@ -71,32 +93,13 @@ class MessageBox extends PureComponent {
       borderRadius: '2px'
     }
 
-    return (
-      <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
+    let timer = null
+    if (this.state.recipientName !== '...') {
+      return timer =
+      <div>
         <h1>Send a message to { this.state.recipientName }</h1>
-        <RaisedButton
-          onClick={this.handlePopoverClick}
-          label="Choose recipient"
-        />
+        <span>{this.state.counter}</span>
 
-        <Popover
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
-          onRequestClose={this.handleRequestClose}
-        >
-          <Menu ref={(input) => this.menu = input}>
-            { players.map((player, index) => {
-                return(
-                  <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
-                )
-              })
-            }
-          </Menu>
-        </Popover>
-
-        <div>
           <TextField
             id="text-field-controlled"
             value={this.state.message}
@@ -122,7 +125,36 @@ class MessageBox extends PureComponent {
             label="Send signed"
             onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
           />
-        </div></div>
+        </div>
+    }
+
+    return (
+      <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
+        <h1>Send a message to { this.state.recipientName }</h1>
+        {timer}
+
+        <RaisedButton
+          onClick={this.handlePopoverClick}
+          label="Choose recipient"
+        />
+
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+        >
+          <Menu ref={(input) => this.menu = input}>
+            { players.map((player, index) => {
+                return(
+                  <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
+                )
+              })
+            }
+          </Menu>
+        </Popover>
+      </div>
     )
   }
 }
