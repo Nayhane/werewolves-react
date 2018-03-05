@@ -6,7 +6,6 @@ import { fetchPlayers} from '../actions/games/fetch'
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
 import VillageAvatar from './VillageAvatar'
-import MessageBox from '../components/games/MessageBox'
 import Paper from 'material-ui/Paper'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
@@ -114,7 +113,6 @@ class Lobby extends PureComponent {
           <Timer />
           { this.props.players.map(this.renderMessageBox) }
           <VillageAvatar players={this.props.players}/>
-
         </Paper>
       </div>
 
