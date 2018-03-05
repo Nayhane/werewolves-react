@@ -7,7 +7,6 @@ import Village from './Village'
 
 // MUI
 import {List} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 
 class Sidebar extends PureComponent {
@@ -40,15 +39,15 @@ class Sidebar extends PureComponent {
 
     return (
       <div>
-        <List>
-          <Subheader><h1>WAKKERDAM</h1></Subheader>
+        <List style={{margin: 0, padding: 0}}>
+          <h1>WAKKERDAM</h1>
           <Village players={village1} />
         </List>
 
         <Divider />
 
         <List>
-          <Subheader><h1>SLUIMERVOORT</h1></Subheader>
+          <h1>SLUIMERVOORT</h1>
           <Village players={village2} />
         </List>
       </div>

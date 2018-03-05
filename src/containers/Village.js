@@ -31,24 +31,24 @@ class Village extends PureComponent {
      })
 
      return(
-       <div key={index} >
-         <Card id="body" className={setClassName( player.mayor, player.receivedMessages)}>
-           <CardHeader
+      <div key={index} >
+        <Card id="body" className={setClassName( player.mayor, player.receivedMessages)}>
+          <CardHeader
              title={player.name}
              subtitle={ player.dead ? <img src={Cross} className="cross" alt="cross" /> : ''}
            />
-           <CardHeader
+          <CardHeader
              title={ player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <img src={Email} className="Email" alt="Email" /> : ''}
              subtitle= { player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
              children={<PlayerDialog player={player}/> }
            />
-           <CardActions>
+          <CardActions>
              { player.mayor ? 'Mayor' : '' }
              { player.dead ? 'Dead' : '' }
              { player.messageSent === 'sent' ? 'Message sent' : '' }
-           </CardActions>
-       </Card>
-     </div>
+          </CardActions>
+        </Card>
+      </div>
    )
   }
 

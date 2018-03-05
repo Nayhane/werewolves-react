@@ -27,10 +27,10 @@ export const palette = {
  primary3Color: primary3Color,
 
  accent1Color: secondaryColor,
- textColor: black,
+ textColor: lightGrey,
  alternateTextColor: white,
 
- canvasColor: secondaryLightColor,
+ canvasColor: secondaryDarkColor,
  borderColor: secondaryDarkColor,
 }
 
