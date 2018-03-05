@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-//import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
-import MoveAllToVillage from '../components/games/MoveAllToVillage'
+//import MoveAllToVillage from '../components/games/MoveAllToVillage'
 import Email from '../images/email.png'
 import MayorMedal from '../images/mayor-medal.png'
 import Cross from '../images/cross.png'
-import {Card, CardActions, CardHeader,  CardTitle} from 'material-ui/Card';
+import { Card, CardActions, CardHeader } from 'material-ui/Card';
+import VillageMenuButton from '../components/games/VillageMenuButton'
+import movePlayers from '../actions/games/move'
+import deletePlayer from '../actions/games/delete'
 import './Village.css'
 
 
 const setClassName = ( mayor, receivedMessages) => {
-
-
   if (mayor) {
     return 'mayor'
   }
@@ -23,7 +24,6 @@ const setClassName = ( mayor, receivedMessages) => {
     return 'Email'
   }
 }
-
 
 class Village extends PureComponent {
   static propTypes = {
@@ -62,14 +62,51 @@ class Village extends PureComponent {
   )
 }
 
+moveAllPlayers = (players) => {
+  let updatedVillage = {}
+
+  for ( let i=0; i < players.length; i++) {
+    if (players[i].village[0].name === "Wakkerdam") {
+      updatedVillage = {
+        name: "Sluimervoort"
+      }
+    } else if (players[i].village[0].name === "Sluimervoort") {
+      updatedVillage = {
+        name: "Wakkerdam"
+      }
+    }
+    this.props.movePlayers(players[i]._id, updatedVillage)
+  }
+}
+
+deleteAllPlayers = (players) =>  {
+  for (let i = 0; i < players.length; i++) {
+    this.props.deletePlayer(players[i]._id)
+  }
+}
+
 render() {
+  let villageName = ''
+  if (this.props.players.length > 0) {
+    if (this.props.players[0].village[0].name === 'Wakkerdam') {
+      villageName = 'Sluimervoort'
+    } else {
+      villageName = 'Wakkerdam'
+    }
+  }
+
+  console.log(villageName)
   return (
     <div>
-      <MoveAllToVillage players={this.props.players}/>
+      <VillageMenuButton label={`Move players to ${villageName}`} onClick={ () => this.moveAllPlayers(this.props.players) }/>
+      <VillageMenuButton label='Remove all players' onClick={ () => this.deleteAllPlayers(this.props.players) }/>
       <div>{ this.props.players.map(this.renderPlayer) }</div>
     </div>
   )
 }
 }
 
-export default Village
+export default connect(null, {
+  deletePlayer,
+  movePlayers
+ })(Village)

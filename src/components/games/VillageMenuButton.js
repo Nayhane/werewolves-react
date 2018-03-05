@@ -14,7 +14,7 @@ render() {
     return (
       <RaisedButton
         onClick={ onClick }
-        label='Move All Players'
+        label={ this.props.label }
         labelPosition="before"
         primary={true}
         icon={<MovePlayers />}

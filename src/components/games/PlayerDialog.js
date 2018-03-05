@@ -37,7 +37,6 @@ class PlayerDialog extends PureComponent {
    }
 
    deleteThisPlayer = (player) =>  {
-     console.log(player)
      this.props.deletePlayer(player._id)
    }
 
