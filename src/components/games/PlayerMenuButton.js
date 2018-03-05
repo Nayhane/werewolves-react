@@ -32,8 +32,8 @@ class PlayerMenuButton extends PureComponent {
       case 'Sluimervoort' :
         return ['Move to Wakkerdam', <SwapIcon />]
 
-      case 'Delete':
-        return ['Delete', <DeleteIcon />]
+      case 'DeletePlayer':
+        return ['DeletePlayer', <DeleteIcon />]
 
       default :
         return ['exclamation-circle', <IconLocationOn />]
