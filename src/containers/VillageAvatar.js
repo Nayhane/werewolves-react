@@ -18,10 +18,10 @@ class VillageAvatar extends PureComponent {
 
   render() {
     const style = {
-    width: 1200,
-    height: 800,
-    float: 'left',
-    display: 'inline-block'
+    // width: 1200,
+    // height: 800,
+    // float: 'left',
+    // display: 'inline-block'
     }
 
 

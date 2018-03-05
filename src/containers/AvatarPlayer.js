@@ -22,32 +22,36 @@ const setClassName = (dead, mayor) => {
   }
 }
 
-
 class AvatarPlayer extends PureComponent {
   componentWillMount() {
     this.props.subscribeToWebsocket()
   }
 
   renderAvatars(player, index){
+    const noMedal = {
+      color: 'red'
+    }
+
    return(
-     <div key={index} className="avatar">
-     <div className={setClassName(player.dead, player.mayor, player.receivedMessages)}>
-      <List>
-
-        <Badge
-        badgeContent={ player.mayor ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''} secondary={true}
-        >
-        <ListItem
-          leftAvatar={
-          <Avatar src={player.photo} size={80}/>
-        }>
-        </ListItem>
-        <br/><br/><br/>
-        <div className='name'>{player.name}</div>
-       </Badge>
-
-      </List>
-     </div>
+    <div key={index} className="avatar">
+      <div className={setClassName(player.dead, player.mayor, player.receivedMessages)}>
+        <List>
+          <Badge
+            badgeContent={ player.mayor ? <img src={MayorMedal}
+            className="medal" alt="MayorMedal" /> : ''}
+            style={noMedal}
+            secondary={true}
+          >
+          <ListItem
+            leftAvatar={
+            <Avatar src={player.photo} size={80}/>
+            }>
+          </ListItem>
+          <br/><br/><br/>
+          <span className='name'>{player.name}</span>
+         </Badge>
+        </List>
+      </div>
     </div>
    )
   }

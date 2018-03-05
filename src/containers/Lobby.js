@@ -7,7 +7,6 @@ import { fetchPlayers} from '../actions/games/fetch'
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
 import VillageAvatar from './VillageAvatar'
-import Paper from 'material-ui/Paper'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import './Lobby.css'
@@ -102,13 +101,19 @@ class Lobby extends PureComponent {
   render() {
     return (
       <div className="lobby">
-        <Paper className="paper">
-          <Sidebar className="sidebar"/>
+
+        <div className="village-container">
+          <VillageAvatar players={this.props.players}/>
+          <div className="timer">
+            <Timer />
+          </div>
+        </div>
+
+        <div className="sidebar">
+          <Sidebar />
           { this.renderMergePopUp(this.state.mergeOpen) }
           { this.renderMayorPopUp(this.props.players) }
-          <Timer />
-          <VillageAvatar players={this.props.players}/>
-        </Paper>
+        </div>
       </div>
 
     )

@@ -16,7 +16,7 @@ export const primary1Color = '#1f243d'
 export const primary2Color = '#484c68'
 export const primary3Color = '#000018'
 
-export const secondaryColor = '#9aacb6'
+export const secondaryColor = '#180627'
 export const secondaryLightColor = '#cbdee8'
 export const secondaryDarkColor = '#6c7d86'
 
@@ -27,10 +27,10 @@ export const palette = {
  primary3Color: primary3Color,
 
  accent1Color: secondaryColor,
- textColor: black,
+ textColor: lightGrey,
  alternateTextColor: white,
 
- canvasColor: secondaryLightColor,
+ canvasColor: secondaryDarkColor,
  borderColor: secondaryDarkColor,
 }
 

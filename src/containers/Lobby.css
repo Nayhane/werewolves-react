@@ -1,13 +1,41 @@
 .lobby {
-  margin: 0 auto;
-  width: 95%;
+  width: 100%;
+  display: flex;
 }
 
 .Lobby .paper {
   margin-top: 0px;
-  /* padding: 10px; */
 }
 
 .sidebar {
+  right: 0;
+  /* background-color: rgba(255, 71, 77, 0.61); */
+  width: 25%;
+}
+
+.village-container {
+  width: 75%;
+  position: relative;
+}
+
+.village-container h1 {
+  color: #EFEFEF;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.timer {
   position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.sidebar h1 {
+  display: block;
+  background-color: #9aacb6;
+  color: #EFEFEF;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }

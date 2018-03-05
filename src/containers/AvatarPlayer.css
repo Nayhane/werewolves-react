@@ -1,17 +1,19 @@
 .avatar{
-  margin-left: 10px;
+  /* margin-left: 10px;
   padding-left: 10px;
-  margin-top: 40px;
+  margin-top: 40px; */
   display: inline-block;
 }
+
 .name{
   margin-left: 30px;
-  color: black;
+  color: #EFEFEF;
 }
 
 .dead{
   filter: opacity(30%);
 }
+
 .medal{
   height: 3rem;
 }

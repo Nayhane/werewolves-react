@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
 //import MoveAllToVillage from '../components/games/MoveAllToVillage'
@@ -26,71 +25,67 @@ if (mayor) {
 }
 
 class Village extends PureComponent {
-
-
   renderPlayer(player, index) {
-
-
      let unreadMessages = player.receivedMessages.filter(function(message){
        return message.messageRead === false
      })
 
      return(
-       <div key={index} >
-         <Card id="body" className={setClassName( player.mayor, player.receivedMessages)}>
-           <CardHeader
+      <div key={index} >
+        <Card id="body" className={setClassName( player.mayor, player.receivedMessages)}>
+          <CardHeader
              title={player.name}
              subtitle={ player.dead ? <img src={Cross} className="cross" alt="cross" /> : ''}
            />
-           <CardHeader
+          <CardHeader
              title={ player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <img src={Email} className="Email" alt="Email" /> : ''}
              subtitle= { player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
              children={<PlayerDialog player={player}/> }
            />
-           <CardActions>
+          <CardActions>
              { player.mayor ? 'Mayor' : '' }
              { player.dead ? 'Dead' : '' }
              { player.messageSent === 'sent' ? 'Message sent' : '' }
-           </CardActions>
-       </Card>
-     </div>
+          </CardActions>
+        </Card>
+      </div>
    )
   }
 
-moveAllPlayers = (players) => {
-  let updatedVillage = {}
+  moveAllPlayers = (players) => {
+    let updatedVillage = {}
 
-  for ( let i=0; i < players.length; i++) {
-    if (players[i].village[0].name === "Wakkerdam") {
-      updatedVillage = {
-        name: "Sluimervoort"
+    for ( let i=0; i < players.length; i++) {
+      if (players[i].village[0].name === "Wakkerdam") {
+        updatedVillage = {
+          name: "Sluimervoort"
+        }
+      } else if (players[i].village[0].name === "Sluimervoort") {
+        updatedVillage = {
+          name: "Wakkerdam"
+        }
       }
-    } else if (players[i].village[0].name === "Sluimervoort") {
-      updatedVillage = {
-        name: "Wakkerdam"
-      }
-    }
-    this.props.movePlayers(players[i]._id, updatedVillage)
-  }
-}
-
-render() {
-  let villageName = ''
-  if (this.props.players.length > 0) {
-    if (this.props.players[0].village[0].name === 'Wakkerdam') {
-      villageName = 'Sluimervoort'
-    } else {
-      villageName = 'Wakkerdam'
+      this.props.movePlayers(players[i]._id, updatedVillage)
     }
   }
 
-  return (
-    <div>
-      <VillageMenuButton label={`Move players to ${villageName}`} onClick={ () => this.moveAllPlayers(this.props.players) }/>
-      <div>{ this.props.players.map(this.renderPlayer) }</div>
-    </div>
-  )
-}
+  render() {
+    let villageName = ''
+    if (this.props.players.length > 0) {
+      if (this.props.players[0].village[0].name === 'Wakkerdam') {
+        villageName = 'Sluimervoort'
+      } else {
+        villageName = 'Wakkerdam'
+      }
+    }
+
+    return (
+      <div>
+        <VillageMenuButton label={`Move players to ${villageName}`} onClick={ () => this.moveAllPlayers(this.props.players) }/>
+        <div>{ this.props.players.map(this.renderPlayer) }</div>
+      </div>
+    )
+  }
 }
 
 export default connect(null, {
