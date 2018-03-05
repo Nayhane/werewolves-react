@@ -12,13 +12,34 @@ import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
 class MessageBox extends PureComponent {
-
   constructor(props) {
     super(props)
     this.state = {
       message: '',
       open: false,
       recipientName: '...',
+      counter: 1000
+    }
+  }
+
+  componentDidMount() {
+    this.timerId = setInterval(
+      () => this.tick(),
+      1000
+    )
+  }
+
+  componentWillUnmount() {
+      clearInterval(this.timerId)
+    }
+
+  tick() {
+    if (!this.state.counter <= 0) {
+      this.setState({
+        counter: this.state.counter - 1
+      })
+    } else {
+      return
     }
   }
 
@@ -45,12 +66,13 @@ class MessageBox extends PureComponent {
   chooseRecipient = (recipient) => {
     this.setState({
       recipientId: recipient._id,
-      recipientName: recipient.name
+      recipientName: recipient.name,
+      counter: 10
     })
   }
 
   sendMessage = (player, choice) => {
-    const whoAreYou = choice
+    const sender = choice
     const recipientId = this.state.recipientId
 
     const updatedPlayer = {
@@ -58,7 +80,7 @@ class MessageBox extends PureComponent {
     }
     const updatedRecipient = {
       message: this.state.message,
-      senderName: whoAreYou
+      senderName: sender
     }
     this.props.updateSender(player._id, updatedPlayer)
     this.props.updateRecipient(recipientId, updatedRecipient)
@@ -71,9 +93,50 @@ class MessageBox extends PureComponent {
       borderRadius: '2px'
     }
 
+    let timerDone = false
+    if (this.state.counter <= 0) {
+      timerDone = true
+      this.sendMessage(this.props.player, this.props.player.name)
+    }
+
+    if (this.state.recipientName !== '...') {
+      return(
+        <div>
+          <h1>Send a message to { this.state.recipientName }</h1>
+          <h2>You only have {this.state.counter} seconds left...</h2>
+
+          <TextField
+            id="text-field-controlled"
+            value={this.state.message}
+            onChange={this.handleTextInput}
+            maxLength={160}
+            ref="message"
+            placeholder="Quickly send your message!"
+            multiLine={true}
+            rows={5}
+            style={textInputStyle}
+            disabled={timerDone}
+          />
+          <RaisedButton
+            type="button"
+            value="Send anonymous"
+            label="Send anonymous"
+            onClick={() => this.sendMessage(this.props.player, 'anonymous')}
+          />
+          <RaisedButton
+            type="button"
+            value="Send"
+            label="Send signed"
+            onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
+          />
+        </div>
+      )
+    }
+
     return (
       <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
-        <h1>Send a message to { this.state.recipientName }</h1>
+        <h1>Choose a recipient</h1>
+
         <RaisedButton
           onClick={this.handlePopoverClick}
           label="Choose recipient"
@@ -88,44 +151,14 @@ class MessageBox extends PureComponent {
         >
           <Menu ref={(input) => this.menu = input}>
             { players.map((player, index) => {
-                if (!player.dead) {
-                  return(
-                    <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
-                  )
-                }
-                return null
+                return(
+                  <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
+                )
               })
             }
           </Menu>
         </Popover>
-
-        <div>
-          <TextField
-            id="text-field-controlled"
-            value={this.state.message}
-            onChange={this.handleTextInput}
-            maxLength={160}
-            ref="message"
-            placeholder="Be quick - you only have 10 seconds!"
-            multiLine={true}
-            rows={5}
-            style={textInputStyle}
-          />
-
-          <RaisedButton
-            type="button"
-            value="Send anonymous"
-            label="Send anonymous"
-            onClick={() => this.sendMessage(this.props.player, 'anonymous')}
-          />
-
-          <RaisedButton
-            type="button"
-            value="Send"
-            label="Send signed"
-            onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
-          />
-        </div></div>
+      </div>
     )
   }
 }

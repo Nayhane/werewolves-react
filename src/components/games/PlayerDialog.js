@@ -26,7 +26,7 @@ const customContentStyle = {
 
 class PlayerDialog extends PureComponent {
   state = {
-    open: false,
+    open: false
   }
 
   handleOpen = (player, index) => {
@@ -47,7 +47,6 @@ class PlayerDialog extends PureComponent {
     this.props.updateDeath(player._id, updatedPlayer)
   }
 
-
   makeMayor = (player) => {
      const updatedPlayer = {
        mayor: !player.mayor
@@ -67,7 +66,7 @@ class PlayerDialog extends PureComponent {
         <MessageBox key={index} players={ this.props.players } player = {player}/>
         )
     } else {
-      return <h1>You already sent a message!</h1>
+      return <h1>Message sent!</h1>
     }
   }
 
@@ -87,8 +86,6 @@ class PlayerDialog extends PureComponent {
 
     this.props.updateVillage(player._id, updatedVillage)
   }
-
-
 
   render() {
     const message = 'message'
