@@ -5,7 +5,7 @@ import MessageItem from '../components/games/MessageItem.js'
 
 import { fetchPlayers} from '../actions/games/fetch'
 
-class MessagePage extends PureComponent {
+class sluimervoortMessagePage extends PureComponent {
 
   componentWillMount() {
     this.props.fetchPlayers()
@@ -19,7 +19,11 @@ class MessagePage extends PureComponent {
   }
 
   render() {
-    const recipients = this.props.players.filter((player) => {
+    const sluimervoortRecipients = this.props.players.filter((player)=> {
+      return player.village[0].name === "Sluimervoort"
+    })
+
+    const recipients = sluimervoortRecipients.filter((player) => {
       return player.receivedMessages.length > 0
     })
 
@@ -64,4 +68,4 @@ const mapStateToProps = ({ currentUser, players }) => {
 export default connect(mapStateToProps, {
   subscribeToWebsocket,
   fetchPlayers
-})(MessagePage)
+})(sluimervoortMessagePage)
