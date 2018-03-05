@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { fetchPlayers} from '../actions/games/fetch'
+
 //components
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
@@ -30,14 +31,6 @@ class Lobby extends PureComponent {
 
   handleMergeClose = () => {
     this.setState({mergeOpen: false});
-  }
-
-  renderMessageBox = (player, index) => {
-    if (player.messageSent === 'sending') {
-      return(
-        <MessageBox key={index} players={ this.props.players } player = {player}/>
-      )
-    }
   }
 
   renderMergePopUp(halfPlayers) {
@@ -111,7 +104,6 @@ class Lobby extends PureComponent {
           { this.renderMergePopUp(this.state.mergeOpen) }
           { this.renderMayorPopUp(this.props.players) }
           <Timer />
-          { this.props.players.map(this.renderMessageBox) }
           <VillageAvatar players={this.props.players}/>
         </Paper>
       </div>
