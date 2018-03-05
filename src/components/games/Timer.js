@@ -3,12 +3,15 @@ import ReactCountdownClock from 'react-countdown-clock'
 import ReactHowler from 'react-howler'
 //Soounds
 import mp3_bell from '../../sounds/churchBell.mp3'
-import PlayHowl from './PlayHowl'
+import mp3_howl from '../../sounds/wolf6.mp3'
+
+// import PlayHowl from './PlayHowl'
 //Styling
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import RestoreIcon from 'material-ui/svg-icons/action/restore'
+import './Timer.css'
 
 const  timerStyle  = {
   cursor: 'pointer',
@@ -36,6 +39,7 @@ class Timer extends PureComponent {
       seconds: 900,
       open: false,
       playing: false,
+      playing2: false,
     }
   }
 
@@ -59,14 +63,15 @@ class Timer extends PureComponent {
       paused: true,
       seconds: 900 + Math.random()*0.000000000001,
       color: '#1F243D',
+      playing: false,
     })
   }
 
   handleOpen() {
     this.setState({
       open: true,
+      playing2: true
     })
-
   }
 
   handleClose = () => {
@@ -85,7 +90,6 @@ class Timer extends PureComponent {
         onClick={this.handleClose}
       />
     ]
-
     return (
       <div style={timerStyle}>
 
@@ -95,6 +99,7 @@ class Timer extends PureComponent {
           ref={(ref) => (this.player = ref)}
         />
 
+      <div className="timer">
         <ReactCountdownClock
            ref={(c) => this._timer = c}
            onTick={this.onTick.bind(this)}
@@ -106,12 +111,13 @@ class Timer extends PureComponent {
            onComplete={this.handleOpen.bind(this)}
            onClick={this.setPause.bind(this) }
         />
+      </div>
 
       <RaisedButton
-           primary={true}
-           onClick={this.resetTimer.bind(this)}
-           icon={<RestoreIcon />}
-        />
+         primary={true}
+         onClick={this.resetTimer.bind(this)}
+         icon={<RestoreIcon />}
+      />
 
         <Dialog
           contentStyle={customContentStyle}
@@ -122,7 +128,11 @@ class Timer extends PureComponent {
           onRequestClose={this.handleClose}
         >
 
-          <PlayHowl />
+          <ReactHowler
+            src={mp3_howl}
+            playing={this.state.playing2}
+            ref={(ref) => (this.player = ref)}
+          />
 
           <h1 style={{ textAlign : 'center' }}>
 

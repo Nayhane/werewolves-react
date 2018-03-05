@@ -12,7 +12,6 @@ import {
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case FETCHED_PLAYERS :
-
       return [...payload]
 
     case FETCHED_ONE_PLAYER :
@@ -44,7 +43,7 @@ export default (state = [], { type, payload } = {}) => {
           if (player._id === payload._id) {
             return { ...payload }
           }
-          return player
+          return {...player}
         })
 
     case PLAYERS_UPDATED :
@@ -64,7 +63,7 @@ export default (state = [], { type, payload } = {}) => {
       })
 
     case PLAYER_REMOVED :
-      return state.filter((player) => (player._id !== payload._id))
+      return state.filter((...player) => (player._id !== payload._id))
 
     default :
       return state

@@ -91,7 +91,7 @@ class PlayerDialog extends PureComponent {
     const message = 'message'
     const mayor = 'mayor'
     const dead = 'dead'
-    const deletePlayer = 'delete'
+    const DeletePlayer = 'DeletePlayer'
     const village = this.props.player.village[0].name
 
     const actions = [
@@ -113,7 +113,7 @@ class PlayerDialog extends PureComponent {
         <MenuItem primaryText={<PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>} />
         <MenuItem primaryText={<PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>} />
         <MenuItem primaryText={<PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>} />
-        <MenuItem primaryText={<PlayerMenuButton icon={deletePlayer} onClick={() => this.deleteThisPlayer(this.props.player)}/>} />
+        <MenuItem primaryText={<PlayerMenuButton icon={DeletePlayer} onClick={() => this.deleteThisPlayer(this.props.player)}/>} />
         </IconMenu>
 
         <Dialog

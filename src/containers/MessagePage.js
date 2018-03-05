@@ -55,7 +55,7 @@ class MessagePage extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser, players }, { match }) => {
+const mapStateToProps = ({ currentUser, players }) => {
   return {
     players
   }
