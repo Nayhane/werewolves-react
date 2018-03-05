@@ -24,18 +24,36 @@ class Lobby extends PureComponent {
 
   renderMergePopUp() {
     return(
-      <div></div>
+      <div>Do you want to merge the villages?</div>
     )
   }
 
   renderMayorPopUp(players) {
-    const deadMayor = players.filter((player) => {
-      return (player.dead === true && player.mayor && true)
+    const village1 = players.filter((player) => {
+      return (player.village[0].name === 'Wakkerdam')
     })
 
-    if (deadMayor.length > 0) {
+    const village2 = players.filter((player) => {
+      return (player.village[0].name === 'Sluimervoort')
+    })
+
+    const noMayor1 = village1.filter((player) => {
+      return (player.mayor === true)
+    })
+
+    const noMayor2 = village2.filter((player) => {
+      return (player.mayor === true)
+    })
+
+    if (noMayor1.length === 0) {
       return(
-        <div></div>
+        <div>Wakkerdam needs to choose a new mayor!</div>
+      )
+    }
+
+    if (noMayor2.length === 0) {
+      return(
+        <div>Sluimervoort needs to choose a new mayor!</div>
       )
     }
     return
@@ -50,7 +68,7 @@ class Lobby extends PureComponent {
       <div className="lobby">
         <Paper className="paper">
           <Sidebar className="sidebar"/>
-          { deadPlayers.length === this.props.players.length ? this.renderMergePopUp() : '' }
+          { deadPlayers.length === (this.props.players.length/2) ? this.renderMergePopUp() : '' }
           { this.renderMayorPopUp(this.props.players) }
           <Timer />
           { this.props.players.map(this.renderMessageBox) }

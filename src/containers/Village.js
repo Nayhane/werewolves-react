@@ -88,7 +88,6 @@ render() {
     }
   }
 
-  console.log(villageName)
   return (
     <div>
       <VillageMenuButton label={`Move players to ${villageName}`} onClick={ () => this.moveAllPlayers(this.props.players) }/>

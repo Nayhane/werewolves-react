@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import MayorMedal from '../images/mayor-medal.png'
-import Email from '../images/email.png'
+//import Email from '../images/email.png'
 
 import Avatar from 'material-ui/Avatar';
 import Badge from 'material-ui/Badge';
@@ -45,7 +45,7 @@ class AvatarPlayer extends PureComponent {
         <br/><br/><br/>
         <div className='name'>{player.name}</div>
        </Badge>
-  
+
       </List>
      </div>
     </div>
