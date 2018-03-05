@@ -9,6 +9,7 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import RestoreIcon from 'material-ui/svg-icons/action/restore'
+import './Timer.css'
 
 const  timerStyle  = {
   cursor: 'pointer',
@@ -85,7 +86,6 @@ class Timer extends PureComponent {
         onClick={this.handleClose}
       />
     ]
-
     return (
       <div style={timerStyle}>
 
@@ -95,6 +95,7 @@ class Timer extends PureComponent {
           ref={(ref) => (this.player = ref)}
         />
 
+      <div className="timer">
         <ReactCountdownClock
            ref={(c) => this._timer = c}
            onTick={this.onTick.bind(this)}
@@ -106,6 +107,7 @@ class Timer extends PureComponent {
            onComplete={this.handleOpen.bind(this)}
            onClick={this.setPause.bind(this) }
         />
+    </div>
 
       <RaisedButton
            primary={true}
