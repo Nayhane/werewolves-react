@@ -128,11 +128,11 @@ class Timer extends PureComponent {
           onRequestClose={this.handleClose}
         >
 
-        <ReactHowler
-          src={mp3_howl}
-          playing={this.state.playing2}
-          ref={(ref) => (this.player = ref)}
-        />
+          <ReactHowler
+            src={mp3_howl}
+            playing={this.state.playing2}
+            ref={(ref) => (this.player = ref)}
+          />
 
           <h1 style={{ textAlign : 'center' }}>
 
