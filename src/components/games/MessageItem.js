@@ -17,7 +17,8 @@ class MessageItem extends PureComponent {
 
   toggleMessage = () => {
     this.setState({
-      messageOpen: !this.state.messageOpen
+      messageOpen: !this.state.messageOpen,
+      messageBorder: this.props.message.messageRead ? 'none' : '2px solid red'
     })
   }
 
@@ -34,7 +35,7 @@ class MessageItem extends PureComponent {
 
   render() {
     const { message } = this.props
-    console.log(this.state.messageBorder)
+    
 
     const inlineStyling = {
       color: 'white',
