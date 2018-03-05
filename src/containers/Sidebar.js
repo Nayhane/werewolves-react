@@ -28,7 +28,6 @@ class Sidebar extends PureComponent {
     this.props.fetchPlayers();
   }
 
-
   render() {
     const style = {
     width: 400,
@@ -39,22 +38,29 @@ class Sidebar extends PureComponent {
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
     })
+    const deadPlayerCountVillage1 = village1.filter((player) => {
+      return player.dead === !true
+    })
 
     const village2 = this.props.players.filter((player) => {
       return player.village[0].name === "Sluimervoort"
+    })
+    const deadPlayerCountVillage2 = village2.filter((player) => {
+      return player.dead === !true
     })
 
     return (
       <div style={style}>
         <List>
-          <Subheader><h1>WAKKERDAM</h1></Subheader>
+          <Subheader><h1>WAKKERDAM {deadPlayerCountVillage1.length}/{village1.length}</h1></Subheader>
           <Village players={village1} />
+
         </List>
 
         <Divider />
 
         <List>
-          <Subheader><h1>SLUIMERVOORT</h1></Subheader>
+          <Subheader><h1>SLUIMERVOORT {deadPlayerCountVillage2.length}/{village2.length}</h1></Subheader>
           <Village players={village2} />
         </List>
       </div>
