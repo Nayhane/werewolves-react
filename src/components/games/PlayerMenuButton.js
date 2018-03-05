@@ -51,7 +51,7 @@ class PlayerMenuButton extends PureComponent {
         onClick={ onClick }
         label={this.displayIcon()[0]}
         labelPosition="before"
-        primary={false}
+        primary={true}
         icon={this.displayIcon()[1]}
         style={buttonStyle}
       />

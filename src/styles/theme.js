@@ -30,7 +30,7 @@ export const palette = {
  textColor: lightGrey,
  alternateTextColor: white,
 
- canvasColor: secondaryDarkColor,
+ canvasColor: primary1Color,
  borderColor: secondaryDarkColor,
 }
 
