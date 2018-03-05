@@ -18,7 +18,7 @@ class MessageBox extends PureComponent {
       message: '',
       open: false,
       recipientName: '...',
-      counter: 10
+      counter: 1000
     }
   }
 
@@ -66,10 +66,10 @@ class MessageBox extends PureComponent {
   chooseRecipient = (recipient) => {
     this.setState({
       recipientId: recipient._id,
-      recipientName: recipient.name
+      recipientName: recipient.name,
+      counter: 10
     })
   }
-
 
   sendMessage = (player, choice) => {
     const whoAreYou = choice
@@ -87,18 +87,18 @@ class MessageBox extends PureComponent {
   }
 
   render() {
+    console.log(this.state.counter)
     const { players } = this.props
     const textInputStyle = {
       backgroundColor: 'rgba(96, 150, 255, 0.37)',
       borderRadius: '2px'
     }
 
-    let timer = null
     if (this.state.recipientName !== '...') {
-      return timer =
-      <div>
-        <h1>Send a message to { this.state.recipientName }</h1>
-        <span>{this.state.counter}</span>
+      return(
+        <div>
+          <h1>Send a message to { this.state.recipientName }</h1>
+          <h2>You only have {this.state.counter} seconds left...</h2>
 
           <TextField
             id="text-field-controlled"
@@ -111,14 +111,12 @@ class MessageBox extends PureComponent {
             rows={5}
             style={textInputStyle}
           />
-
           <RaisedButton
             type="button"
             value="Send anonymous"
             label="Send anonymous"
             onClick={() => this.sendMessage(this.props.player, 'anonymous')}
           />
-
           <RaisedButton
             type="button"
             value="Send"
@@ -126,12 +124,12 @@ class MessageBox extends PureComponent {
             onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
           />
         </div>
+      )
     }
 
     return (
       <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
-        <h1>Send a message to { this.state.recipientName }</h1>
-        {timer}
+        <h1>Choose a recipient</h1>
 
         <RaisedButton
           onClick={this.handlePopoverClick}
