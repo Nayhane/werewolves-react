@@ -72,7 +72,7 @@ class MessageBox extends PureComponent {
   }
 
   sendMessage = (player, choice) => {
-    const whoAreYou = choice
+    const sender = choice
     const recipientId = this.state.recipientId
 
     const updatedPlayer = {
@@ -80,18 +80,23 @@ class MessageBox extends PureComponent {
     }
     const updatedRecipient = {
       message: this.state.message,
-      senderName: whoAreYou
+      senderName: sender
     }
     this.props.updateSender(player._id, updatedPlayer)
     this.props.updateRecipient(recipientId, updatedRecipient)
   }
 
   render() {
-    console.log(this.state.counter)
     const { players } = this.props
     const textInputStyle = {
       backgroundColor: 'rgba(96, 150, 255, 0.37)',
       borderRadius: '2px'
+    }
+
+    let timerDone = false
+    if (this.state.counter <= 0) {
+      timerDone = true
+      this.sendMessage(this.props.player, this.props.player.name)
     }
 
     if (this.state.recipientName !== '...') {
@@ -106,10 +111,11 @@ class MessageBox extends PureComponent {
             onChange={this.handleTextInput}
             maxLength={160}
             ref="message"
-            placeholder="Be quick - you only have 10 seconds!"
+            placeholder="Quickly send your message!"
             multiLine={true}
             rows={5}
             style={textInputStyle}
+            disabled={timerDone}
           />
           <RaisedButton
             type="button"

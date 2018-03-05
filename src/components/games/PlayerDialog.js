@@ -66,7 +66,7 @@ class PlayerDialog extends PureComponent {
         <MessageBox key={index} players={ this.props.players } player = {player}/>
         )
     } else {
-      return <h1>You already sent a message!</h1>
+      return <h1>Message sent!</h1>
     }
   }
 
