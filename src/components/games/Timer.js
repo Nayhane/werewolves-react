@@ -3,7 +3,9 @@ import ReactCountdownClock from 'react-countdown-clock'
 import ReactHowler from 'react-howler'
 //Soounds
 import mp3_bell from '../../sounds/churchBell.mp3'
-import PlayHowl from './PlayHowl'
+import mp3_howl from '../../sounds/wolf6.mp3'
+
+// import PlayHowl from './PlayHowl'
 //Styling
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
@@ -34,9 +36,10 @@ class Timer extends PureComponent {
     this.state = {
       paused: true,
       color: '#1F243D',
-      seconds: 900,
+      seconds: 15,
       open: false,
       playing: false,
+      playing2: false,
     }
   }
 
@@ -47,7 +50,7 @@ class Timer extends PureComponent {
   }
 
   onTick(seconds) {
-    if(seconds < 300) {
+    if(seconds < 5) {
       this.setState ({
         color: "#D32F2F",
         playing: true,
@@ -58,16 +61,17 @@ class Timer extends PureComponent {
   resetTimer() {
     this.setState ({
       paused: true,
-      seconds: 900 + Math.random()*0.000000000001,
+      seconds: 15 + Math.random()*0.000000000001,
       color: '#1F243D',
+      playing: false,
     })
   }
 
   handleOpen() {
     this.setState({
       open: true,
+      playing2: true
     })
-
   }
 
   handleClose = () => {
@@ -107,13 +111,13 @@ class Timer extends PureComponent {
            onComplete={this.handleOpen.bind(this)}
            onClick={this.setPause.bind(this) }
         />
-    </div>
+      </div>
 
       <RaisedButton
-           primary={true}
-           onClick={this.resetTimer.bind(this)}
-           icon={<RestoreIcon />}
-        />
+         primary={true}
+         onClick={this.resetTimer.bind(this)}
+         icon={<RestoreIcon />}
+      />
 
         <Dialog
           contentStyle={customContentStyle}
@@ -124,7 +128,11 @@ class Timer extends PureComponent {
           onRequestClose={this.handleClose}
         >
 
-          <PlayHowl />
+        <ReactHowler
+          src={mp3_howl}
+          playing={this.state.playing2}
+          ref={(ref) => (this.player = ref)}
+        />
 
           <h1 style={{ textAlign : 'center' }}>
 
