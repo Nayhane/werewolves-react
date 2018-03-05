@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
+import { fetchPlayers} from '../actions/games/fetch'
 //components
 import Sidebar from './Sidebar'
 import Timer from '../components/games/Timer'
@@ -12,19 +13,24 @@ import FlatButton from 'material-ui/FlatButton'
 import './Lobby.css'
 
 class Lobby extends PureComponent {
-  state = {
-    open: false,
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      mergeOpen: false,
+    }
   }
 
   componentWillMount() {
+    this.props.fetchPlayers()
   }
 
-  handleOpen = () => {
-    this.setState({open: true});
+  handleMergeOpen = () => {
+    this.setState({mergeOpen: true});
   }
 
-  handleClose = () => {
-    this.setState({open: false});
+  handleMergeClose = () => {
+    this.setState({mergeOpen: false});
   }
 
   renderMessageBox = (player, index) => {
@@ -35,8 +41,7 @@ class Lobby extends PureComponent {
     }
   }
 
-  renderMergePopUp() {
-    console.log(this.state.open)
+  renderMergePopUp(halfPlayers) {
 
     const actions = [
       <FlatButton
@@ -51,7 +56,7 @@ class Lobby extends PureComponent {
       <Dialog
           actions={actions}
           modal={false}
-          open={this.state.open}
+          open={halfPlayers}
           onRequestClose={this.handleClose}
         >50% of the players died. You can now merge the villages!
         </Dialog>
@@ -96,19 +101,18 @@ class Lobby extends PureComponent {
       return player.dead === true
     })
 
-    // if (deadPlayers.length === (this.props.players.length/2)) {
-    //   this.handleOpen()
-    // }
+    if (deadPlayers.length === (this.props.players.length/2)) {
+      //this.handleMergeOpen()
+    }
 
     return (
       <div className="lobby">
         <Paper className="paper">
           <Sidebar className="sidebar"/>
-
+          { this.renderMergePopUp(this.state.mergeOpen) }
           { this.renderMayorPopUp(this.props.players) }
           <Timer />
           { this.props.players.map(this.renderMessageBox) }
-
           <VillageAvatar players={this.props.players}/>
 
         </Paper>
@@ -127,4 +131,5 @@ const mapStateToProps = ({  currentUser, players }) => {
 
 export default connect(mapStateToProps, {
   push,
+  fetchPlayers
 })(Lobby)
