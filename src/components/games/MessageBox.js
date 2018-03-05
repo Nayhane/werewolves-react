@@ -89,7 +89,6 @@ class MessageBox extends PureComponent {
   render() {
     const { players } = this.props
     const textInputStyle = {
-      backgroundColor: 'rgba(96, 150, 255, 0.37)',
       borderRadius: '2px'
     }
 
@@ -134,7 +133,7 @@ class MessageBox extends PureComponent {
     }
 
     return (
-      <div style={{ padding: 20, backgroundColor: 'rgb(237, 241, 255)' }}>
+      <div style={{ padding: 20}}>
         <h1>Choose a recipient</h1>
 
         <RaisedButton
