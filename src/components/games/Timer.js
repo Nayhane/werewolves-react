@@ -1,10 +1,14 @@
 import React, { PureComponent } from 'react'
 import ReactCountdownClock from 'react-countdown-clock'
-import SoundsPLayer from './SoundsPlayer'
-
+import ReactHowler from 'react-howler'
+//Soounds
+import mp3_bell from '../../sounds/churchBell.mp3'
+import PlayHowl from './PlayHowl'
+//Styling
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
+import RestoreIcon from 'material-ui/svg-icons/action/restore'
 
 const  timerStyle  = {
   cursor: 'pointer',
@@ -45,6 +49,7 @@ class Timer extends PureComponent {
     if(seconds < 300) {
       this.setState ({
         color: "#D32F2F",
+        playing: true,
       })
     }
   }
@@ -52,7 +57,7 @@ class Timer extends PureComponent {
   resetTimer() {
     this.setState ({
       paused: true,
-      seconds: 900 + Math.random(),
+      seconds: 900 + Math.random()*0.000000000001,
       color: '#1F243D',
     })
   }
@@ -60,7 +65,6 @@ class Timer extends PureComponent {
   handleOpen() {
     this.setState({
       open: true,
-      playing: true,
     })
 
   }
@@ -68,7 +72,6 @@ class Timer extends PureComponent {
   handleClose = () => {
     this.setState({
       open: false,
-      playing: false,
     })
     this.resetTimer()
   }
@@ -77,7 +80,7 @@ class Timer extends PureComponent {
     const actions = [
       <FlatButton
         style={ flatButtonStyle }
-        label="Wake Up"
+        label="Continue..."
         primary={true}
         onClick={this.handleClose}
       />
@@ -85,6 +88,13 @@ class Timer extends PureComponent {
 
     return (
       <div style={timerStyle}>
+
+        <ReactHowler
+          src={mp3_bell}
+          playing={this.state.playing}
+          ref={(ref) => (this.player = ref)}
+        />
+
         <ReactCountdownClock
            ref={(c) => this._timer = c}
            onTick={this.onTick.bind(this)}
@@ -97,10 +107,10 @@ class Timer extends PureComponent {
            onClick={this.setPause.bind(this) }
         />
 
-         <RaisedButton
+      <RaisedButton
            primary={true}
-           label="Reset"
            onClick={this.resetTimer.bind(this)}
+           icon={<RestoreIcon />}
         />
 
         <Dialog
@@ -112,7 +122,7 @@ class Timer extends PureComponent {
           onRequestClose={this.handleClose}
         >
 
-        <SoundsPLayer />
+          <PlayHowl />
 
           <h1 style={{ textAlign : 'center' }}>
 
