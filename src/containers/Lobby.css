@@ -10,16 +10,23 @@
 .sidebar {
   right: 0;
   background-color: rgba(255, 71, 77, 0.61);
-  width: 20%;
+  width: 25%;
 }
 
 .village-container {
-  width: 80%;
+  width: 75%;
+  position: relative;
 }
 
 .village-container h1 {
   color: #EFEFEF;
   text-align: center;
+}
+
+.timer {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .sidebar h1 {

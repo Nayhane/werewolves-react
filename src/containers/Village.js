@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
 //import MoveAllToVillage from '../components/games/MoveAllToVillage'
@@ -26,11 +25,7 @@ if (mayor) {
 }
 
 class Village extends PureComponent {
-
-
   renderPlayer(player, index) {
-
-
      let unreadMessages = player.receivedMessages.filter(function(message){
        return message.messageRead === false
      })
@@ -57,40 +52,40 @@ class Village extends PureComponent {
    )
   }
 
-moveAllPlayers = (players) => {
-  let updatedVillage = {}
+  moveAllPlayers = (players) => {
+    let updatedVillage = {}
 
-  for ( let i=0; i < players.length; i++) {
-    if (players[i].village[0].name === "Wakkerdam") {
-      updatedVillage = {
-        name: "Sluimervoort"
+    for ( let i=0; i < players.length; i++) {
+      if (players[i].village[0].name === "Wakkerdam") {
+        updatedVillage = {
+          name: "Sluimervoort"
+        }
+      } else if (players[i].village[0].name === "Sluimervoort") {
+        updatedVillage = {
+          name: "Wakkerdam"
+        }
       }
-    } else if (players[i].village[0].name === "Sluimervoort") {
-      updatedVillage = {
-        name: "Wakkerdam"
-      }
-    }
-    this.props.movePlayers(players[i]._id, updatedVillage)
-  }
-}
-
-render() {
-  let villageName = ''
-  if (this.props.players.length > 0) {
-    if (this.props.players[0].village[0].name === 'Wakkerdam') {
-      villageName = 'Sluimervoort'
-    } else {
-      villageName = 'Wakkerdam'
+      this.props.movePlayers(players[i]._id, updatedVillage)
     }
   }
 
-  return (
-    <div>
-      <VillageMenuButton label={`Move players to ${villageName}`} onClick={ () => this.moveAllPlayers(this.props.players) }/>
-      <div>{ this.props.players.map(this.renderPlayer) }</div>
-    </div>
-  )
-}
+  render() {
+    let villageName = ''
+    if (this.props.players.length > 0) {
+      if (this.props.players[0].village[0].name === 'Wakkerdam') {
+        villageName = 'Sluimervoort'
+      } else {
+        villageName = 'Wakkerdam'
+      }
+    }
+
+    return (
+      <div>
+        <VillageMenuButton label={`Move players to ${villageName}`} onClick={ () => this.moveAllPlayers(this.props.players) }/>
+        <div>{ this.props.players.map(this.renderPlayer) }</div>
+      </div>
+    )
+  }
 }
 
 export default connect(null, {

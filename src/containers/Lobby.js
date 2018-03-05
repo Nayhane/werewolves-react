@@ -101,17 +101,16 @@ class Lobby extends PureComponent {
 
         <div className="village-container">
           <VillageAvatar players={this.props.players}/>
+          <div className="timer">
+            <Timer />
+          </div>
         </div>
 
         <div className="sidebar">
-          <Timer />
-
           <Sidebar />
-
           { this.renderMergePopUp(this.state.mergeOpen) }
           { this.renderMayorPopUp(this.props.players) }
         </div>
-
       </div>
 
     )
