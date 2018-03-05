@@ -88,9 +88,12 @@ class MessageBox extends PureComponent {
         >
           <Menu ref={(input) => this.menu = input}>
             { players.map((player, index) => {
-                return(
-                  <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
-                )
+                if (!player.dead) {
+                  return(
+                    <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
+                  )
+                }
+                return null
               })
             }
           </Menu>
