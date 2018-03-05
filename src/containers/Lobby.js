@@ -18,6 +18,7 @@ class Lobby extends PureComponent {
 
     this.state = {
       mergeOpen: false,
+      hasBeenOpened: false
     }
   }
 
@@ -25,33 +26,43 @@ class Lobby extends PureComponent {
     this.props.fetchPlayers()
   }
 
-  handleMergeOpen = () => {
-    this.setState({mergeOpen: true});
+  componentWillUpdate() {
+    const deadPlayers = this.props.players.filter((player) => {
+      return player.dead === true
+    })
+
+    if (deadPlayers.length > 0 && deadPlayers.length === (this.props.players.length/2) && !this.state.hasBeenOpened) {
+      this.setState({mergeOpen: true});
+    }
+    if (deadPlayers.length > 0 && deadPlayers.length < (this.props.players.length/2)) {
+      this.setState({hasBeenOpened: false});
+    }
   }
 
   handleMergeClose = () => {
+    this.setState({hasBeenOpened: true});
     this.setState({mergeOpen: false});
   }
 
-  renderMergePopUp(halfPlayers) {
+  renderMergePopUp() {
 
     const actions = [
       <FlatButton
         label="Ok"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.handleMergeClose}
       />,
     ]
 
     return(
       <Dialog
-          actions={actions}
-          modal={false}
-          open={halfPlayers}
-          onRequestClose={this.handleClose}
-        >50% of the players died. You can now merge the villages!
-        </Dialog>
+        actions={actions}
+        modal={false}
+        open={this.state.mergeOpen}
+        onRequestClose={this.handleMergeClose}
+      >50% of the players died. You can now merge the villages!
+      </Dialog>
     )
   }
 
@@ -89,14 +100,6 @@ class Lobby extends PureComponent {
   }
 
   render() {
-    const deadPlayers = this.props.players.filter((player) => {
-      return player.dead === true
-    })
-
-    if (deadPlayers.length === (this.props.players.length/2)) {
-      //this.handleMergeOpen()
-    }
-
     return (
       <div className="lobby">
         <Paper className="paper">
