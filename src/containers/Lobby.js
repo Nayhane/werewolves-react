@@ -7,12 +7,25 @@ import Timer from '../components/games/Timer'
 import VillageAvatar from './VillageAvatar'
 import MessageBox from '../components/games/MessageBox'
 import Paper from 'material-ui/Paper'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 import './Lobby.css'
 
 class Lobby extends PureComponent {
+  state = {
+    open: false,
+  }
+
   componentWillMount() {
   }
 
+  handleOpen = () => {
+    this.setState({open: true});
+  }
+
+  handleClose = () => {
+    this.setState({open: false});
+  }
 
   renderMessageBox = (player, index) => {
     if (player.messageSent === 'sending') {
@@ -23,8 +36,25 @@ class Lobby extends PureComponent {
   }
 
   renderMergePopUp() {
+    console.log(this.state.open)
+
+    const actions = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleClose}
+      />,
+    ]
+
     return(
-      <div>Do you want to merge the villages?</div>
+      <Dialog
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+        >50% of the players died. You can now merge the villages!
+        </Dialog>
     )
   }
 
@@ -46,12 +76,14 @@ class Lobby extends PureComponent {
     })
 
     if (noMayor1.length === 0) {
+      //this.handleOpen()
       return(
         <div>Wakkerdam needs to choose a new mayor!</div>
       )
     }
 
     if (noMayor2.length === 0) {
+      //this.handleOpen()
       return(
         <div>Sluimervoort needs to choose a new mayor!</div>
       )
@@ -64,11 +96,15 @@ class Lobby extends PureComponent {
       return player.dead === true
     })
 
+    // if (deadPlayers.length === (this.props.players.length/2)) {
+    //   this.handleOpen()
+    // }
+
     return (
       <div className="lobby">
         <Paper className="paper">
           <Sidebar className="sidebar"/>
-          { deadPlayers.length === (this.props.players.length/2) ? this.renderMergePopUp() : '' }
+
           { this.renderMayorPopUp(this.props.players) }
           <Timer />
           { this.props.players.map(this.renderMessageBox) }
