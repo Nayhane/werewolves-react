@@ -44,7 +44,6 @@ class PlayerMenuButton extends PureComponent {
     const { onClick } = this.props
     const buttonStyle = {
       margin: 1,
-
     }
 
     return (
