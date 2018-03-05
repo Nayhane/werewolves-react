@@ -99,13 +99,20 @@ class Lobby extends PureComponent {
 
     return (
       <div className="lobby">
-        <Paper className="paper">
-          <Sidebar className="sidebar"/>
+
+        <div className="village-container">
+          <VillageAvatar players={this.props.players}/>
+        </div>
+
+        <div className="sidebar">
+          <Timer />
+
+          <Sidebar />
+
           { this.renderMergePopUp(this.state.mergeOpen) }
           { this.renderMayorPopUp(this.props.players) }
-          <Timer />
-          <VillageAvatar players={this.props.players}/>
-        </Paper>
+        </div>
+
       </div>
 
     )

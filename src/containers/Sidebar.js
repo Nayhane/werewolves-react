@@ -30,12 +30,6 @@ class Sidebar extends PureComponent {
 
 
   render() {
-    const style = {
-    width: 400,
-    float: 'right',
-    marginTop: 120,
-    }
-
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
     })
@@ -45,7 +39,7 @@ class Sidebar extends PureComponent {
     })
 
     return (
-      <div style={style}>
+      <div>
         <List>
           <Subheader><h1>WAKKERDAM</h1></Subheader>
           <Village players={village1} />
