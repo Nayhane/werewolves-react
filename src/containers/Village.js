@@ -9,7 +9,6 @@ import Cross from '../images/cross.png'
 import { Card, CardActions, CardHeader } from 'material-ui/Card';
 import VillageMenuButton from '../components/games/VillageMenuButton'
 import movePlayers from '../actions/games/move'
-import deletePlayer from '../actions/games/delete'
 import './Village.css'
 
 
@@ -79,12 +78,6 @@ moveAllPlayers = (players) => {
   }
 }
 
-deleteAllPlayers = (players) =>  {
-  for (let i = 0; i < players.length; i++) {
-    this.props.deletePlayer(players[i]._id)
-  }
-}
-
 render() {
   let villageName = ''
   if (this.props.players.length > 0) {
@@ -99,7 +92,6 @@ render() {
   return (
     <div>
       <VillageMenuButton label={`Move players to ${villageName}`} onClick={ () => this.moveAllPlayers(this.props.players) }/>
-      <VillageMenuButton label='Remove all players' onClick={ () => this.deleteAllPlayers(this.props.players) }/>
       <div>{ this.props.players.map(this.renderPlayer) }</div>
     </div>
   )
@@ -107,6 +99,5 @@ render() {
 }
 
 export default connect(null, {
-  deletePlayer,
   movePlayers
  })(Village)

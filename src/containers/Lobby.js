@@ -22,11 +22,36 @@ class Lobby extends PureComponent {
     }
   }
 
+  renderMergePopUp() {
+    return(
+      <div></div>
+    )
+  }
+
+  renderMayorPopUp(players) {
+    const deadMayor = players.filter((player) => {
+      return (player.dead === true && player.mayor && true)
+    })
+
+    if (deadMayor.length > 0) {
+      return(
+        <div></div>
+      )
+    }
+    return
+  }
+
   render() {
+    const deadPlayers = this.props.players.filter((player) => {
+      return player.dead === true
+    })
+
     return (
       <div className="lobby">
         <Paper className="paper">
           <Sidebar className="sidebar"/>
+          { deadPlayers.length === this.props.players.length ? this.renderMergePopUp() : '' }
+          { this.renderMayorPopUp(this.props.players) }
           <Timer />
           { this.props.players.map(this.renderMessageBox) }
 

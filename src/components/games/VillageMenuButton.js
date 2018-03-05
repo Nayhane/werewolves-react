@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/RaisedButton'
 import MovePlayers from 'material-ui/svg-icons/action/card-travel'
 
 class VillageMenuButton extends PureComponent {
@@ -12,11 +12,12 @@ class VillageMenuButton extends PureComponent {
 render() {
     const { onClick } = this.props
     return (
-      <RaisedButton
+      <FlatButton
         onClick={ onClick }
         label={ this.props.label }
         labelPosition="before"
         primary={true}
+        style={{ marginTop: 5, backgroundColor: 'none' }}
         icon={<MovePlayers />}
       />
     )
