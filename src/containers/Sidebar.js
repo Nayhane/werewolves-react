@@ -30,7 +30,7 @@ class Sidebar extends PureComponent {
     const temporaryStyle = {
       margin: 0,
       padding: 0,
-      backgroundColor: 'green'
+      backgroundColor: '#1f243d'
     }
 
     const village1 = this.props.players.filter((player) => {
