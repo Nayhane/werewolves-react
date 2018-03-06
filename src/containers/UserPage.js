@@ -23,8 +23,8 @@ class UserPage extends PureComponent {
   render() {
     return(
       <div>
-      <FlatButton primary={true}  label="Wakkerdam Messages" onClick={this.goToWakkerdam} />
-      <FlatButton primary={true}  label="Sluimervoort Messages" onClick={this.goToSluimervoort} />
+      <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Wakkerdam Messages" onClick={this.goToWakkerdam} />
+      <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Sluimervoort Messages" onClick={this.goToSluimervoort} />
       </div>
     )
   }
