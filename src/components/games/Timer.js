@@ -5,7 +5,6 @@ import ReactHowler from 'react-howler'
 import mp3_bell from '../../sounds/churchBell.mp3'
 import mp3_howl from '../../sounds/wolf6.mp3'
 
-// import PlayHowl from './PlayHowl'
 //Styling
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
@@ -136,10 +135,11 @@ class Timer extends PureComponent {
 
           <h1 style={{ textAlign : 'center' }}>
 
-            Night has fallen
+            Dusk is settling in...
 
-          </h1><br />
-            <h3 style={{ textAlign : 'center' }}>
+          </h1>
+          
+            <h3 style={{ textAlign : 'center' }}><br />
 
               Do not go gentle into that good night,<br />
               Old age should burn and rave at close of day; <br />
