@@ -8,7 +8,6 @@ import mp3_howl from '../../sounds/wolf6.mp3'
 //Styling
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
 import FloatingActionButton  from 'material-ui/FloatingActionButton'
 import RestoreIcon from 'material-ui/svg-icons/action/restore'
 import './Timer.css'
