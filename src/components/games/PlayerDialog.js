@@ -14,6 +14,8 @@ import MessageBox from './MessageBox'
 
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 const customContentStyle = {
   width: '90%',
@@ -82,6 +84,7 @@ class PlayerDialog extends PureComponent {
          mayorOpen: true
        })
      }
+     // eslint-disable-next-line
      if (wMayorArray.length > 0 && player.mayor === true || sMayorArray.length > 0 && player.mayor === true ){
        this.props.updateMayor(player._id, updatedPlayer)
      }
@@ -147,16 +150,16 @@ class PlayerDialog extends PureComponent {
   }
 
   render() {
-    const message = 'message' 
+    const message = 'message'
     const mayor = 'mayor'
     const dead = 'dead'
     const DeletePlayer = 'DeletePlayer'
     const village = this.props.player.village[0].name
 
     const actions = [
-      <FlatButton
+      <RaisedButton
         label="Back to game"
-        primary={true}
+        secondary={true}
         onClick={this.handleClose}
       />
     ]

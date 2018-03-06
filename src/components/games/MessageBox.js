@@ -120,12 +120,14 @@ class MessageBox extends PureComponent {
             type="button"
             value="Send anonymous"
             label="Send anonymous"
+            primary={true}
             onClick={() => this.sendMessage(this.props.player, 'anonymous')}
           />
           <RaisedButton
             type="button"
             value="Send"
             label="Send signed"
+            primary={true}
             onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
           />
         </div>
@@ -139,6 +141,7 @@ class MessageBox extends PureComponent {
         <RaisedButton
           onClick={this.handlePopoverClick}
           label="Choose recipient"
+          primary={true} 
         />
 
         <Popover
