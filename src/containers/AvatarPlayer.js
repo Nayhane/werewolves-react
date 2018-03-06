@@ -19,6 +19,7 @@ const setClassName = (dead, mayor) => {
   }
 }
 
+const avatarStyle = { display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}
 
 class AvatarPlayer extends PureComponent {
   componentWillMount() {
@@ -27,7 +28,7 @@ class AvatarPlayer extends PureComponent {
 
   renderAvatars(player, index){
    return(
-    <div key={index} className="avatar">
+    <div key={index}>
       <div className={setClassName(player.dead, player.mayor, player.receivedMessages)}>
           <Badge
             badgeContent={ player.mayor ? <img src={MayorMedal}
@@ -50,8 +51,8 @@ class AvatarPlayer extends PureComponent {
 
   render() {
     return (
-      <div>
-          {this.props.players.map(this.renderAvatars) }
+      <div style={avatarStyle}>
+          { this.props.players.map(this.renderAvatars) }
       </div>
     )
   }
