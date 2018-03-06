@@ -30,9 +30,13 @@ class PlayerDialog extends PureComponent {
 
     this.state = {
       open: false,
-      mayorOpen: false
+      //mayorOpen: false
     }
   }
+  
+  // componentWillMount() {
+  //   this.props.subscribeToWebsocket()
+  // }
 
   handleOpen = (player, index) => {
     this.setState({open: true})
@@ -43,9 +47,9 @@ class PlayerDialog extends PureComponent {
     this.setState({open: false});
   }
 
-  handleMayorClose = () => {
-    this.setState({mayorOpen: false});
-  }
+  // handleMayorClose = () => {
+  //   this.setState({mayorOpen: false});
+  // }
 
   killPlayer = (player) => {
     const updatedPlayer = {
@@ -63,31 +67,31 @@ class PlayerDialog extends PureComponent {
 
      this.props.updateMayor(player._id, updatedPlayer)
 
-     const wakkerdamArray =  this.props.players.filter((player) => {
-        return player.village[0].name === "Wakkerdam"
-     })
-     const sluimervoortArray =  this.props.players.filter((player) => {
-       return player.village[0].name === "Sluimervoort"
-     })
-
-     const wMayorArray = wakkerdamArray.filter((player) => {
-       return player.mayor === true
-     })
-
-     const sMayorArray = sluimervoortArray.filter((player) => {
-       return player.mayor === true
-     })
-
-     if (wMayorArray.length === 0 && player.village[0].name === "Wakkerdam"){
-       this.setState({
-         mayorOpen: true
-       })
-      }
-     if (sMayorArray.length === 0 && player.village[0].name === "Sluimervoort"){
-       this.setState({
-         mayorOpen: true
-       })
-     }
+     // const wakkerdamArray =  this.props.players.filter((player) => {
+     //    return player.village[0].name === "Wakkerdam"
+     // })
+     // const sluimervoortArray =  this.props.players.filter((player) => {
+     //   return player.village[0].name === "Sluimervoort"
+     // })
+     // 
+     // const wMayorArray = wakkerdamArray.filter((player) => {
+     //   return player.mayor === true
+     // })
+     // 
+     // const sMayorArray = sluimervoortArray.filter((player) => {
+     //   return player.mayor === true
+     // })
+     // 
+     // if (wMayorArray.length === 0 && player.village[0].name === "Wakkerdam" && !player.dead){
+     //   this.setState({
+     //     mayorOpen: true
+     //   })
+     //  }
+     // if (sMayorArray.length === 0 && player.village[0].name === "Sluimervoort" && !player.dead){
+     //   this.setState({
+     //     mayorOpen: true
+     //   })
+     // }
 
    }
 
@@ -123,27 +127,27 @@ class PlayerDialog extends PureComponent {
     this.props.updateVillage(player._id, updatedVillage)
   }
 
-  renderMayorPopUp(village, mayor) {
-
-    const actions = [
-      <FlatButton
-        label="Ok"
-        primary={true}
-        keyboardFocused={true}
-        onClick={this.handleMayorClose}
-      />,
-    ]
-
-    return(
-      <Dialog
-        actions={actions}
-        modal={false}
-        open={this.state.mayorOpen}
-        onRequestClose={this.handleMayorClose}
-      >{ village } now has a new mayor: { mayor }!
-      </Dialog>
-    )
-  }
+  // renderMayorPopUp(village, mayor) {
+  // 
+  //   const actions = [
+  //     <FlatButton
+  //       label="Ok"
+  //       primary={true}
+  //       keyboardFocused={true}
+  //       onClick={this.handleMayorClose}
+  //     />,
+  //   ]
+  // 
+  //   return(
+  //     <Dialog
+  //       actions={actions}
+  //       modal={false}
+  //       open={this.state.mayorOpen}
+  //       onRequestClose={this.handleMayorClose}
+  //     >{ village } now has a new mayor: { mayor }!
+  //     </Dialog>
+  //   )
+  // }
 
   render() {
     const message = 'message'
@@ -177,7 +181,6 @@ class PlayerDialog extends PureComponent {
         >
           { this.sendMessage(this.props.player) }
         </Dialog>
-        {this.renderMayorPopUp(this.props.player.village[0].name, this.props.player.name)}
       </div>
     )
   }
