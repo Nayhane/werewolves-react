@@ -12,10 +12,6 @@ import deletePlayer from '../../actions/games/delete'
 
 import MessageBox from './MessageBox'
 
-import IconMenu from 'material-ui/IconMenu'
-import MenuItem from 'material-ui/MenuItem'
-import IconButton from 'material-ui/IconButton'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 
@@ -124,7 +120,7 @@ class PlayerDialog extends PureComponent {
   }
 
   renderMayorPopUp(village, mayor) {
-    
+
     const actions = [
       <FlatButton
         label="Ok"
@@ -146,7 +142,7 @@ class PlayerDialog extends PureComponent {
   }
 
   render() {
-    const message = 'message'
+    const message = 'message' 
     const mayor = 'mayor'
     const dead = 'dead'
     const DeletePlayer = 'DeletePlayer'
