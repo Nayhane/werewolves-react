@@ -6,13 +6,12 @@ import { fetchPlayers} from '../actions/games/fetch'
 import Village from './Village'
 
 // MUI
-import {List} from 'material-ui/List';
+import { List } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
 class Sidebar extends PureComponent {
   static propTypes = {
     fetchPlayers: PropTypes.func,
-    //subscribeToWebsocket: PropTypes.func.isRequired,
     player: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -61,7 +60,7 @@ class Sidebar extends PureComponent {
 }
 
 
-const mapStateToProps = ({ currentUser, players }, { match }) => {
+const mapStateToProps = ({ currentUser, players }) => {
   return {
     players
   }

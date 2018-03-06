@@ -42,7 +42,7 @@ class PlayerDialog extends PureComponent {
   handleClose = () => {
     this.setState({open: false});
   }
-  
+
   handleMayorClose = () => {
     this.setState({mayorOpen: false});
   }
@@ -60,9 +60,9 @@ class PlayerDialog extends PureComponent {
      const updatedPlayer = {
        mayor: !player.mayor
      }
-     
+
      this.props.updateMayor(player._id, updatedPlayer)
-     
+
      const wakkerdamArray =  this.props.players.filter((player) => {
         return player.village[0].name === "Wakkerdam"
      })
@@ -77,13 +77,13 @@ class PlayerDialog extends PureComponent {
      const sMayorArray = sluimervoortArray.filter((player) => {
        return player.mayor === true
      })
-     
+
      if (wMayorArray.length === 0 && player.village[0].name === "Wakkerdam"){
        this.setState({
          mayorOpen: true
        })
       }
-     if (sMayorArray.length === 0 && player.village[0].name === "Sluimervoort"){ 
+     if (sMayorArray.length === 0 && player.village[0].name === "Sluimervoort"){
        this.setState({
          mayorOpen: true
        })
@@ -122,9 +122,9 @@ class PlayerDialog extends PureComponent {
 
     this.props.updateVillage(player._id, updatedVillage)
   }
-  
+
   renderMayorPopUp(village, mayor) {
-    console.log('im here')
+    
     const actions = [
       <FlatButton
         label="Ok"
