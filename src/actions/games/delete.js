@@ -1,15 +1,16 @@
 import API from '../../api/client'
-import {
-  LOAD_ERROR,
-} from '../loading'
+import { LOAD_ERROR, APP_LOADING } from '../loading'
 
 export const PLAYER_REMOVED = 'PLAYER_REMOVED'
 
 const api = new API()
 
-export default  (id, player) => {
+export default  (playerId) => {
   return (dispatch) => {
-    api.delete(`/players/${id}`, player)
+    dispatch({ type: APP_LOADING })
+
+
+    api.delete(`/players/${playerId}`)
     .then((result) => {
       dispatch({
         type: PLAYER_REMOVED,
