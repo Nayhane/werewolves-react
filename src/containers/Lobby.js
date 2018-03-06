@@ -17,27 +17,34 @@ class Lobby extends PureComponent {
 
     this.state = {
       mergeOpen: false,
-      hasBeenOpened: false
+      hasBeenOpened: false,
     }
   }
 
   componentWillMount() {
     this.props.fetchPlayers()
   }
-
-  componentWillUpdate() {
-    const deadPlayers = this.props.players.filter((player) => {
+  
+  componentWillReceiveProps(nextProps) {
+    
+    const deadPlayersPrev = this.props.players.filter((player) => {
       return player.dead === true
     })
-
-    if (deadPlayers.length > 0 && deadPlayers.length === (this.props.players.length/2) && !this.state.hasBeenOpened) {
-      this.setState({mergeOpen: true});
-    }
-    if (deadPlayers.length > 0 && deadPlayers.length < (this.props.players.length/2)) {
-      this.setState({hasBeenOpened: false});
+    
+    const deadPlayersNext = nextProps.players.filter((player) => {
+      return player.dead === true
+    })
+    
+    if (deadPlayersPrev.length !== deadPlayersNext.length) {
+      
+      if (deadPlayersNext.length > 0 && deadPlayersPrev.length > 0 && deadPlayersNext.length === (nextProps.players.length/2)) {
+        this.setState({mergeOpen: true})
+      } else {
+        this.setState({mergeOpen: false})
+      }
     }
   }
-
+  
   handleMergeClose = () => {
     this.setState({hasBeenOpened: true});
     this.setState({mergeOpen: false});
@@ -66,6 +73,7 @@ class Lobby extends PureComponent {
   }
 
   render() {
+
     return (
       <div className="lobby">
         <div className="village-container">
