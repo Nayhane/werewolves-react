@@ -21,8 +21,6 @@ export class MakePhoto extends PureComponent {
       name: '',
       photo: null,
       open: false,
-      nameValid: false,
-      photoValid: false
     }
   }
 
@@ -90,9 +88,7 @@ export class MakePhoto extends PureComponent {
       this.setState({
         name: '',
         photo: null,
-        nameValid: false,
-        photoValid: false
-      })
+        })
     }
       return false
   }
