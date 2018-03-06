@@ -21,6 +21,4 @@ export {
   UserPage,
   wakkerdamMessagePage,
   sluimervoortMessagePage,
-
-
 }

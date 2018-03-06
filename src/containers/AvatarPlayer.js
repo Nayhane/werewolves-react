@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-
 import { connect } from 'react-redux'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import MayorMedal from '../images/mayor-medal.png'
@@ -10,7 +9,6 @@ import Badge from 'material-ui/Badge';
 import ListItem from 'material-ui/List/ListItem';
 
 import './AvatarPlayer.css'
-
 
 const setClassName = (dead, mayor) => {
   if (dead) {
