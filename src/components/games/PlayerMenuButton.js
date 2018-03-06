@@ -15,6 +15,16 @@ class PlayerMenuButton extends PureComponent {
     icon: PropTypes.string.isRequired
   }
 
+  disabledButton = () => {
+    switch(this.props.disabled) {
+      case true :
+        return true
+
+      default :
+        return false
+    }
+  }
+
   displayIcon = () => {
     switch(this.props.icon) {
       case 'message' :
@@ -44,16 +54,17 @@ class PlayerMenuButton extends PureComponent {
     const { onClick } = this.props
     const buttonStyle = {
       margin: 1,
+      // width: '15px'
     }
 
     return (
       <RaisedButton
         onClick={ onClick }
-        label={this.displayIcon()[0]}
         labelPosition="before"
         primary={true}
         icon={this.displayIcon()[1]}
         style={buttonStyle}
+        disabled={this.disabledButton()}
       />
     )
   }
