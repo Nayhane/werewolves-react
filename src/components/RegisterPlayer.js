@@ -20,7 +20,9 @@ export class MakePhoto extends PureComponent {
     this.state = {
       name: '',
       photo: null,
-      open: false
+      open: false,
+      nameValid: false,
+      photoValid: false
     }
   }
 
@@ -39,7 +41,6 @@ export class MakePhoto extends PureComponent {
   handlePhotoClick = () => {
     const photo = this.webcam.getScreenshot();
     this.setState({ photo: photo })
-    console.log(photo)
   }
 
   handleFormSubmit = (playerName) => {
@@ -47,65 +48,107 @@ export class MakePhoto extends PureComponent {
     this.setState({ name: name })
   }
 
-  handleSaveRegistration = (event) => {
-    event.preventDefault();
-    this.props.saveRegistration(this.state)
-
-    this.setState({
-      name: '',
-      photo: null
-    })
+  validateAll() {
+    return this.validateName() &&
+    this.validatePhoto()
   }
 
-  render() {
-    const style = {
-      margin: 4,
+  validateName() {
+
+
+    if (this.state.name.length > 1) {
+      this.setState({
+        nameError: null
+      })
+      return true
     }
 
-    const customContentStyle = {
-      width: '90%',
-      maxWidth: 'none',
-    }
+    this.setState({
+      nameError: 'Please provide your name'
+    })
+    return false
+  }
 
-    const actions = [
-      <FlatButton
+  validatePhoto() {
+      if (this.state.photo !== null) {
+        this.setState({
+          photoError: null
+        })
+      return true
+    }
+    this.setState({
+      photoError: 'Please capture your picture'
+    })
+    return false
+  }
+
+  handleSaveRegistration = (event) => {
+    event.preventDefault();
+    if (this.validateAll()){
+      this.props.saveRegistration(this.state)
+
+      this.setState({
+        name: '',
+        photo: null,
+        nameValid: false,
+        photoValid: false
+      })
+    }
+      return false
+  }
+
+    render() {
+      const style = {
+        margin: 4,
+      }
+
+      const customContentStyle = {
+        width: '90%',
+        maxWidth: 'none',
+      }
+
+      const actions = [
+        <FlatButton
         label="Ok"
         primary={true}
         keyboardFocused={true}
         onClick={this.handleClose}
-      />
-    ]
+        />
+      ]
 
-    return (
-      <div className='register'>
-        <FloatingActionButton style={style} mini={true} onClick={this.handleOpen} secondary={true}>
-          <AddPlayerIcon />
-        </FloatingActionButton>
+      return (
+        <div className='register'>
+          <FloatingActionButton style={style} mini={true} onClick={this.handleOpen} secondary={true}>
+            <AddPlayerIcon />
+          </FloatingActionButton>
 
-        <Dialog
-          title="Add a new player to the game!"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
-          contentStyle={customContentStyle}
-          autoScrollBodyContent={true}
-        >
+          <Dialog
+            title="Add a new player to the game!"
+            subtitle= {this.state.photoError}
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+            contentStyle={customContentStyle}
+            autoScrollBodyContent={true}
+          >
           <TextField
             hintText='Please provide your name...'
             floatingLabelText='Your name...'
             onChange={(event) => this.handleFormSubmit(event.target.value)}
+            errorText={ this.state.nameError}
           />
 
           <Webcam
             className='newPhoto'
             audio={false}
-              ref={this.setRef}
-              screenshotFormat='image/jpeg'
-              width={500}
-            />
+            ref={this.setRef}
+            screenshotFormat='image/jpeg'
+            width={500}
+          />
 
           <h2>Screenshots</h2>
+          <p style={{ color: 'red'}} >{this.state.photoError}</p>
           <div className='screenshots'>
             <div className='controls'>
               <RaisedButton
@@ -126,10 +169,10 @@ export class MakePhoto extends PureComponent {
             icon={<DoneIcon />}
             onClick={this.handleSaveRegistration}
           />
-        </Dialog >
-      </div>
-    )
+          </Dialog >
+        </div>
+      )
+    }
   }
-}
 
-export default connect(null, { saveRegistration })(MakePhoto)
+  export default connect(null, { saveRegistration })(MakePhoto)
