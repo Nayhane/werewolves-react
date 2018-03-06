@@ -27,6 +27,12 @@ class Sidebar extends PureComponent {
   }
 
   render() {
+    const temporaryStyle = {
+      margin: 0,
+      padding: 0,
+      backgroundColor: 'green'
+    }
+
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
     })
@@ -43,14 +49,14 @@ class Sidebar extends PureComponent {
 
     return (
       <div>
-        <List style={{margin: 0, padding: 0}}>
+        <List style={temporaryStyle}>
           <h1>WAKKERDAM: {deadPlayerCountVillage1.length}/{village1.length}</h1>
           <Village players={village1} />
         </List>
 
         <Divider />
 
-        <List>
+        <List style={temporaryStyle}>
           <h1>SLUIMERVOORT:  {deadPlayerCountVillage2.length}/{village2.length} </h1>
           <Village players={village2} />
         </List>

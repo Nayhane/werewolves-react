@@ -1,4 +1,10 @@
+.medal{
+  height: 1rem;
 
 .medal-sidebar{
   height: 2rem;
+}
+
+#sidebar-players {
+  color: #EFEFEF;
 }

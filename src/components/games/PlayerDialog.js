@@ -162,17 +162,11 @@ class PlayerDialog extends PureComponent {
 
     return (
       <div>
-        <IconMenu
-        iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        >
-        <MenuItem primaryText={<PlayerMenuButton icon={message} onClick={() => this.handleOpen(this.props.player)} />} />
-        <MenuItem primaryText={<PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)}/>} />
-        <MenuItem primaryText={<PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>} />
-        <MenuItem primaryText={<PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>} />
-        <MenuItem primaryText={<PlayerMenuButton icon={DeletePlayer} onClick={() => this.deleteThisPlayer(this.props.player)}/>} />
-        </IconMenu>
+        <PlayerMenuButton disabled={this.props.player.messageSent === 'sent' ? true : false } icon={message} onClick={() => this.handleOpen(this.props.player)} />
+        <PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)} />
+        <PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>
+        <PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>
+        <PlayerMenuButton icon={DeletePlayer} onClick={() => this.deleteThisPlayer(this.props.player)}/>
 
         <Dialog
           actions={actions}
@@ -181,9 +175,7 @@ class PlayerDialog extends PureComponent {
           open={this.state.open}
           autoScrollBodyContent={true}
         >
-
-        { this.sendMessage(this.props.player) }
-
+          { this.sendMessage(this.props.player) }
         </Dialog>
         {this.renderMayorPopUp(this.props.player.village[0].name, this.props.player.name)}
       </div>
