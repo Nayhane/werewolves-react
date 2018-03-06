@@ -104,6 +104,7 @@ class Timer extends PureComponent {
            onTick={this.onTick.bind(this)}
            seconds={this.state.seconds}
            color={this.state.color}
+           pausedText={"▐▐ "}
            alpha={0.9}
            size={100}
            paused={this.state.paused}
@@ -138,7 +139,7 @@ class Timer extends PureComponent {
             Dusk is settling in...
 
           </h1>
-          
+
             <h3 style={{ textAlign : 'center' }}><br />
 
               Do not go gentle into that good night,<br />
