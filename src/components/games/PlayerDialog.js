@@ -61,8 +61,6 @@ class PlayerDialog extends PureComponent {
        mayor: !player.mayor
      }
 
-
-
      const wakkerdamArray =  this.props.players.filter((player) => {
         return player.village[0].name === "Wakkerdam"
      })
