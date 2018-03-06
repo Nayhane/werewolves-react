@@ -14,6 +14,8 @@ import MessageBox from './MessageBox'
 
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 const customContentStyle = {
   width: '90%',
@@ -155,9 +157,9 @@ class PlayerDialog extends PureComponent {
     const village = this.props.player.village[0].name
 
     const actions = [
-      <FlatButton
+      <RaisedButton
         label="Back to game"
-        primary={true}
+        secondary={true}
         onClick={this.handleClose}
       />
     ]
