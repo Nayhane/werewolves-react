@@ -28,7 +28,7 @@ export const palette = {
 
  accent1Color: secondaryColor,
  textColor: lightGrey,
- alternateTextColor: white,
+ alternateTextColor: lightGrey,
 
  canvasColor: primary1Color,
  borderColor: secondaryDarkColor,

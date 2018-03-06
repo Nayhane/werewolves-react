@@ -10,6 +10,7 @@ import VillageMenuButton from '../components/games/VillageMenuButton'
 import movePlayers from '../actions/games/move'
 import './Village.css'
 
+import EmailIcon from 'material-ui/svg-icons/communication/email'
 
 const setClassName = ( mayor, receivedMessages) => {
 
@@ -38,7 +39,7 @@ class Village extends PureComponent {
              subtitle={ player.dead ? <img src={Cross} className="cross" alt="cross" /> : ''}
            />
           <CardHeader
-             title={ player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <img src={Email} className="Email" alt="Email" /> : ''}
+             title={ player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}
              subtitle= { player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
              children={<PlayerDialog player={player}/> }
            />
