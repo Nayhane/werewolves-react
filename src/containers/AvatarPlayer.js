@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react'
-
 import { connect } from 'react-redux'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import MayorMedal from '../images/mayor-medal.png'
-//import Email from '../images/email.png'
-
-import Avatar from 'material-ui/Avatar';
-import Badge from 'material-ui/Badge';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
-
+import Avatar from 'material-ui/Avatar'
+import Badge from 'material-ui/Badge'
+import List from 'material-ui/List/List'
+import ListItem from 'material-ui/List/ListItem'
 import './AvatarPlayer.css'
-
 
 const setClassName = (dead, mayor) => {
   if (dead) {

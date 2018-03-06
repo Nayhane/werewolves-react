@@ -2,15 +2,13 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
 //import MoveAllToVillage from '../components/games/MoveAllToVillage'
-import Email from '../images/email.png'
 import MayorMedal from '../images/mayor-medal.png'
 import Cross from '../images/cross.png'
-import { Card, CardActions, CardHeader } from 'material-ui/Card';
+import { Card, CardActions, CardHeader } from 'material-ui/Card'
 import VillageMenuButton from '../components/games/VillageMenuButton'
 import movePlayers from '../actions/games/move'
-import './Village.css'
-
 import EmailIcon from 'material-ui/svg-icons/communication/email'
+import './Village.css'
 
 const setClassName = ( mayor, receivedMessages) => {
 
