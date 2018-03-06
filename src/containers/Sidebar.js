@@ -45,14 +45,14 @@ class Sidebar extends PureComponent {
     return (
       <div>
         <List style={{margin: 0, padding: 0}}>
-          <h1>WAKKERDAM</h1>
+          <h1>WAKKERDAM: {deadPlayerCountVillage1.length}/{village1.length}</h1>
           <Village players={village1} />
         </List>
 
         <Divider />
 
         <List>
-          <h1>SLUIMERVOORT</h1>
+          <h1>SLUIMERVOORT:  {deadPlayerCountVillage2.length}/{village2.length} </h1>
           <Village players={village2} />
         </List>
       </div>
