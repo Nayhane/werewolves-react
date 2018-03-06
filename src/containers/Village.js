@@ -29,17 +29,20 @@ class Village extends PureComponent {
     })
 
     return(
-      <div key={index} id='sidebar-players' className={setClassName( player.mayor, player.receivedMessages)}>
-        <a>{player.name}</a>
-        <a>{player.dead ? <CrossIcon /> : ''}</a>
-        <a>{ player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}</a>
-        <a>{ player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}</a>
-        <span>{<PlayerDialog player={player} {...player.messageSent} /> }</span>
+      <div key={index} className={setClassName( player.mayor, player.receivedMessages)}>
 
-        <span>
-          { player.mayor ? 'Mayor' : '' }
-          { player.dead ? 'Dead' : '' }
-        </span>
+        <div className='test-hover'>
+          <div className='nameblock'>
+            {player.name}
+            {player.mayor && player.dead === false ? <img src={MayorMedal} className="medal-sidebar" alt="MayorMedal" /> : ''}
+            {player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}
+            {player.dead ? <CrossIcon /> : ''}
+          </div>
+        </div>
+
+        <div className='hover-over'>
+          {<PlayerDialog player={player} {...player.messageSent} /> }
+        </div>
       </div>
     )
   }

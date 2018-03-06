@@ -35,7 +35,7 @@ class MessageItem extends PureComponent {
 
   render() {
     const { message } = this.props
-    
+
 
     const inlineStyling = {
       color: 'white',

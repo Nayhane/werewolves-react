@@ -8,13 +8,14 @@ import mp3_howl from '../../sounds/wolf6.mp3'
 //Styling
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
+import FloatingActionButton  from 'material-ui/FloatingActionButton'
 import RestoreIcon from 'material-ui/svg-icons/action/restore'
 import './Timer.css'
 
 const  timerStyle  = {
   cursor: 'pointer',
   width: '110px',
+  display: 'flex',
 }
 
 const customContentStyle = {
@@ -90,20 +91,14 @@ class Timer extends PureComponent {
       />
     ]
     return (
+    <div>
       <div style={timerStyle}>
-
-        <ReactHowler
-          src={mp3_bell}
-          playing={this.state.playing}
-          ref={(ref) => (this.player = ref)}
-        />
-
-      <div className="timer">
         <ReactCountdownClock
            ref={(c) => this._timer = c}
            onTick={this.onTick.bind(this)}
            seconds={this.state.seconds}
            color={this.state.color}
+           pausedText={"▐▐ "}
            alpha={0.9}
            size={100}
            paused={this.state.paused}
@@ -111,13 +106,19 @@ class Timer extends PureComponent {
            onClick={this.setPause.bind(this) }
         />
       </div>
-
-      <RaisedButton
-         primary={true}
-         onClick={this.resetTimer.bind(this)}
-         icon={<RestoreIcon />}
-      />
-
+      <div>
+       <ReactHowler
+         src={mp3_bell}
+         playing={this.state.playing}
+         ref={(ref) => (this.player = ref)}
+       />
+      </div>
+      <div className='reset-button'>
+      <FloatingActionButton mini={true}>
+        <RestoreIcon onClick={this.resetTimer.bind(this)}/>
+      </FloatingActionButton>
+      </div>
+      <div>
         <Dialog
           contentStyle={customContentStyle}
           autoScrollBodyContent={true}
@@ -138,7 +139,7 @@ class Timer extends PureComponent {
             Dusk is settling in...
 
           </h1>
-          
+
             <h3 style={{ textAlign : 'center' }}><br />
 
               Do not go gentle into that good night,<br />
@@ -164,8 +165,9 @@ class Timer extends PureComponent {
           </h3>
         </Dialog>
       </div>
-      )
-    }
+    </div>
+    )
   }
+}
 
 export default Timer
