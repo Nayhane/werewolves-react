@@ -31,7 +31,7 @@ class AvatarPlayer extends PureComponent {
       <div className={setClassName(player.dead, player.mayor, player.receivedMessages)}>
           <Badge
             badgeContent={ player.mayor ? <img src={MayorMedal}
-            className="medal" alt="MayorMedal" /> : ''}
+            className="avatar-medal" alt="MayorMedal" /> : ''}
             secondary={true}
           >
           <ListItem
