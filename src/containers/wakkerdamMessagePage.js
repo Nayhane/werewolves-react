@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import MessageItem from '../components/games/MessageItem.js'
 
-import { fetchPlayers} from '../actions/games/fetch'
+import { fetchPlayers } from '../actions/games/fetch'
 
 class wakkerdamMessagePage extends PureComponent {
 
