@@ -13,7 +13,7 @@ export default (newPlayer) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    console.log(newPlayer)
+    // console.log(newPlayer)
 
     api.post('/players', newPlayer)
       .then(() => {
