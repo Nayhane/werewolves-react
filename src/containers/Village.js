@@ -24,9 +24,9 @@ if (mayor) {
 
 class Village extends PureComponent {
   renderPlayer(player, index) {
-    // let unreadMessages = player.receivedMessages.filter(function(message){
-    //   return message.messageRead === false
-    // })
+    let unreadMessages = player.receivedMessages.filter(function(message){
+      return message.messageRead === false
+    })
 
     return(
       <div key={index} className={setClassName( player.mayor, player.receivedMessages)}>
@@ -34,11 +34,12 @@ class Village extends PureComponent {
         <div className='test-hover'>
           <div className='nameblock'>
             {player.name}
-            { player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
+            {player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
+            {player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}
             {player.dead ? <CrossIcon /> : ''}
           </div>
         </div>
-        
+
         <div className='hover-over'>
           {<PlayerDialog player={player} {...player.messageSent} /> }
         </div>
