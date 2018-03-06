@@ -60,8 +60,6 @@ class PlayerMenuButton extends PureComponent {
     return (
       <IconButton
         onClick={ onClick }
-        labelPosition="before"
-        primary={true}
         style={buttonStyle}
         disabled={this.disabledButton()}
         tooltip={this.displayIcon()[0]}
