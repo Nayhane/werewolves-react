@@ -96,7 +96,7 @@ class PlayerDialog extends PureComponent {
 
     const actions = [
       <FlatButton
-        label="Cancel"
+        label="Back to game"
         primary={true}
         onClick={this.handleClose}
       />

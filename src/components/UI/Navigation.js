@@ -90,11 +90,11 @@ class Navigation extends PureComponent {
 
     return (
       <AppBar
+        showMenuIconButton={false}
         title={TITLE}
+        style={{ textAlign: 'left'}}
         iconElementRight={signedIn ?
           <div style={divStyle}>
-            <FlatButton style={{ color: 'white', marginTop: 5 }} label='Remove all players' onClick={ () => this.deleteAllPlayers(this.props.players) }/>
-            <FlatButton style={{ color: 'white', marginTop: 5 }} label='Reset game' onClick={ () => this.resetGame(this.props.players)}/>
             { this.state.gamePage ? <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Read message" onClick={this.goToMessage} /> :
             <FlatButton primary={true} style={{ color: 'white', marginTop: 5 }} label="Back to game" onClick={this.goHome} />}
             <RegisterPlayer />
@@ -103,6 +103,8 @@ class Navigation extends PureComponent {
               anchorOrigin={{horizontal: 'right', vertical: 'top'}}
               targetOrigin={{horizontal: 'right', vertical: 'top'}}
               >
+              <MenuItem primaryText='Remove all players' onClick={ () => this.deleteAllPlayers(this.props.players) }/>
+              <MenuItem primaryText='Reset game' onClick={ () => this.resetGame(this.props.players)}/>
               <MenuItem primaryText="Sign out" label="Sign out" onClick={this.signOut.bind(this)} />
             </IconMenu>
           </div> :
