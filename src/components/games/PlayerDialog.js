@@ -124,13 +124,13 @@ class PlayerDialog extends PureComponent {
   }
 
   renderMayorPopUp(village, mayor) {
-    
+
     const actions = [
       <FlatButton
         label="Ok"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleMergeClose}
+        onClick={this.handleMayorClose}
       />,
     ]
 
