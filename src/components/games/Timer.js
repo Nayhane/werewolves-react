@@ -15,6 +15,7 @@ import './Timer.css'
 const  timerStyle  = {
   cursor: 'pointer',
   width: '110px',
+  display: 'flex',
 }
 
 const customContentStyle = {
