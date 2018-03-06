@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PlayerDialog from '../components/games/PlayerDialog'
-//import MoveAllToVillage from '../components/games/MoveAllToVillage'
 import MayorMedal from '../images/mayor-medal.png'
-// import Cross from '../images/cross.png'
-// import { Card, CardActions, CardHeader } from 'material-ui/Card'
 import VillageMenuButton from '../components/games/VillageMenuButton'
 import movePlayers from '../actions/games/move'
 
@@ -27,44 +24,24 @@ if (mayor) {
 
 class Village extends PureComponent {
   renderPlayer(player, index) {
-     let unreadMessages = player.receivedMessages.filter(function(message){
-       return message.messageRead === false
-     })
+    let unreadMessages = player.receivedMessages.filter(function(message){
+      return message.messageRead === false
+    })
 
-     return(
+    return(
       <div key={index} id='sidebar-players' className={setClassName( player.mayor, player.receivedMessages)}>
         <a>{player.name}</a>
         <a>{player.dead ? <CrossIcon /> : ''}</a>
         <a>{ player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}</a>
         <a>{ player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}</a>
-        <span>{<PlayerDialog player={player}/> }</span>
+        <span>{<PlayerDialog player={player} {...player.messageSent} /> }</span>
 
         <span>
           { player.mayor ? 'Mayor' : '' }
           { player.dead ? 'Dead' : '' }
-          { player.messageSent === 'sent' ? 'Message sent' : '' }
         </span>
       </div>
-
-      // <div key={index} >
-      //   <Card id="body" className={setClassName( player.mayor, player.receivedMessages)}>
-      //     <CardHeader
-      //        title={player.name}
-      //        subtitle={ player.dead ? <img src={Cross} className="cross" alt="cross" /> : ''}
-      //      />
-      //     <CardHeader
-      //        title={ player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}
-      //        subtitle= { player.mayor && player.dead === false ? <img src={MayorMedal} className="medal" alt="MayorMedal" /> : ''}
-      //        children={<PlayerDialog player={player}/> }
-      //      />
-      //     <CardActions>
-      //        { player.mayor ? 'Mayor' : '' }
-      //        { player.dead ? 'Dead' : '' }
-      //        { player.messageSent === 'sent' ? 'Message sent' : '' }
-      //     </CardActions>
-      //   </Card>
-      // </div>
-   )
+    )
   }
 
   moveAllPlayers = (players) => {
