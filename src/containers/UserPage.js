@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 
 class UserPage extends PureComponent {
@@ -23,8 +24,8 @@ class UserPage extends PureComponent {
   render() {
     return(
       <div>
-      <FlatButton primary={true} style={{ color: 'white', margin: '0 auto' }} label="Wakkerdam Messages" onClick={this.goToWakkerdam} />
-      <FlatButton primary={true} style={{ color: 'white', margin: '0 auto '}} label="Sluimervoort Messages" onClick={this.goToSluimervoort} />
+      <RaisedButton primary={true} style={{ color: 'white', margin: '0 auto' }} label="Wakkerdam Messages" onClick={this.goToWakkerdam} />
+      <RaisedButton  primary={true} style={{ color: 'white', margin: '0 auto '}} label="Sluimervoort Messages" onClick={this.goToSluimervoort} />
       </div>
     )
   }
