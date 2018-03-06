@@ -65,39 +65,6 @@ class Lobby extends PureComponent {
     )
   }
 
-  renderMayorPopUp(players) {
-    const village1 = players.filter((player) => {
-      return (player.village[0].name === 'Wakkerdam')
-    })
-
-    const village2 = players.filter((player) => {
-      return (player.village[0].name === 'Sluimervoort')
-    })
-
-    const noMayor1 = village1.filter((player) => {
-      return (player.mayor === true)
-    })
-
-    const noMayor2 = village2.filter((player) => {
-      return (player.mayor === true)
-    })
-
-    if (noMayor1.length === 0) {
-      //this.handleOpen()
-      return(
-        <div>Wakkerdam needs to choose a new mayor!</div>
-      )
-    }
-
-    if (noMayor2.length === 0) {
-      //this.handleOpen()
-      return(
-        <div>Sluimervoort needs to choose a new mayor!</div>
-      )
-    }
-    return
-  }
-
   render() {
     return (
       <div className="lobby">
@@ -110,7 +77,6 @@ class Lobby extends PureComponent {
         <div className="sidebar">
           <Sidebar />
           { this.renderMergePopUp(this.state.mergeOpen) }
-          { this.renderMayorPopUp(this.props.players) }
         </div>
       </div>
     )
