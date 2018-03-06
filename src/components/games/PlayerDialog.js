@@ -61,7 +61,7 @@ class PlayerDialog extends PureComponent {
        mayor: !player.mayor
      }
 
-     this.props.updateMayor(player._id, updatedPlayer)
+
 
      const wakkerdamArray =  this.props.players.filter((player) => {
         return player.village[0].name === "Wakkerdam"
@@ -88,7 +88,14 @@ class PlayerDialog extends PureComponent {
          mayorOpen: true
        })
      }
+     if (wMayorArray.length > 0 && player.mayor === true || sMayorArray.length > 0 && player.mayor === true ){
+       this.props.updateMayor(player._id, updatedPlayer)
+     }
+     if (wMayorArray.length > 0 && player.village[0].name === "Wakkerdam"){ return null}
+     if (sMayorArray.length > 0 && player.village[0].name === "Sluimervoort"){ return null}
+     if (sMayorArray.length > 0 && wMayorArray.length > 0 ){ return null }
 
+      this.props.updateMayor(player._id, updatedPlayer)
    }
 
    deleteThisPlayer = (player) =>  {
