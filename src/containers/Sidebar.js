@@ -29,12 +29,11 @@ class Sidebar extends PureComponent {
   render() {
     const temporaryStyle = {
       backgroundColor: '#1f243d',
-      height: '90vh',
       overflow: 'hidden',
       position: 'absolute',
     }
     const fixedBar = {
-      height: '39vh',
+      height: '40vh',
       overflow: 'scroll',
     }
 
