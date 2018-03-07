@@ -36,7 +36,6 @@
   margin: 0;
   padding: 0;
   vertical-align: middle;
-  font-size: 1.25rem;
 }
 
 .nameblock:hover + .pop-over, .pop-over:hover {
