@@ -37,15 +37,6 @@ class Sidebar extends PureComponent {
       overflow: 'scroll',
     }
 
-    const scoreStyle = {
-      float: 'right',
-      color: 'black',
-      fontSize: '1rem',
-      paddingRight: 30,
-      paddingTop: 5,
-     }
-
-
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
     })
@@ -61,33 +52,19 @@ class Sidebar extends PureComponent {
     })
 
     return (
-
-      <div>
-        <List style={temporaryStyle}>
-          <div>
-            <h1>WAKKERDAM
-              <span style={scoreStyle}>
-                 {deadPlayerCountVillage1.length}  / {village1.length}
-              </span>
-            </h1>
-            </div>
-           <div style={fixedBar}>
-            <Village players={village1} />
-           </div>
+      <div style={temporaryStyle}>
+        <List>
+          <h1>WAKKERDAM: {deadPlayerCountVillage1.length}/{village1.length}</h1>
+          <div style={fixedBar}>
+           <Village players={village1} />
+          </div>
         </List>
 
         <Divider />
 
-
-        <List style={temporaryStyle}>
-          <div>
-            <h1>SLUIMERVOORT
-              <span style={scoreStyle}>
-                {deadPlayerCountVillage2.length} / {village2.length}
-              </span>
-            </h1>
-          </div>
-            <div style={fixedBar}>
+        <List>
+          <h1>SLUIMERVOORT:  {deadPlayerCountVillage2.length}/{village2.length} </h1>
+          <div style={fixedBar}>
            <Village players={village2} />
           </div>
         </List>
