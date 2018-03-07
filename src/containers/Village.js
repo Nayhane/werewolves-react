@@ -8,16 +8,18 @@ import movePlayers from '../actions/games/move'
 import EmailIcon from 'material-ui/svg-icons/communication/email'
 import './Village.css'
 
-const setClassName = ( mayor, receivedMessages) => {
-
-if (mayor) {
-    return 'mayor'
+const setClassName = ( mayor, receivedMessages, dead) => {
+  if (mayor) {
+      return 'sidebar-mayor'
   }
   if ( receivedMessages.length < 0){
     return ''
-
   } else if (receivedMessages.length > 0){
-    return 'Email'
+    return 'sidebar-mail'
+  }
+
+  if (dead) {
+    return 'sidebar-dead'
   }
 }
 
@@ -28,7 +30,7 @@ class Village extends PureComponent {
     })
 
     return(
-      <div key={index} className={setClassName( player.mayor, player.receivedMessages)}>
+      <div key={index} className={setClassName( player.mayor, player.receivedMessages, player.dead)}>
         <div className='sidebar-name'>
           <div className='nameblock'>
             <p>
@@ -36,7 +38,7 @@ class Village extends PureComponent {
             </p>
             <span>
               {player.mayor && player.dead === false ? <img src={MayorMedal} className="medal-sidebar" alt="MayorMedal" /> : ''}
-              {player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}
+              <span className="email-sidebar">{player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}</span>
             </span>
           </div>
           <div className='pop-over'>
