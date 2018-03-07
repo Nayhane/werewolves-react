@@ -1,0 +1,23 @@
+.avatar-box{
+  height: 120px;
+  width: 100px;
+}
+
+.playerName{
+  word-break: break-all;
+  overflow: hidden;
+  text-align: center;
+  color: #EFEFEF;
+  height: 40px;
+  width: 100px;
+}
+
+.dead{
+  filter: opacity(30%);
+}
+
+.avatar-medal{
+  height: 4rem;
+  margin-top: 45px;
+  margin-right: 20px;
+}

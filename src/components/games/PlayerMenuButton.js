@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import IconButton from 'material-ui/IconButton'
+import RaisedButton from 'material-ui/RaisedButton'
 
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on'
 import KeyIcon from 'material-ui/svg-icons/communication/vpn-key'
@@ -43,7 +43,7 @@ class PlayerMenuButton extends PureComponent {
         return ['Move to Wakkerdam', <SwapIcon />]
 
       case 'DeletePlayer':
-        return ['Delete player', <DeleteIcon />]
+        return ['DeletePlayer', <DeleteIcon />]
 
       default :
         return ['exclamation-circle', <IconLocationOn />]
@@ -58,14 +58,14 @@ class PlayerMenuButton extends PureComponent {
     }
 
     return (
-      <IconButton
+      <RaisedButton
         onClick={ onClick }
+        labelPosition="before"
+        primary={true}
+        icon={this.displayIcon()[1]}
         style={buttonStyle}
         disabled={this.disabledButton()}
-        tooltip={this.displayIcon()[0]}
-      >
-        {this.displayIcon()[1]}
-      </IconButton>
+      />
     )
   }
 }

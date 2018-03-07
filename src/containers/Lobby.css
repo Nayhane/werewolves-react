@@ -3,8 +3,14 @@
   display: flex;
 }
 
-.Lobby {
+.Lobby .paper {
   margin-top: 0px;
+}
+
+.sidebar {
+  right: 0;
+  /* background-color: rgba(255, 71, 77, 0.61); */
+  width: 25%;
 }
 
 .village-container {
@@ -25,14 +31,8 @@
   top: 0;
 }
 
-.sidebar {
-  right: 0;
-  width: 25%;
-}
-
 .sidebar h1 {
   display: block;
-  font-size: 1.4em;
   background-color: #9aacb6;
   color: #EFEFEF;
   margin: 0;

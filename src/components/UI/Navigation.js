@@ -15,7 +15,7 @@ import deletePlayer from '../../actions/games/delete'
 import resetPlayer from '../../actions/games/reset'
 import signOut from '../../actions/user/sign-out'
 
-const TITLE = 'HEEN EN WEERWOLVEN'
+const TITLE = 'HEEN EN WEER WOLVEN'
 
 class Navigation extends PureComponent {
   static propTypes = {

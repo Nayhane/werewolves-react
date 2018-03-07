@@ -12,10 +12,12 @@ import deletePlayer from '../../actions/games/delete'
 
 import MessageBox from './MessageBox'
 
+// import IconMenu from 'material-ui/IconMenu'
+// import MenuItem from 'material-ui/MenuItem'
+// import IconButton from 'material-ui/IconButton'
+// import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton';
-
 
 const customContentStyle = {
   width: '90%',
@@ -97,9 +99,9 @@ class PlayerDialog extends PureComponent {
     const village = this.props.player.village[0].name
 
     const actions = [
-      <RaisedButton
+      <FlatButton
         label="Back to game"
-        secondary={true}
+        primary={true}
         onClick={this.handleClose}
       />
     ]
