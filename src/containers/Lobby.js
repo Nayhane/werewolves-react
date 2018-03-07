@@ -20,6 +20,13 @@ const customContentStyle = {
   maxHeight: 'none'
 };
 
+const mayorDialogStyle = {
+  width: '50%',
+  height: '45vh',
+  maxWidth: 'none',
+  maxHeight: 'none',
+};
+
 class Lobby extends PureComponent {
   constructor(props) {
     super(props)
@@ -27,6 +34,7 @@ class Lobby extends PureComponent {
     this.state = {
       mergeOpen: false,
       hasBeenOpened: false,
+      mayorOpen: false
     }
   }
 
@@ -113,8 +121,11 @@ class Lobby extends PureComponent {
         actions={actions}
         modal={false}
         open={open}
-        onRequestClose={this.handleMayorClose}
-      >{ player.village[0].name } now has a new mayor: { player.name }!
+        contentStyle={mayorDialogStyle}
+      >
+      <p style={{fontSize: '25px', marginLeft:'2%', marginTop: '3%'}}>
+        { player.village[0].name } now has a new mayor: { player.name }!
+      </p>
       </Dialog>
     )
   }
@@ -162,6 +173,7 @@ class Lobby extends PureComponent {
         <div className="sidebar">
           <Sidebar />
           { this.renderMergePopUp(this.state.mergeOpen) }
+          { this.props.players.map((player, index) => this.renderMayorPopUp(player, index, this.state.mayorOpen)) }
         </div>
       </div>
     </div>

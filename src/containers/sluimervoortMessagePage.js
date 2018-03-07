@@ -14,7 +14,7 @@ class sluimervoortMessagePage extends PureComponent {
 
   renderMessage = (message, index) => {
     return(
-      <div style={{ marginLeft: '25rem', marginTop: '0.1rem' }}><MessageItem key={index} message={message}/></div>
+      <div key={index} style={{ marginLeft: '25rem', marginTop: '0.1rem' }}><MessageItem key={index} message={message}/></div>
     )
   }
 

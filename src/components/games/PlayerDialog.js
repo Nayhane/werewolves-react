@@ -36,7 +36,7 @@ class PlayerDialog extends PureComponent {
 
     this.state = {
       open: false,
-      mayorOpen: false
+      //mayorOpen: false
     }
   }
 
@@ -49,9 +49,9 @@ class PlayerDialog extends PureComponent {
     this.setState({open: false});
   }
 
-  handleMayorClose = () => {
-    this.setState({mayorOpen: false});
-  }
+  // handleMayorClose = () => {
+  //   this.setState({mayorOpen: false});
+  // }
 
   killPlayer = (player) => {
     const updatedPlayer = {
@@ -135,31 +135,31 @@ class PlayerDialog extends PureComponent {
     this.props.updateVillage(player._id, updatedVillage)
   }
 
-  renderMayorPopUp(village, mayor) {
-
-    const actions = [
-      <FlatButton
-        label="Continue"
-        secondary={false}
-        keyboardFocused={true}
-        onClick={this.handleMayorClose}
-      />,
-    ]
-
-    return(
-      <Dialog
-        actions={actions}
-        modal={false}
-        open={this.state.mayorOpen}
-        onRequestClose={this.handleMayorClose}
-        contentStyle={mayorDialogStyle}
-      >
-      <p style={{fontSize: '25px', marginLeft:'2%', marginTop: '3%'}}>
-        { village } now has a new mayor: { mayor }!
-      </p>
-      </Dialog>
-    )
-  }
+  // renderMayorPopUp(village, mayor) {
+  //
+  //   const actions = [
+  //     <FlatButton
+  //       label="Continue"
+  //       secondary={false}
+  //       keyboardFocused={true}
+  //       onClick={this.handleMayorClose}
+  //     />,
+  //   ]
+  //
+  //   return(
+  //     <Dialog
+  //       actions={actions}
+  //       modal={false}
+  //       open={this.state.mayorOpen}
+  //       onRequestClose={this.handleMayorClose}
+  //       contentStyle={mayorDialogStyle}
+  //     >
+  //     <p style={{fontSize: '25px', marginLeft:'2%', marginTop: '3%'}}>
+  //       { village } now has a new mayor: { mayor }!
+  //     </p>
+  //     </Dialog>
+  //   )
+  // }
 
   render() {
     const message = 'message'
@@ -193,7 +193,6 @@ class PlayerDialog extends PureComponent {
         >
           { this.sendMessage(this.props.player) }
         </Dialog>
-        {this.renderMayorPopUp(this.props.player.village[0].name, this.props.player.name)}
       </div>
     )
   }
