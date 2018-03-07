@@ -133,6 +133,7 @@ export class MakePhoto extends PureComponent {
             floatingLabelText='Your name...'
             onChange={(event) => this.handleFormSubmit(event.target.value)}
             errorText={ this.state.nameError}
+            value={this.state.name}
           />
 
           <Webcam
