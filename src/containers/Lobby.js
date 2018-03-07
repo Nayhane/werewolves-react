@@ -21,8 +21,6 @@ const customContentStyle = {
 };
 
 class Lobby extends PureComponent {
-
-
   constructor(props) {
     super(props)
 
@@ -37,9 +35,7 @@ class Lobby extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-
     //dead players
-
     const deadPlayersPrev = this.props.players.filter((player) => {
       return player.dead === true
     })
@@ -124,7 +120,6 @@ class Lobby extends PureComponent {
   }
 
   renderMergePopUp() {
-
     const actions = [
       <FlatButton
         label="Continue"
@@ -150,15 +145,13 @@ class Lobby extends PureComponent {
   }
 
   render() {
-
     const lobbyAndSideBar = {
       height: '90vh',
-        overflow: 'scroll',
+      overflow: 'scroll',
     }
 
-
     return (
-    <div  style={lobbyAndSideBar}>
+    <div style={lobbyAndSideBar}>
       <div className="lobby">
         <div className="village-container">
           <VillageAvatar players={this.props.players}/>
