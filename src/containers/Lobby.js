@@ -26,25 +26,21 @@ class Lobby extends PureComponent {
   componentWillMount() {
     this.props.fetchPlayers()
   }
-  
+
   componentWillReceiveProps(nextProps) {
-    //dead players
-<<<<<<< HEAD
-=======
-
+    
     //dead players
 
->>>>>>> 653b1c696046bedfb7fe2e808361c562143a0235
     const deadPlayersPrev = this.props.players.filter((player) => {
       return player.dead === true
     })
-    
+
     const deadPlayersNext = nextProps.players.filter((player) => {
       return player.dead === true
     })
-    
+
     if (deadPlayersPrev.length !== deadPlayersNext.length) {
-      
+
       if (deadPlayersNext.length > 0 && deadPlayersPrev.length > 0 && deadPlayersNext.length === (nextProps.players.length/2)) {
         this.setState({mergeOpen: true})
       } else {
@@ -87,12 +83,12 @@ class Lobby extends PureComponent {
   handleMayorClose = () => {
     this.setState({mayorOpen: false});
   }
-  
+
   handleMergeClose = () => {
     this.setState({hasBeenOpened: true});
     this.setState({mergeOpen: false});
   }
-  
+
   renderMayorPopUp = (player, index, state) => {
     let open = false
     if (state === player._id) {
@@ -107,7 +103,7 @@ class Lobby extends PureComponent {
         onClick={this.handleMayorClose}
       />,
     ]
-    
+
     return(
       <Dialog
         key={index}
