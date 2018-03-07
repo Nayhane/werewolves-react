@@ -98,7 +98,7 @@ class Timer extends PureComponent {
            onTick={this.onTick.bind(this)}
            seconds={this.state.seconds}
            color={this.state.color}
-           pausedText={"▐▐ "}
+           pausedText={'Play'}
            alpha={0.9}
            size={100}
            paused={this.state.paused}
