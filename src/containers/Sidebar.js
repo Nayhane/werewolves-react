@@ -43,6 +43,11 @@ class Sidebar extends PureComponent {
       margin: 0,
     }
 
+    const TitleStyle = {
+      paddingBottom: '0.4rem',
+      paddingTop: '0.4rem',
+    }
+
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
     })
@@ -60,18 +65,24 @@ class Sidebar extends PureComponent {
     return (
       <div style={sidebarStyle}>
         <List>
-          <h1>WAKKERDAM: {deadPlayerCountVillage1.length}/{village1.length}</h1>
-          <div style={fixedBar}>
-           <Village players={village1} />
-          </div>
-        </List>
+        <div style={{display:'inline-flex', justifyContent:'space-between' , backgroundColor: '#9aacb6', width: '100%'}}>
+          <h1 style={{paddingTop: '0.6rem', paddingLeft:'0.6rem'}}> WAKKERDAM </h1>
+          <p style={{paddingRight: '0.6rem', paddingBottom:'0.1rem'}}> {deadPlayerCountVillage1.length}/{village1.length} </p>
+        </div>
+        <div style={fixedBar}>
+          <Village players={village1} />
+        </div>
+       </List>
 
-        <Divider />
+      <Divider />
 
         <List>
-          <h1>SLUIMERVOORT:  {deadPlayerCountVillage2.length}/{village2.length} </h1>
+        <div style={{display:'inline-flex', justifyContent:'space-between' , backgroundColor: '#9aacb6', width: '100%'}}>
+          <h1 style={{paddingTop: '0.6rem', paddingLeft:'0.6rem'}} > SLUIMERVOORT </h1>
+          <p style={{paddingRight: '0.6rem', paddingBottom:'0.1rem'}}> {deadPlayerCountVillage2.length}/{village2.length} </p>
+        </div>
           <div style={fixedBar}>
-           <Village players={village2} />
+            <Village players={village2} />
           </div>
         </List>
       </div>
