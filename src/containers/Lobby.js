@@ -19,7 +19,6 @@ class Lobby extends PureComponent {
     this.state = {
       mergeOpen: false,
       hasBeenOpened: false,
-      mayorOpen: ''
     }
   }
 
@@ -28,7 +27,7 @@ class Lobby extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    
+
     //dead players
 
     const deadPlayersPrev = this.props.players.filter((player) => {
@@ -47,20 +46,20 @@ class Lobby extends PureComponent {
         this.setState({mergeOpen: false})
       }
     }
-    
+
     //mayor players
-    
+
     const mayorsPrev = this.props.players.filter((player) => {
       return player.mayor === true
     })
-    
+
     const mayorsNext = nextProps.players.filter((player) => {
       return player.mayor === true
     })
-    
+
     const prevIds = _.pluck(mayorsPrev, '_id')
-    
-    const newMayor = mayorsNext.filter((mayor) => { 
+
+    const newMayor = mayorsNext.filter((mayor) => {
       if (mayorsPrev.length === 0) {
         return mayor
       }
@@ -69,15 +68,15 @@ class Lobby extends PureComponent {
       }
       return null
     })
-    
+
     if (mayorsPrev.length === 1 && newMayor.length > 0 && this.props.players.length > 0) {
       this.setState({mayorOpen: newMayor[0]._id})
-    } 
+    }
     else if (mayorsPrev.length === 0 && newMayor.length === 1) {
       this.setState({mayorOpen: newMayor[0]._id})
     }
   }
-  
+
   handleMayorClose = () => {
     this.setState({mayorOpen: false});
   }
@@ -86,7 +85,7 @@ class Lobby extends PureComponent {
     this.setState({hasBeenOpened: true});
     this.setState({mergeOpen: false});
   }
-  
+
   renderMayorPopUp = (player, index, state) => {
     let open = false
     if (state === player._id) {
@@ -101,7 +100,7 @@ class Lobby extends PureComponent {
         onClick={this.handleMayorClose}
       />,
     ]
-    
+
     return(
       <Dialog
         key={index}
@@ -137,10 +136,16 @@ class Lobby extends PureComponent {
   }
 
   render() {
+
+    const lobbyAndSideBar = {
+      height: '90vh',
+    }
+
+
     return (
+    <div  style={lobbyAndSideBar}>
       <div className="lobby">
         <div className="village-container">
-          { this.props.players.map((player, index) => this.state.mayorOpen === player._id ? this.renderMayorPopUp(player, index, this.state.mayorOpen) : '')}
           <VillageAvatar players={this.props.players}/>
           <div className="timer">
             <Timer />
@@ -151,6 +156,7 @@ class Lobby extends PureComponent {
           { this.renderMergePopUp(this.state.mergeOpen) }
         </div>
       </div>
+    </div>
     )
   }
 }

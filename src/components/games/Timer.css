@@ -5,8 +5,9 @@
   width: 100px;
   height: 100px;
   background: #9aacb6;
-  margin-top: 15px;
-  margin-right: 15px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 .timer:hover {
