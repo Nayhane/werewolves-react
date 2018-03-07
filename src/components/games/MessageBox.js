@@ -162,9 +162,11 @@ class MessageBox extends PureComponent {
         >
           <Menu ref={(input) => this.menu = input} style={{height: '15rem', overflowY: 'scroll' }}>
             { players.map((player, index) => {
-                return(
+                if(!player.dead){ return(
                   <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
-                )
+                )} else{
+                  return null
+                }
               })
             }
           </Menu>
