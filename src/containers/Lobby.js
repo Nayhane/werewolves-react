@@ -12,7 +12,17 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import './Lobby.css'
 
+
+const customContentStyle = {
+  width: '50%',
+  height: '45vh',
+  maxWidth: 'none',
+  maxHeight: 'none'
+};
+
 class Lobby extends PureComponent {
+
+
   constructor(props) {
     super(props)
 
@@ -117,8 +127,8 @@ class Lobby extends PureComponent {
 
     const actions = [
       <FlatButton
-        label="Ok"
-        primary={true}
+        label="Continue"
+        secondary={false}
         keyboardFocused={true}
         onClick={this.handleMergeClose}
       />,
@@ -130,7 +140,11 @@ class Lobby extends PureComponent {
         modal={false}
         open={this.state.mergeOpen}
         onRequestClose={this.handleMergeClose}
-      >50% of the players died. You can now merge the villages!
+        contentStyle={customContentStyle}
+        >
+        <p style={{fontSize: '25px', marginLeft:'7%', marginTop: '3%'}}>
+          50% of the players died. You can now merge the villages!
+        </p>
       </Dialog>
     )
   }

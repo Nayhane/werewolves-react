@@ -22,6 +22,14 @@ const customContentStyle = {
   maxWidth: 'none',
 }
 
+const mayorDialogStyle = {
+  width: '50%',
+  height: '45vh',
+  maxWidth: 'none',
+  maxHeight: 'none',
+};
+
+
 class PlayerDialog extends PureComponent {
   constructor(props) {
     super(props)
@@ -131,8 +139,8 @@ class PlayerDialog extends PureComponent {
 
     const actions = [
       <FlatButton
-        label="Ok"
-        primary={true}
+        label="Continue"
+        secondary={false}
         keyboardFocused={true}
         onClick={this.handleMayorClose}
       />,
@@ -144,7 +152,11 @@ class PlayerDialog extends PureComponent {
         modal={false}
         open={this.state.mayorOpen}
         onRequestClose={this.handleMayorClose}
-      >{ village } now has a new mayor: { mayor }!
+        contentStyle={mayorDialogStyle}
+      >
+      <p style={{fontSize: '25px', marginLeft:'2%', marginTop: '3%'}}>
+        { village } now has a new mayor: { mayor }!
+      </p>
       </Dialog>
     )
   }

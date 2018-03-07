@@ -52,8 +52,6 @@ export class MakePhoto extends PureComponent {
   }
 
   validateName() {
-
-
     if (this.state.name.length > 1) {
       this.setState({
         nameError: null
@@ -86,9 +84,9 @@ export class MakePhoto extends PureComponent {
       this.props.saveRegistration(this.state)
 
       this.setState({
-        name: '',
         photo: null,
-        })
+        name: ' '
+      })
     }
       return false
   }
@@ -105,8 +103,8 @@ export class MakePhoto extends PureComponent {
 
       const actions = [
         <FlatButton
-        label="Ok"
-        primary={true}
+        label="Registered all players"
+        primary={false}
         keyboardFocused={true}
         onClick={this.handleClose}
         />
@@ -131,9 +129,11 @@ export class MakePhoto extends PureComponent {
           <TextField
             hintText='Please provide your name...'
             floatingLabelText='Your name...'
+            refs="name"
             onChange={(event) => this.handleFormSubmit(event.target.value)}
             errorText={ this.state.nameError}
             value={this.state.name}
+            maxLength="12"
           />
 
           <Webcam
