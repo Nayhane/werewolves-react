@@ -2,11 +2,15 @@
   height: 1rem;
 }
 
+.nameblock span {
+  background-color: yellow;
+  position:
+}
+
 .medal-sidebar{
-  position: fixed;
   height: 30px;
-  margin-right: 5px;
-  float: right;
+  /* float: right; */
+  /* right: 14px; */
 }
 
 .nameblock {
@@ -18,16 +22,16 @@
   height: 30px;
   line-height: 30px;
   /* border: 1px black solid; */
-  vertical-align: middle;
 }
 
 .nameblock p {
   margin: 0;
   padding: 0;
   padding-left: 5px;
+  vertical-align: middle;
 }
 
-.nameblock p:hover, .pop-over:hover {
+.nameblock:hover p, .pop-over {
   color: #1f243d;
   background-color: #d8d8d8;
   border-radius: 2px 2px 0 0;
@@ -36,10 +40,17 @@
 .nameblock:hover + .pop-over, .pop-over:hover {
   display: block;
   width: 90%;
-  background-color: #d8d8d8;
+  /* background-color: #d8d8d8; */
   border-radius: 0 0 2px 2px;
   margin: 0 auto;
 }
+
+/*
+.nameblock p:hover, .pop-over:hover {
+  color: #1f243d;
+  background-color: #d8d8d8;
+  border-radius: 2px 2px 0 0;
+} */
 
 .pop-over {
   display: none;
