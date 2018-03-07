@@ -135,7 +135,7 @@ export class MakePhoto extends PureComponent {
           </FloatingActionButton>
 
           <Dialog
-            title="Add a new player to the game!"
+            title="Add new players to the game!"
             subtitle= {this.state.photoError}
             actions={actions}
             modal={false}
