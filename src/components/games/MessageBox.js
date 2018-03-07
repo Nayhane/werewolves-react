@@ -93,7 +93,9 @@ class MessageBox extends PureComponent {
   render() {
     const { players } = this.props
     const textInputStyle = {
-      borderRadius: '2px'
+      borderRadius: '2px',
+      backgroundColor: '#EFEFEF',
+      color: '#1F243D'
     }
 
     let timerDone = false
@@ -108,18 +110,23 @@ class MessageBox extends PureComponent {
           <h1>Send a message to { this.state.recipientName }</h1>
           <h2>You only have {this.state.counter} seconds left...</h2>
 
-          <TextField
-            id="text-field-controlled"
-            value={this.state.message}
-            onChange={this.handleTextInput}
-            maxLength={160}
-            ref="message"
-            placeholder="Quickly send your message!"
-            multiLine={true}
-            rows={5}
-            style={textInputStyle}
-            disabled={timerDone}
-          />
+          <div>
+            <TextField
+              id="text-field-controlled"
+              value={this.state.message}
+              onChange={this.handleTextInput}
+              maxLength={160}
+              ref="message"
+              placeholder="Quickly, send your message!"
+              multiLine={true}
+              rows={5}
+              style={textInputStyle}
+              textareaStyle={{ color: '#1F243D', padding: 10 }}
+              underlineShow={false}
+              disabled={timerDone}
+            />
+          </div>
+          <br/>
           <div style={{marginLeft: '0.3rem', textAlign: 'center'}}>
             <RaisedButton
               type="button"

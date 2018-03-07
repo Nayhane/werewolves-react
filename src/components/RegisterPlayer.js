@@ -149,8 +149,11 @@ export class MakePhoto extends PureComponent {
             autoScrollBodyContent={true}
           >
           <TextField
+            style={{ backgroundColor: 'white', marginBottom: 20 }}
+            inputStyle={{ color: '#1F243D', paddingBottom: 10, paddingLeft: 10 }}
+            underlineShow={false}
+            hintStyle={{ marginLeft: 10 }}
             hintText='Please provide your name...'
-            floatingLabelText='Your name...'
             refs="name"
             onChange={(event) => this.handleFormSubmit(event.target.value)}
             errorText={ this.state.nameError}
@@ -163,6 +166,7 @@ export class MakePhoto extends PureComponent {
             <div className='screenshots'>
               <div className='controls'>
                 <RaisedButton
+                  style={{ marginRight: 10 }}
                   label='Capture photo!'
                   labelPosition='before'
                   primary={true}
