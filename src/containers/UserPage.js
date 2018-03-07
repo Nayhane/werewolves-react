@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import RaisedButton from 'material-ui/RaisedButton';
 
-
-
 class UserPage extends PureComponent {
   goToWakkerdam = () => {
       this.props.push('/readmessage/Wakkerdam')
