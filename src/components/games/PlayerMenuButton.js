@@ -54,13 +54,14 @@ class PlayerMenuButton extends PureComponent {
     const { onClick } = this.props
     const buttonStyle = {
       margin: 1,
-      // width: '15px'
+      // width: '15px',
+      color: 'rgb(7, 10, 51)'
     }
 
     return (
       <IconButton
         onClick={ onClick }
-        style={buttonStyle}
+        iconStyle={buttonStyle}
         disabled={this.disabledButton()}
         tooltip={this.displayIcon()[0]}
       >
