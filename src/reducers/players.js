@@ -33,8 +33,6 @@ export default (state = [], { type, payload } = {}) => {
     case PLAYER_UPDATED :
       return state.map((player) => {
         if (player._id === payload._id) {
-          console.log('in reducer')
-          console.log(payload)
           return { ...payload }
         }
         return player

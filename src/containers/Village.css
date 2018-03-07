@@ -1,14 +1,21 @@
 .medal{
   height: 1rem;
+  margin: 5px;
+}
+
+.sidebar-dead {
+  background-color: #484c68;
 }
 
 .nameblock span {
-  background-color: yellow;
-  position:
 }
 
 .medal-sidebar{
-  height: 30px;
+  height: 1.5rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 3px;
+  z-index: 100;
 }
 
 .sidebar-name:hover, .sidebar-name:hover p {
@@ -25,9 +32,10 @@
 
 .nameblock {
   color: #EFEFEF;
-  display: block;
+  display: inline-flex;
+  justify-content: space-between;
   width: 90%;
-  margin: 0 auto;
+  margin-left: 10px;
   height: 30px;
   line-height: 30px;
 }
