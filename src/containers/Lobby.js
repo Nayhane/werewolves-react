@@ -147,7 +147,6 @@ class Lobby extends PureComponent {
   render() {
     const lobbyAndSideBar = {
       height: '90vh',
-      overflow: 'scroll',
     }
 
     return (
