@@ -38,7 +38,7 @@ class Sidebar extends PureComponent {
     }
     const fixedBar = {
       height: '40vh',
-      overflow: 'scroll',
+      overflowY: 'scroll',
       padding: 0,
       margin: 0,
     }
