@@ -29,15 +29,15 @@ class VillageAvatar extends PureComponent {
 
     return (
 
-      <div>
-        <List>
+      <div style={{ paddingLeft : 102, paddingRight : 102 }}>
+        <List style={{ marginTop : 10 }}>
           <Subheader><h1>WAKKERDAM</h1></Subheader>
           <AvatarPlayer players={village1} />
         </List>
 
         <Divider />
 
-        <List>
+        <List style={{ marginTop : 10 }}>
           <Subheader><h1>SLUIMERVOORT</h1></Subheader>
           <AvatarPlayer players={village2} />
         </List>
