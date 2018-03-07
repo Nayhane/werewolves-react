@@ -14,7 +14,7 @@ class wakkerdamMessagePage extends PureComponent {
 
   renderMessage = (message, index) => {
     return(
-      <MessageItem key={index} message={message}/>
+      <div style={{ marginLeft: '5.5rem'}}><MessageItem key={index} message={message}/></div>
     )
   }
 
