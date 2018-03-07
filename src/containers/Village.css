@@ -2,34 +2,58 @@
   height: 1rem;
 }
 
+.nameblock span {
+  background-color: yellow;
+  position:
+}
+
 .medal-sidebar{
-  height: 2rem;
-  margin-left: 10px;
-  
-}
-
-#sidebar-players {
-  color: #EFEFEF;
-}
-
-.test-hover {
-  color: #EFEFEF;
-}
-
-.test-hover:hover + .hover-over, .hover-over:hover {
-  display: block;
-  width: 100%;
-  height: 50px;
-}
-
-.hover-over {
-  display: none;
-
+  height: 30px;
+  /* float: right; */
+  /* right: 14px; */
 }
 
 .nameblock {
+  color: #EFEFEF;
   display: block;
-  width: 100%;
-  height: 50px;
+  /* background-color: green; */
+  width: 90%;
+  margin: 0 auto;
+  height: 30px;
+  line-height: 30px;
+  /* border: 1px black solid; */
+}
+
+.nameblock p {
+  margin: 0;
+  padding: 0;
   padding-left: 5px;
+  vertical-align: middle;
+}
+
+.nameblock:hover p, .pop-over {
+  color: #1f243d;
+  background-color: #d8d8d8;
+  border-radius: 2px 2px 0 0;
+}
+
+.nameblock:hover + .pop-over, .pop-over:hover {
+  display: block;
+  width: 90%;
+  /* background-color: #d8d8d8; */
+  border-radius: 0 0 2px 2px;
+  margin: 0 auto;
+}
+
+/*
+.nameblock p:hover, .pop-over:hover {
+  color: #1f243d;
+  background-color: #d8d8d8;
+  border-radius: 2px 2px 0 0;
+} */
+
+.pop-over {
+  display: none;
+  /* align-items: center; */
+  text-align: center;
 }
