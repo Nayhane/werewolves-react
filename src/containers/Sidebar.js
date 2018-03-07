@@ -66,7 +66,7 @@ class Sidebar extends PureComponent {
       <div style={sidebarStyle}>
         <List>
         <div style={{display:'inline-flex', justifyContent:'space-between' , backgroundColor: '#9aacb6', width: '100%'}}>
-          <h1 style={{paddingTop: '0.6rem', paddingLeft:'0.6rem'}}> WAKKERDAM </h1>
+          <h1 style={{paddingTop: '1.2rem', paddingLeft:'0.6rem'}}> WAKKERDAM </h1>
           <p style={{paddingRight: '0.6rem', paddingBottom:'0.1rem'}}> {deadPlayerCountVillage1.length}/{village1.length} </p>
         </div>
         <div style={fixedBar}>
@@ -78,7 +78,7 @@ class Sidebar extends PureComponent {
 
         <List>
         <div style={{display:'inline-flex', justifyContent:'space-between' , backgroundColor: '#9aacb6', width: '100%'}}>
-          <h1 style={{paddingTop: '0.6rem', paddingLeft:'0.6rem'}} > SLUIMERVOORT </h1>
+          <h1 style={{paddingTop: '1.2rem', paddingLeft:'0.6rem'}} > SLUIMERVOORT </h1>
           <p style={{paddingRight: '0.6rem', paddingBottom:'0.1rem'}}> {deadPlayerCountVillage2.length}/{village2.length} </p>
         </div>
           <div style={fixedBar}>
