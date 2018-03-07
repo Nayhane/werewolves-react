@@ -93,7 +93,7 @@ class Navigation extends PureComponent {
         showMenuIconButton={false}
         title={TITLE}
         style={{ textAlign: 'left' }}
-        titleStyle={{ fontSize: '3rem', marginLeft: '100px', marginTop: '0.5rem', marginBottom: '0.5rem' }}
+        titleStyle={{ fontSize: '3rem', marginLeft: '50px', marginTop: '0.5rem', marginBottom: '0.5rem' }}
         iconElementRight={signedIn ?
           <div style={divStyle}>
             { this.state.gamePage ? <FlatButton primary={false} style={{ marginTop: 5 }} labelStyle={{ fontSize: '1.25rem' }} label="Read message" onClick={this.goToMessage} /> :

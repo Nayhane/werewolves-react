@@ -23,7 +23,7 @@ const setClassName = ( mayor, receivedMessages, dead) => {
   }
 }
 
-class Village extends PureComponent {
+class Village extends PureComponent { 
   renderPlayer(player, index) {
     let unreadMessages = player.receivedMessages.filter(function(message){
       return message.messageRead === false
