@@ -6,7 +6,6 @@ import VillageMenuButton from '../components/games/VillageMenuButton'
 import movePlayers from '../actions/games/move'
 
 import EmailIcon from 'material-ui/svg-icons/communication/email'
-//import CrossIcon from 'material-ui/svg-icons/av/games'
 import './Village.css'
 
 const setClassName = ( mayor, receivedMessages) => {
@@ -30,20 +29,16 @@ class Village extends PureComponent {
 
     return(
       <div key={index} className={setClassName( player.mayor, player.receivedMessages)}>
-
         <div className='sidebar-name'>
           <div className='nameblock'>
             <p>
               {player.name}
             </p>
-
             <span>
               {player.mayor && player.dead === false ? <img src={MayorMedal} className="medal-sidebar" alt="MayorMedal" /> : ''}
               {player.receivedMessages.length && unreadMessages.length > 0 && player.dead === false ? <EmailIcon /> : ''}
             </span>
-
           </div>
-
           <div className='pop-over'>
             {<PlayerDialog player={player} {...player.messageSent} /> }
           </div>

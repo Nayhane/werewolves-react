@@ -92,6 +92,10 @@ export class MakePhoto extends PureComponent {
   }
 
     render() {
+      const cameraBox = {
+        display: 'flex',
+      }
+
       const style = {
         margin: 4,
       }
@@ -135,7 +139,7 @@ export class MakePhoto extends PureComponent {
             value={this.state.name}
             maxLength="12"
           />
-
+          <div style={cameraBox}>
           <Webcam
             className='newPhoto'
             audio={false}
@@ -155,6 +159,7 @@ export class MakePhoto extends PureComponent {
                 icon={<AddPhotoIcon />}
                 onClick={this.handlePhotoClick}
               />
+            </div>
             </div>
             {this.state.photo ? <img src={this.state.photo} alt='Player' /> : null}
           </div>
