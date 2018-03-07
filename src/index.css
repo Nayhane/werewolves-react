@@ -13,7 +13,7 @@ body {
   /* background-color: #ededed */
 }
 
-p, a, span, div {
+p, a, button {
   font-size: 1.25rem;
 }
 
