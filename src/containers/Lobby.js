@@ -28,6 +28,8 @@ class Lobby extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
+    
+    //dead players
 
     //dead players
 
@@ -61,6 +63,7 @@ class Lobby extends PureComponent {
     const prevIds = _.pluck(mayorsPrev, '_id')
 
     const newMayor = mayorsNext.filter((mayor) => {
+
       if (mayorsPrev.length === 0) {
         return mayor
       }
@@ -73,6 +76,7 @@ class Lobby extends PureComponent {
     if (mayorsPrev.length === 1 && newMayor.length > 0 && this.props.players.length > 0) {
       this.setState({mayorOpen: newMayor[0]._id})
     }
+
     else if (mayorsPrev.length === 0 && newMayor.length === 1) {
       this.setState({mayorOpen: newMayor[0]._id})
     }
@@ -85,6 +89,33 @@ class Lobby extends PureComponent {
   handleMergeClose = () => {
     this.setState({hasBeenOpened: true});
     this.setState({mergeOpen: false});
+  }
+  
+  renderMayorPopUp = (player, index, state) => {
+    let open = false
+    if (state === player._id) {
+      open = true
+    }
+
+    const actions = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleMayorClose}
+      />,
+    ]
+    
+    return(
+      <Dialog
+        key={index}
+        actions={actions}
+        modal={false}
+        open={true}
+        onRequestClose={this.handleMayorClose}
+      >{ player.village[0].name } now has a new mayor: { player.name }!
+      </Dialog>
+    )
   }
 
   renderMayorPopUp = (player, index, state) => {
@@ -138,7 +169,6 @@ class Lobby extends PureComponent {
   }
 
   render() {
-
     return (
       <div className="lobby">
         <div className="village-container">

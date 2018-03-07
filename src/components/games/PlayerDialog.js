@@ -54,7 +54,7 @@ class PlayerDialog extends PureComponent {
        mayor: !player.mayor
      }
 
-      this.props.updateMayor(player._id, updatedPlayer)
+     this.props.updateMayor(player._id, updatedPlayer)
    }
 
    deleteThisPlayer = (player) =>  {
