@@ -14,7 +14,7 @@ class sluimervoortMessagePage extends PureComponent {
 
   renderMessage = (message, index) => {
     return(
-      <div style={{ marginLeft: 200 }}><MessageItem key={index} message={message}/></div>
+      <div style={{ marginLeft: '25rem', marginTop: '0.1rem' }}><MessageItem key={index} message={message}/></div>
     )
   }
 
@@ -52,8 +52,8 @@ class sluimervoortMessagePage extends PureComponent {
     })
 
     return(
-      <div className="message-page" style={{ margin: 30 }}>
-        { allMessages.map(this.renderMessage) }
+      <div className="message-page" style={{ margin: '1.5rem' }}>
+       { allMessages.map(this.renderMessage) }
       </div>
     )
   }
