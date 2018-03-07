@@ -17,7 +17,6 @@ class VillageAvatar extends PureComponent {
 
 
   render() {
-
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
     })
@@ -35,7 +34,7 @@ class VillageAvatar extends PureComponent {
           <AvatarPlayer players={village1} />
         </List>
 
-        <Divider />
+        <Divider style={{marginTop: '30px', marginBotton: '30px'}}/>
 
         <List>
           <Subheader><h1>SLUIMERVOORT</h1></Subheader>
