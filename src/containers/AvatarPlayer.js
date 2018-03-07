@@ -22,12 +22,11 @@ const setClassName = (dead, mayor) => {
 const avatarStyle = { display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}
 
 class AvatarPlayer extends PureComponent {
-  
   componentWillMount() {
     this.props.subscribeToWebsocket()
   }
 
-  renderAvatars(player, index, mayorOpen, mayorPopUp){
+  renderAvatars(player, index){
    return(
     <div key={index}>
       <div className={setClassName(player.dead, player.mayor, player.receivedMessages)}>
