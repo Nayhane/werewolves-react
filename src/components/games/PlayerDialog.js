@@ -109,10 +109,10 @@ class PlayerDialog extends PureComponent {
 
   sendMessage = (player, index) => {
     let message = player.messageSent
-    if (message !== 'sent') {
+    if (message !== 'sent' ) {
       return(
-        <MessageBox key={index} players={ this.props.players } player = {player}/>
-        )
+      <MessageBox key={index} players={ this.props.players } player = {player}/>
+      )
     } else {
       return <h1>Message sent!</h1>
     }
@@ -178,7 +178,7 @@ class PlayerDialog extends PureComponent {
 
     return (
       <div>
-        <PlayerMenuButton disabled={this.props.player.messageSent === 'sent' ? true : false } icon={message} onClick={() => this.handleOpen(this.props.player)} />
+        <PlayerMenuButton disabled={this.props.player.messageSent === 'sent' || this.props.player.dead ? true : false } icon={message} onClick={() => this.handleOpen(this.props.player)} />
         <PlayerMenuButton icon={mayor} onClick={() => this.makeMayor(this.props.player)} />
         <PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>
         <PlayerMenuButton icon={village} onClick={() => this.moveVillage(this.props.player)}/>
