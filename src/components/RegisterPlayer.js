@@ -94,11 +94,25 @@ export class MakePhoto extends PureComponent {
     render() {
       const cameraBox = {
         display: 'flex',
+        marginBottom: '20px'
       }
 
       const style = {
         margin: 4,
       }
+
+      const styleCamera = {
+        // marginBottom: '100px',
+        // marginRight: '20px',
+        // paddingBottom: '50px'
+      }
+
+      const stylePhoto = {
+        marginTop: '130px',
+        borderRadius: '100%',
+        marginLeft: '100px'
+      }
+
 
       const customContentStyle = {
         width: '90%',
@@ -139,38 +153,44 @@ export class MakePhoto extends PureComponent {
             value={this.state.name}
             maxLength="12"
           />
-          <div style={cameraBox}>
-          <Webcam
-            className='newPhoto'
-            audio={false}
-            ref={this.setRef}
-            screenshotFormat='image/jpeg'
-            width={500}
-          />
 
-          <h2>Screenshots</h2>
-          <p style={{ color: 'red'}} >{this.state.photoError}</p>
-          <div className='screenshots'>
-            <div className='controls'>
-              <RaisedButton
-                label='Capture photo!'
-                labelPosition='before'
-                primary={true}
-                icon={<AddPhotoIcon />}
-                onClick={this.handlePhotoClick}
-              />
+        <div style={cameraBox}>
+            <p style={{ color: 'red'}} >{this.state.photoError}</p>
+            <div className='screenshots'>
+              <div className='controls'>
+                <RaisedButton
+                  label='Capture photo!'
+                  labelPosition='before'
+                  primary={true}
+                  icon={<AddPhotoIcon />}
+                  onClick={this.handlePhotoClick}
+                />
+
+                <RaisedButton
+                  label='Register user!'
+                  labelPosition='before'
+                  primary={true}
+                  icon={<DoneIcon />}
+                  onClick={this.handleSaveRegistration}
+                />
+
+                </div>
+
+                <Webcam
+                  className='newPhoto'
+                  audio={false}
+                  ref={this.setRef}
+                  screenshotFormat='image/jpeg'
+                  width={400}
+                  style={styleCamera}
+                />
+
+
+              </div>
+            <div>
+            {this.state.photo ? <img src={this.state.photo} alt='Player' style={stylePhoto} /> : null}
             </div>
-            </div>
-            {this.state.photo ? <img src={this.state.photo} alt='Player' /> : null}
           </div>
-
-          <RaisedButton
-            label='Register user!'
-            labelPosition='before'
-            primary={true}
-            icon={<DoneIcon />}
-            onClick={this.handleSaveRegistration}
-          />
           </Dialog >
         </div>
       )
