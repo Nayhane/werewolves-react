@@ -13,6 +13,10 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 
 import Webcam from 'react-webcam'
 
+
+const styleButton = {
+  margin: 12,
+}
 export class MakePhoto extends PureComponent {
   constructor(props) {
     super(props)
@@ -135,7 +139,7 @@ export class MakePhoto extends PureComponent {
           </FloatingActionButton>
 
           <Dialog
-            title="Add a new player to the game!"
+            title="Add new players to the game!"
             subtitle= {this.state.photoError}
             actions={actions}
             modal={false}
@@ -168,6 +172,7 @@ export class MakePhoto extends PureComponent {
                   primary={true}
                   icon={<AddPhotoIcon />}
                   onClick={this.handlePhotoClick}
+                  style={styleButton}
                 />
 
                 <RaisedButton

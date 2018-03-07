@@ -11,6 +11,10 @@ import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
+const styleButton = {
+  margin: 12,
+}
+
 class MessageBox extends PureComponent {
   constructor(props) {
     super(props)
@@ -102,7 +106,7 @@ class MessageBox extends PureComponent {
 
     if (this.state.recipientName !== '...') {
       return(
-        <div>
+        <div style={{textAlign: 'center'}}>
           <h1>Send a message to { this.state.recipientName }</h1>
           <h2>You only have {this.state.counter} seconds left...</h2>
 
@@ -123,14 +127,16 @@ class MessageBox extends PureComponent {
             />
           </div>
           <br/>
-          <div>
+          <div style={{marginLeft: '0.3rem', textAlign: 'center'}}>
             <RaisedButton
               type="button"
               value="send anonymously"
               label="send anonymously"
               primary={true}
               onClick={() => this.sendMessage(this.props.player, 'anonymous')}
+              style={styleButton}
             />
+
             <RaisedButton
               type="button"
               value="Send"
@@ -138,13 +144,14 @@ class MessageBox extends PureComponent {
               primary={true}
               onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
             />
+
           </div>
         </div>
       )
     }
 
     return (
-      <div style={{ padding: 20}}>
+      <div style={{ padding: 20, textAlign: 'center'}}>
         <h1>Choose a recipient</h1>
 
         <RaisedButton
@@ -160,11 +167,13 @@ class MessageBox extends PureComponent {
           targetOrigin={{horizontal: 'left', vertical: 'top'}}
           onRequestClose={this.handleRequestClose}
         >
-          <Menu ref={(input) => this.menu = input}>
+          <Menu ref={(input) => this.menu = input} style={{height: '15rem', overflowY: 'scroll' }}>
             { players.map((player, index) => {
-                return(
+                if(!player.dead){ return(
                   <MenuItem key={index} primaryText={player.name} value={player._id} onClick={() => this.chooseRecipient(player)} />
-                )
+                )} else{
+                  return null
+                }
               })
             }
           </Menu>

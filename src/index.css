@@ -12,3 +12,11 @@ body {
   background-color: #180627;
   /* background-color: #ededed */
 }
+
+p, a, button {
+  font-size: 1.25rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
