@@ -119,8 +119,8 @@ class MessageBox extends PureComponent {
           <div>
             <RaisedButton
               type="button"
-              value="Send anonymous"
-              label="Send anonymous"
+              value="send anonymously"
+              label="send anonymously"
               primary={true}
               onClick={() => this.sendMessage(this.props.player, 'anonymous')}
             />
