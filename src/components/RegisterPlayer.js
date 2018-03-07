@@ -15,7 +15,7 @@ import Webcam from 'react-webcam'
 
 
 const styleButton = {
-  margin: 12,
+  marginRight: 12,
 }
 export class MakePhoto extends PureComponent {
   constructor(props) {
@@ -166,7 +166,6 @@ export class MakePhoto extends PureComponent {
             <div className='screenshots'>
               <div className='controls'>
                 <RaisedButton
-                  style={{ marginRight: 10 }}
                   label='Capture photo!'
                   labelPosition='before'
                   primary={true}
