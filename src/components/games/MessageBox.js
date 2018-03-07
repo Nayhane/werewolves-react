@@ -11,6 +11,10 @@ import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
+const styleButton = {
+  margin: 12,
+}
+
 class MessageBox extends PureComponent {
   constructor(props) {
     super(props)
@@ -123,6 +127,7 @@ class MessageBox extends PureComponent {
               label="send anonymously"
               primary={true}
               onClick={() => this.sendMessage(this.props.player, 'anonymous')}
+              style={styleButton}
             />
             <RaisedButton
               type="button"

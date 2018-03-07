@@ -13,6 +13,10 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 
 import Webcam from 'react-webcam'
 
+
+const styleButton = {
+  margin: 12,
+}
 export class MakePhoto extends PureComponent {
   constructor(props) {
     super(props)
@@ -164,6 +168,7 @@ export class MakePhoto extends PureComponent {
                   primary={true}
                   icon={<AddPhotoIcon />}
                   onClick={this.handlePhotoClick}
+                  style={styleButton}
                 />
 
                 <RaisedButton
