@@ -15,10 +15,8 @@ render() {
       <IconButton
         tooltip={this.props.label}
         onClick={ onClick }
-        labelPosition="before"
-        //primary={true}
+        tooltipPosition="bottom-right"
         style={{ marginTop: 5, backgroundColor: '#1f243d' }}
-        icon={<MovePlayers />}
       >
         <MovePlayers />
       </IconButton>
