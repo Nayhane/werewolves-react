@@ -29,6 +29,12 @@ class Lobby extends PureComponent {
   
   componentWillReceiveProps(nextProps) {
     //dead players
+<<<<<<< HEAD
+=======
+
+    //dead players
+
+>>>>>>> 653b1c696046bedfb7fe2e808361c562143a0235
     const deadPlayersPrev = this.props.players.filter((player) => {
       return player.dead === true
     })
@@ -45,20 +51,21 @@ class Lobby extends PureComponent {
         this.setState({mergeOpen: false})
       }
     }
-    
+
     //mayor players
-    
+
     const mayorsPrev = this.props.players.filter((player) => {
       return player.mayor === true
     })
-    
+
     const mayorsNext = nextProps.players.filter((player) => {
       return player.mayor === true
     })
-    
+
     const prevIds = _.pluck(mayorsPrev, '_id')
-    
-    const newMayor = mayorsNext.filter((mayor) => { 
+
+    const newMayor = mayorsNext.filter((mayor) => {
+
       if (mayorsPrev.length === 0) {
         return mayor
       }
@@ -67,15 +74,16 @@ class Lobby extends PureComponent {
       }
       return null
     })
-    
+
     if (mayorsPrev.length === 1 && newMayor.length > 0 && this.props.players.length > 0) {
       this.setState({mayorOpen: newMayor[0]._id})
-    } 
+    }
+
     else if (mayorsPrev.length === 0 && newMayor.length === 1) {
       this.setState({mayorOpen: newMayor[0]._id})
     }
   }
-  
+
   handleMayorClose = () => {
     this.setState({mayorOpen: false});
   }
@@ -111,6 +119,34 @@ class Lobby extends PureComponent {
       </Dialog>
     )
   }
+
+  renderMayorPopUp = (player, index, state) => {
+    let open = false
+    if (state === player._id) {
+      open = true
+    }
+
+    const actions = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleMayorClose}
+        />,
+      ]
+
+      return(
+        <Dialog
+        key={index}
+        actions={actions}
+        modal={false}
+        open={true}
+        onRequestClose={this.handleMayorClose}
+        >{ player.village[0].name } now has a new mayor: { player.name }!
+        </Dialog>
+      )
+    }
+
 
   renderMergePopUp() {
 

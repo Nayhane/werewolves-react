@@ -20,7 +20,7 @@ const setClassName = (dead, mayor) => {
 }
 
 class AvatarPlayer extends PureComponent {
-  
+
   componentWillMount() {
     this.props.subscribeToWebsocket()
   }
@@ -34,10 +34,10 @@ class AvatarPlayer extends PureComponent {
             className="avatar-medal" alt="MayorMedal" /> : ''}
             secondary={true}
           >
-            <div className='avatar-box'>
-              <Avatar src={player.photo} size={100} />
-              <div className='playerName'>{player.name}</div>
-            </div>
+          <div className='avatar-box'>
+            <Avatar src={player.photo} size={100} />
+            <div className='playerName'>{player.name}</div>
+          </div>
          </Badge>
       </div>
     </div>
