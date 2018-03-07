@@ -27,14 +27,20 @@ class Sidebar extends PureComponent {
   }
 
   render() {
-    const temporaryStyle = {
+    const sidebarStyle = {
       backgroundColor: '#1f243d',
       overflow: 'hidden',
       position: 'absolute',
+      padding: 0,
+      margin: 0,
+      right: 0,
+      width: '22%'
     }
     const fixedBar = {
       height: '40vh',
-      overflow: 'scroll',
+      overflowY: 'scroll',
+      padding: 0,
+      margin: 0,
     }
 
     const village1 = this.props.players.filter((player) => {
@@ -52,7 +58,7 @@ class Sidebar extends PureComponent {
     })
 
     return (
-      <div style={temporaryStyle}>
+      <div style={sidebarStyle}>
         <List>
           <h1>WAKKERDAM: {deadPlayerCountVillage1.length}/{village1.length}</h1>
           <div style={fixedBar}>

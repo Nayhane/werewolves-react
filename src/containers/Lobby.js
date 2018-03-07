@@ -12,6 +12,14 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import './Lobby.css'
 
+
+const customContentStyle = {
+  width: '50%',
+  height: '45vh',
+  maxWidth: 'none',
+  maxHeight: 'none'
+};
+
 class Lobby extends PureComponent {
   constructor(props) {
     super(props)
@@ -27,9 +35,7 @@ class Lobby extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-
     //dead players
-
     const deadPlayersPrev = this.props.players.filter((player) => {
       return player.dead === true
     })
@@ -106,7 +112,7 @@ class Lobby extends PureComponent {
         key={index}
         actions={actions}
         modal={false}
-        open={true}
+        open={open}
         onRequestClose={this.handleMayorClose}
       >{ player.village[0].name } now has a new mayor: { player.name }!
       </Dialog>
@@ -114,11 +120,10 @@ class Lobby extends PureComponent {
   }
 
   renderMergePopUp() {
-
     const actions = [
       <FlatButton
-        label="Ok"
-        primary={true}
+        label="Continue"
+        secondary={false}
         keyboardFocused={true}
         onClick={this.handleMergeClose}
       />,
@@ -130,21 +135,22 @@ class Lobby extends PureComponent {
         modal={false}
         open={this.state.mergeOpen}
         onRequestClose={this.handleMergeClose}
-      >50% of the players died. You can now merge the villages!
+        contentStyle={customContentStyle}
+        >
+        <p style={{fontSize: '25px', marginLeft:'7%', marginTop: '3%'}}>
+          50% of the players died. You can now merge the villages!
+        </p>
       </Dialog>
     )
   }
 
   render() {
-
     const lobbyAndSideBar = {
       height: '90vh',
-      overflow: 'scroll',
     }
 
-
     return (
-    <div  style={lobbyAndSideBar}>
+    <div style={lobbyAndSideBar}>
       <div className="lobby">
         <div className="village-container">
           <VillageAvatar players={this.props.players}/>
