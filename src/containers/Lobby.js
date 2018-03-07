@@ -116,7 +116,7 @@ class Lobby extends PureComponent {
         key={index}
         actions={actions}
         modal={false}
-        open={true}
+        open={open}
         onRequestClose={this.handleMayorClose}
       >{ player.village[0].name } now has a new mayor: { player.name }!
       </Dialog>

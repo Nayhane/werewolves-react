@@ -6,7 +6,6 @@ import VillageMenuButton from '../components/games/VillageMenuButton'
 import movePlayers from '../actions/games/move'
 
 import EmailIcon from 'material-ui/svg-icons/communication/email'
-// import CrossIcon from 'material-ui/svg-icons/av/games'
 import './Village.css'
 
 const setClassName = ( mayor, receivedMessages) => {
