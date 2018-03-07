@@ -3,10 +3,12 @@
 }
 
 .message-open {
+  font-size: 1.05em;
 	position: relative;
 	background: #9AACB6;
 	border-radius: .4em;
-  margin: 30px;
+  margin: 1.5%;
+  margin-bottom: 40px;
   padding: 15px;
   max-width: 300px;
 }

@@ -116,20 +116,22 @@ class MessageBox extends PureComponent {
             style={textInputStyle}
             disabled={timerDone}
           />
-          <RaisedButton
-            type="button"
-            value="Send anonymous"
-            label="Send anonymous"
-            primary={true}
-            onClick={() => this.sendMessage(this.props.player, 'anonymous')}
-          />
-          <RaisedButton
-            type="button"
-            value="Send"
-            label="Send signed"
-            primary={true}
-            onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
-          />
+          <div>
+            <RaisedButton
+              type="button"
+              value="Send anonymous"
+              label="Send anonymous"
+              primary={true}
+              onClick={() => this.sendMessage(this.props.player, 'anonymous')}
+            />
+            <RaisedButton
+              type="button"
+              value="Send"
+              label="Send signed"
+              primary={true}
+              onClick={() => this.sendMessage(this.props.player, this.props.player.name)}
+            />
+          </div>
         </div>
       )
     }
@@ -141,7 +143,7 @@ class MessageBox extends PureComponent {
         <RaisedButton
           onClick={this.handlePopoverClick}
           label="Choose recipient"
-          primary={true} 
+          primary={true}
         />
 
         <Popover
