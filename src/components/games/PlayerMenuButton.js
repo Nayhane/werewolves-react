@@ -7,7 +7,7 @@ import KeyIcon from 'material-ui/svg-icons/communication/vpn-key'
 import SwapIcon from 'material-ui/svg-icons/communication/swap-calls'
 import EnvelopeIcon from 'material-ui/svg-icons/content/mail'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import SadIcon from 'material-ui/svg-icons/social/sentiment-very-dissatisfied'
+import ByeIcon from 'material-ui/svg-icons/content/clear'
 
 class PlayerMenuButton extends PureComponent {
   static propTypes = {
@@ -34,7 +34,7 @@ class PlayerMenuButton extends PureComponent {
         return ['Mayor', <KeyIcon />]
 
       case 'dead' :
-        return ['Die!', <SadIcon />]
+        return ['Die!', <ByeIcon />]
 
       case 'Wakkerdam' :
         return ['Move to Sluimervoort', <SwapIcon />]
