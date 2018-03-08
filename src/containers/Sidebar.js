@@ -43,11 +43,6 @@ class Sidebar extends PureComponent {
       margin: 0,
     }
 
-    const TitleStyle = {
-      paddingBottom: '0.4rem',
-      paddingTop: '0.4rem',
-    }
-
     const village1 = this.props.players.filter((player) => {
       return player.village[0].name === "Wakkerdam"
     })

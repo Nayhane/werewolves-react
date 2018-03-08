@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import IconButton from 'material-ui/IconButton'
 
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on'
-import KeyIcon from 'material-ui/svg-icons/communication/vpn-key'
 import SwapIcon from 'material-ui/svg-icons/communication/swap-calls'
 import EnvelopeIcon from 'material-ui/svg-icons/content/mail'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'

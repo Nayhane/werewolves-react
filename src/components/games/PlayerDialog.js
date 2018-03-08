@@ -13,7 +13,6 @@ import deletePlayer from '../../actions/games/delete'
 import MessageBox from './MessageBox'
 
 import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton';
 
 
@@ -21,14 +20,6 @@ const customContentStyle = {
   width: '90%',
   maxWidth: 'none',
 }
-
-const mayorDialogStyle = {
-  width: '50%',
-  height: '45vh',
-  maxWidth: 'none',
-  maxHeight: 'none',
-};
-
 
 class PlayerDialog extends PureComponent {
   constructor(props) {
