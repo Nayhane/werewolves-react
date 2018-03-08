@@ -20,6 +20,14 @@
   -o-transition: background-color 0.4s ease-out;
   transition: background-color 0.4s ease-out;
 }
-.reset-button {
+.resetButton {
+  height: '1rem';
+  margin-top: 7px;
   margin-left: 50px;
+}
+
+.nightButton {
+  height: '1rem';
+  margin-left: 50px;
+  margin-top: 2px;
 }
