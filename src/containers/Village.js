@@ -23,14 +23,14 @@ const setClassName = ( mayor, receivedMessages, dead) => {
   }
 }
 
-class Village extends PureComponent { 
+class Village extends PureComponent {
   renderPlayer(player, index) {
     let unreadMessages = player.receivedMessages.filter(function(message){
       return message.messageRead === false
     })
 
     return(
-      <div key={index} className={setClassName( player.mayor, player.receivedMessages, player.dead)}>
+      <div key={index} className={setClassName(player.mayor, player.receivedMessages, player.dead)}>
         <div className='sidebar-name'>
           <div className='nameblock'>
             <p>
