@@ -54,7 +54,7 @@ class Lobby extends PureComponent {
 
     if (deadPlayersPrev.length !== deadPlayersNext.length) {
 
-      if (deadPlayersNext.length > 0 && deadPlayersPrev.length > 0 && deadPlayersNext.length === (nextProps.players.length/2)) {
+      if (deadPlayersNext.length > 0 && deadPlayersPrev.length > 0 && deadPlayersNext.length === (Math.round(nextProps.players.length/2))) {
         this.setState({mergeOpen: true})
       } else {
         this.setState({mergeOpen: false})
