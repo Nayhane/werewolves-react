@@ -36,7 +36,6 @@ class PlayerDialog extends PureComponent {
 
     this.state = {
       open: false,
-      //mayorOpen: false
     }
   }
 
@@ -48,10 +47,6 @@ class PlayerDialog extends PureComponent {
   handleClose = () => {
     this.setState({open: false});
   }
-
-  // handleMayorClose = () => {
-  //   this.setState({mayorOpen: false});
-  // }
 
   killPlayer = (player) => {
     const updatedPlayer = {
@@ -135,35 +130,10 @@ class PlayerDialog extends PureComponent {
     this.props.updateVillage(player._id, updatedVillage)
   }
 
-  // renderMayorPopUp(village, mayor) {
-  //
-  //   const actions = [
-  //     <FlatButton
-  //       label="Continue"
-  //       secondary={false}
-  //       keyboardFocused={true}
-  //       onClick={this.handleMayorClose}
-  //     />,
-  //   ]
-  //
-  //   return(
-  //     <Dialog
-  //       actions={actions}
-  //       modal={false}
-  //       open={this.state.mayorOpen}
-  //       onRequestClose={this.handleMayorClose}
-  //       contentStyle={mayorDialogStyle}
-  //     >
-  //     <p style={{fontSize: '25px', marginLeft:'2%', marginTop: '3%'}}>
-  //       { village } now has a new mayor: { mayor }!
-  //     </p>
-  //     </Dialog>
-  //   )
-  // }
-
   render() {
     const message = 'message'
     const mayor = 'mayor'
+    const notMayor = 'notMayor'
     const dead = 'dead'
     const DeletePlayer = 'DeletePlayer'
     const village = this.props.player.village[0].name
@@ -179,7 +149,7 @@ class PlayerDialog extends PureComponent {
     return (
       <div>
         <PlayerMenuButton disabled={this.props.player.messageSent === 'sent' || this.props.player.dead ? true : false } icon={message} onClick={() => this.handleOpen(this.props.player)} />
-        <PlayerMenuButton disabled={this.props.player.dead? true : false} icon={mayor} onClick={() => this.makeMayor(this.props.player)} />
+        <PlayerMenuButton disabled={this.props.player.dead? true : false} icon={this.props.player.mayor ? mayor : notMayor} onClick={() => this.makeMayor(this.props.player)} />
         <PlayerMenuButton icon={dead} onClick={() => this.killPlayer(this.props.player)}/>
         <PlayerMenuButton disabled={this.props.player.dead? true : false} icon={village} onClick={() => this.moveVillage(this.props.player)}/>
         <PlayerMenuButton icon={DeletePlayer} onClick={() => this.deleteThisPlayer(this.props.player)}/>
