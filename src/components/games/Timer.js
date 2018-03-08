@@ -113,11 +113,13 @@ class Timer extends PureComponent {
          ref={(ref) => (this.player = ref)}
        />
       </div>
+
       <div className='reset-button'>
-      <FloatingActionButton mini={true}>
-        <RestoreIcon onClick={this.resetTimer.bind(this)}/>
-      </FloatingActionButton>
+        <FloatingActionButton mini={true}>
+          <RestoreIcon onClick={this.resetTimer.bind(this)}/>
+        </FloatingActionButton>
       </div>
+
       <div>
         <Dialog
           contentStyle={customContentStyle}

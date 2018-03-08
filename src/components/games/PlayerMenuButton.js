@@ -8,6 +8,10 @@ import SwapIcon from 'material-ui/svg-icons/communication/swap-calls'
 import EnvelopeIcon from 'material-ui/svg-icons/content/mail'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import ByeIcon from 'material-ui/svg-icons/content/clear'
+import MayorGrey from '../../images/hover-mayor.png'
+import MayorColor from '../../images/mayor-medal.png'
+
+import './PlayerMenuButton.css'
 
 class PlayerMenuButton extends PureComponent {
   static propTypes = {
@@ -31,7 +35,10 @@ class PlayerMenuButton extends PureComponent {
         return ['Send message', <EnvelopeIcon />]
 
       case 'mayor' :
-        return ['Mayor', <KeyIcon />]
+        return ['Unmake Mayor', <img src={ MayorColor } className="mayorColor" alt="MayorGrey" />]
+
+      case 'notMayor' :
+        return ['Make Mayor', <img src={ MayorGrey } className="mayorGrey" alt="MayorMedal" /> ]
 
       case 'dead' :
         return ['Die!', <ByeIcon />]
