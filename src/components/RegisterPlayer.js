@@ -77,7 +77,7 @@ export class MakePhoto extends PureComponent {
       return true
     }
     this.setState({
-      photoError: 'Please capture your picture'
+      photoError: <div style={{fontSize: '1rem'}}>Please capture your picture</div>
     })
     return false
   }
@@ -160,9 +160,10 @@ export class MakePhoto extends PureComponent {
             value={this.state.name}
             maxLength="12"
           />
+          
+        <p style={{ color: 'red'}} >{this.state.photoError}</p>
 
         <div style={cameraBox}>
-            <p style={{ color: 'red'}} >{this.state.photoError}</p>
             <div className='screenshots'>
               <div className='controls'>
                 <RaisedButton
